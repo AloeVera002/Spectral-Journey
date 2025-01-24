@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class ItemPickupPrototypeScript : MonoBehaviour
 {
-
-    public GameObject spherePickupPrefab;
     private bool inPickupZone;
     public GameObject pickupText;
+    
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             Pickup();
-            other.gameObject.GetComponent<CoolAssPickupPlayerPrototypeScript>().canPickup = false;
+            other.gameObject.GetComponent<CoolAssPickupPlayerPrototypeScript>().canPickup = true;
             other.gameObject.GetComponent<CoolAssPickupPlayerPrototypeScript>().targetItem = this.gameObject;
         }
     }
@@ -26,5 +25,9 @@ public class ItemPickupPrototypeScript : MonoBehaviour
     {
         Debug.Log("Player is in PickupZone");
         pickupText.SetActive(true);
+    }
+    private void OnDestroy()
+    {
+        pickupText.SetActive(false);
     }
 }
