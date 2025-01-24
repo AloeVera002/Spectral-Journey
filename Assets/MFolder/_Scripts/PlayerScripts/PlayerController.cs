@@ -16,15 +16,12 @@ public class PlayerController : MonoBehaviour
     private float? lastGroundedTime;
     private float? jumpButtonPressedTime;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         originaleStepOffset = characterController.stepOffset;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
