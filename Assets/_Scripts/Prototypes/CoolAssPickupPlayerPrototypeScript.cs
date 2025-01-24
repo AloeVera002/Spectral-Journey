@@ -6,26 +6,27 @@ public class CoolAssPickupPlayerPrototypeScript : MonoBehaviour
     public bool canPickup = false;
     public int numberOfFlowers = 0;
     public GameObject targetItem = null;
-    public TMP_Text questText;
+    public TMP_Text scoreText;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        // Optionally, initialize the score display
+        scoreText.text = numberOfFlowers.ToString();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
             PickupFlower();
-        } 
+            scoreText.text = numberOfFlowers.ToString(); // Correctly update the score
+        }
+    }
 
-    } 
     void PickupFlower()
-    { if (!canPickup) return;
-    
+    {
+        if (!canPickup) return;
+
         Destroy(targetItem);
         numberOfFlowers += 1;
         canPickup = false;
