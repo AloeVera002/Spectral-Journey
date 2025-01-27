@@ -16,7 +16,7 @@ public class pPlayerControlls : MonoBehaviour
     public CinemachineFollow cineFollow;
     public CinemachineCamera cam;
 
-    int normPOV = 40;
+    int normPOV = 60;
     [SerializeField] int dialoguePOV = 12;
     [SerializeField] Vector3 normVector;
     [SerializeField] Vector3 dialogueVector;
@@ -29,11 +29,11 @@ public class pPlayerControlls : MonoBehaviour
     void Update()
     {
         charController.Move((movementVector) * Time.deltaTime);
-
+        /*
         if (Input.GetKeyDown(KeyCode.R))
         {
             Testing();
-        }
+        }*/
     }
 
     #region Basic Movement
@@ -73,7 +73,12 @@ public class pPlayerControlls : MonoBehaviour
 
     void Testing()
     {
-        switchBool(isSpeaking);
+        if (isSpeaking)
+        {
+            isSpeaking = false;
+        }
+        else { isSpeaking = true; }
+
         ToggleDialogueCamera();
     }
 
@@ -98,7 +103,15 @@ public class pPlayerControlls : MonoBehaviour
 
     bool switchBool(bool boolToSwitch)
     {
-        boolToSwitch = !boolToSwitch;
+        if (boolToSwitch)
+        {
+            boolToSwitch = false;
+        }
+        else
+        {
+            boolToSwitch = true;
+        }
+ //       boolToSwitch = !boolToSwitch;
         return boolToSwitch;
     }
 }

@@ -17,7 +17,7 @@ public class TestingCameraAndScriptableObject : MonoBehaviour
     [SerializeField] TestForScriptableObjectDialogue table;
     [SerializeField] TMP_Text speaker, speech;
 
-    private dialogueLine[] textArray;
+    private dialogueLines[] textArray;
 
     int speechIndex = 0;
 

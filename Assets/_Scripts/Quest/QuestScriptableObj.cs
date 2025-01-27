@@ -5,6 +5,8 @@ using UnityEngine.UI;
 [System.Serializable]
 public struct basicQuest
 {
+    public string questName;
+
     public string questId;
 
     public string questDetails;
@@ -24,8 +26,8 @@ public struct rewardQuest
     public GameObject rewardObj;
 }
 
-[CreateAssetMenu(fileName = "QuestScriptableObj", menuName = "Scriptable Objects/Quest", order = 1)]
-public class QuestScriptableObj : ScriptableObject
+[System.Serializable]
+public struct QuestStruct
 {
     public basicQuest quest;
 
@@ -40,4 +42,10 @@ public class QuestScriptableObj : ScriptableObject
             reward[index]?.Invoke();
         }
     }
+}
+
+[CreateAssetMenu(fileName = "QuestScriptableObj", menuName = "Scriptable Objects/Quest", order = 1)]
+public class QuestScriptableObj : ScriptableObject
+{
+    public QuestStruct[] quests;
 }

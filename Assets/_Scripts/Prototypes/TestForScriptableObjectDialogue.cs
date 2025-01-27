@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-public struct dialogueLine
+public struct dialogueLines
 {
     public string Name;
 
@@ -13,5 +13,5 @@ public struct dialogueLine
 [CreateAssetMenu(fileName = "SO Dialogue", menuName = "Scriptable Objects/DialogueTest")]
 public class TestForScriptableObjectDialogue : ScriptableObject
 {
-    public dialogueLine[] dialogue;
+    public dialogueLines[] dialogue;
 }
