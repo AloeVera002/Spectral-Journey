@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
+            if (GetComponent<pPlayerComponent>().isInConversation) return;
+
             jumpButtonPressedTime = Time.time;
         }
 
