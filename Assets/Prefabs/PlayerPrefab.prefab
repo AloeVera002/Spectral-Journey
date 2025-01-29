@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1138876050121123773}
   - component: {fileID: 7167286011543767266}
   - component: {fileID: 8961498905441987166}
+  - component: {fileID: 3113185714736621924}
   - component: {fileID: 2866682706195571545}
   - component: {fileID: 3098079539676674617}
   - component: {fileID: 8408503490664863483}
@@ -82,11 +83,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ee3ea96a8198347960627e080067fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueField: {fileID: 0}
+  modalButtons: {fileID: 0}
   dialogueRef: {fileID: 0}
   speaker: {fileID: 0}
   line: {fileID: 0}
   textSpeed: 0
-  dialogueField: {fileID: 0}
+  isQuestioned: 0
+--- !u!114 &3113185714736621924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649177495162707744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bff2107b8bb69449a6d381daa73f4a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  friendships: []
 --- !u!114 &2866682706195571545
 MonoBehaviour:
   m_ObjectHideFlags: 0
