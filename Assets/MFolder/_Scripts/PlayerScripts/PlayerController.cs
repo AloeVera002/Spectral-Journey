@@ -4,6 +4,7 @@ using UnityEngine.InputSystem.Utilities;
 using UnityEngine.UIElements;
 using TMPro;
 using System.ComponentModel;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,13 +26,24 @@ public class PlayerController : MonoBehaviour
 
     public bool pebbleInstantiated = false;
 
-    public int pebbleCount;
+    public int pebbleCount = 0;
     public TMP_Text pebbleCountText;
+
+    public int maxPebbles = 3;
+    public float maxPebblesScreenTime = 0;
+    public TMP_Text maxPebblesText;
+    public GameObject maxPebblesScreen;
+
+
+    public bool canCollectPebble = true;
+
+    public bool canNotCollectPebble = false;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         originaleStepOffset = characterController.stepOffset;
+        pebbleCountText.text = pebbleCount.ToString();
     }
 
     void Update()
@@ -92,14 +104,21 @@ public class PlayerController : MonoBehaviour
 
             pebblePrefab.transform.position = slingshotPivot.transform.position;
         }
-        while (pebbleInstantiated)
-        {
-            pebblePrefab.transform.position = slingshotPivot.transform.position;
-        }
+
         // Firing the slingshot
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             FireSlingshot();
+        }
+
+        if (canNotCollectPebble)
+        {
+            if (maxPebblesScreenTime < 3)
+            {
+                maxPebblesScreenTime = 0;
+                maxPebblesScreen.SetActive(false);
+            }
+            maxPebblesScreenTime += Time.deltaTime;
         }
     }
 
@@ -107,8 +126,18 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("GroundPebble"))
         {
-            Destroy(other.gameObject);
-            pebbleCount ++;
+            if (pebbleCount < maxPebbles)
+            {
+                Destroy(other.gameObject);
+                pebbleCount ++;
+                pebbleCountText.text = pebbleCount.ToString();
+            }
+            else
+            {
+                canCollectPebble = false;
+                canNotCollectPebble = true;
+                maxPebblesScreen.SetActive(true);
+            }
         }
     }
 
