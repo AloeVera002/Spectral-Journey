@@ -10,7 +10,7 @@ public struct FriendshipData
 
     public float GetFriendValue()
     {
-        int floatValue = friendshipValue /= 100;
+        float floatValue = friendshipValue / 100f;
         return floatValue;
     }
 }
