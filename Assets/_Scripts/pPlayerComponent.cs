@@ -1,5 +1,6 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class pPlayerComponent : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class pPlayerComponent : MonoBehaviour
     [SerializeField] int dialoguePOV = 12;
     [SerializeField] Vector3 normVector;
     [SerializeField] Vector3 dialogueVector;
+
 
     [SerializeField] CinemachineCamera NormalCam, DialogueCam;
     
@@ -35,6 +37,13 @@ public class pPlayerComponent : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            WaterDeath();
+        }
+    }
     void UpdateCameraData(Vector3 newOffset, int newPOV, Vector3 newDialogueOffset, int newDialoguePOV)
     {
         NormalCam.GetComponent<CinemachineFollow>().FollowOffset = newOffset;
@@ -54,5 +63,9 @@ public class pPlayerComponent : MonoBehaviour
             animator.Play("FollowCamera");
         }
         isInConversation = !isInConversation;
+    }
+    void WaterDeath()
+    {
+        SceneManager.LoadScene(0);
     }
 }

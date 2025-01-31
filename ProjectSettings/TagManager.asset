@@ -6,6 +6,9 @@ TagManager:
   tags:
   - PickupZone
   - GroundPebble
+  - Wall
+  - Ghost
+  - Water
   layers:
   - Default
   - TransparentFX
