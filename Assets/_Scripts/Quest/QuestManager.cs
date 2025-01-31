@@ -81,7 +81,7 @@ public class QuestManager : MonoBehaviour
         GetComponentInParent<pPlayerComponent>().ectoplasm += currentQuest.ectoplasmReward;
     }
 
-    void StartQuest()
+    public void StartQuest()
     {
         SetQuestData();
         ShowHideQuestUI();
