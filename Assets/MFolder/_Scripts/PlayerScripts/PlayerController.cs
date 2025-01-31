@@ -92,7 +92,10 @@ public class PlayerController : MonoBehaviour
 
             pebblePrefab.transform.position = slingshotPivot.transform.position;
         }
-
+        while (pebbleInstantiated)
+        {
+            pebblePrefab.transform.position = slingshotPivot.transform.position;
+        }
         // Firing the slingshot
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
@@ -114,10 +117,6 @@ public class PlayerController : MonoBehaviour
         Instantiate(pebblePrefab, slingshotPivot.position, slingshotPivot.rotation);
         pebblePrefab.transform.parent = this.transform;
         pebbleInstantiated = true;
-        while (Input.GetKey(KeyCode.Mouse0))
-        {
-            transform.position = slingshotPivot.transform.position;
-        }
     }
     void FireSlingshot()
     {
