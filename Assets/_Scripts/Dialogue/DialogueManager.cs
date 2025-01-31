@@ -152,7 +152,7 @@ public class DialogueManager : MonoBehaviour
         ShowModal();
      //   SetDialogueRef(lineArray[lineIndex].AcceptedDialogue);
     //    UpdateDialogue();
-    //    QuitDialogue();
+        QuitDialogue();
         GetComponent<QuestManager>().StartQuest();
     }
 

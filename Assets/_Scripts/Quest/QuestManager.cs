@@ -10,7 +10,6 @@ public class QuestManager : MonoBehaviour
     [SerializeField] GameObject[] questObjectives;
     [SerializeField] TMP_Text questDetailsText, questCompletionValue;
     [SerializeField] bool hasCompletedObjective;
-    int questIndex;
     int qObjectiveIndex = 0;
 
     [SerializeField] bool isToggled;
@@ -83,12 +82,14 @@ public class QuestManager : MonoBehaviour
 
     public void StartQuest()
     {
+        currentQuest = questRef.quest;
         SetQuestData();
         ShowHideQuestUI();
     }
 
     void SetQuestData()
     {
+        Debug.Log("Set data q");
         questDetailsText.text = currentQuest.questDetails;
         questObjectives = currentQuest.questObjective;
     }

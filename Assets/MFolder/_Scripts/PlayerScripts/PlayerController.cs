@@ -18,13 +18,13 @@ public class PlayerController : MonoBehaviour
     private float originaleStepOffset;
     private float? lastGroundedTime;
     private float? jumpButtonPressedTime;
-
+    /*
     public Transform slingshotPivot;
     public GameObject slingshot;
     public GameObject pebblePrefab;
     public float pebbleSpeed = 500f;
 
-    public bool pebbleInstantiated = false;
+    public bool pebbleInstantiated = false;*/
 
     public int pebbleCount = 0;
     public TMP_Text pebbleCountText;
@@ -100,9 +100,9 @@ public class PlayerController : MonoBehaviour
         {
             PreppingSlingshot();
             Debug.Log("Bla");
-            if (!pebbleInstantiated) { return; }
+        /*    if (!pebbleInstantiated) { return; }
 
-            pebblePrefab.transform.position = slingshotPivot.transform.position;
+            pebblePrefab.transform.position = slingshotPivot.transform.position;*/
         }
 
         // Firing the slingshot
@@ -142,10 +142,10 @@ public class PlayerController : MonoBehaviour
     }
 
     void PreppingSlingshot()
-    {
+    {/*
         Instantiate(pebblePrefab, slingshotPivot.position, slingshotPivot.rotation);
         pebblePrefab.transform.parent = this.transform;
-        pebbleInstantiated = true;
+        pebbleInstantiated = true;*/
     }
     void FireSlingshot()
     {
