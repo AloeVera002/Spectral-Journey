@@ -3,6 +3,7 @@ using UnityEngine;
 public class QuestGiver : MonoBehaviour
 {
     [SerializeField] QuestScriptableObj questToGive;
+    [SerializeField] so_Dialogue Dialogue;
     [SerializeField] bool isQuestGiver;
 
     void Start()
@@ -21,7 +22,13 @@ public class QuestGiver : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                other.gameObject.GetComponent<DialogueManager>().StartDialogue();
+                if (other.gameObject.GetComponent<pPlayerControlls>())
+                {
+                    other.gameObject.GetComponent<DialogueManager>().SetDialogueRef(Dialogue);
+                    other.gameObject.GetComponent<DialogueManager>().StartNewDialogue();
+
+                    other.gameObject.GetComponent<QuestManager>().questRef = questToGive;
+                }
             }
         }
     }

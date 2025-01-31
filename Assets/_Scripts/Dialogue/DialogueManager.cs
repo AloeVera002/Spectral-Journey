@@ -49,7 +49,14 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                NextLine();
+                if (lineArray[lineIndex].isQuestion)
+                {
+                    UpdateDialogue();
+                }
+                else
+                {
+                    NextLine();
+                }
             }
         }
     }
@@ -65,7 +72,7 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("started dialogue");
         lineIndex = 0;
         dialogueField.SetActive(true);
-        
+
         GetComponent<pPlayerComponent>().isInConversation = true;
 
         UpdateTextInput(lineArray[lineIndex].Name, lineArray[lineIndex].text);
@@ -143,7 +150,35 @@ public class DialogueManager : MonoBehaviour
     public void AcceptQuest()
     {
         ShowModal();
-        QuitDialogue();
+        SetDialogueRef(lineArray[lineIndex].AcceptedDialogue);
+        UpdateDialogue();
+    //    QuitDialogue();
         GetComponent<QuestManager>().ShowHideQuestUI();
+    }
+
+    public void RejectQuest()
+    {
+        ShowModal();
+        SetDialogueRef(lineArray[lineIndex].AcceptedDialogue);
+        UpdateDialogue();
+    }
+
+    public void StartNewDialogue()
+    {
+        GetInfo();
+        StartDialogue();
+    }
+
+    public void SetDialogueRef(so_Dialogue newQuest)
+    {
+        Debug.Log("Set Dialogue ref to " + newQuest);
+        dialogueRef = newQuest;
+    }
+
+    public void UpdateDialogue()
+    {
+        Debug.Log(lineIndex);
+        
+        StartNewDialogue();
     }
 }

@@ -10,6 +10,9 @@ public struct dialogueLine
     public string text;
 
     public bool isQuestion;
+
+    public so_Dialogue AcceptedDialogue;
+    public so_Dialogue RejectedDialogue;
 }
 
 [CreateAssetMenu(fileName = "so_Dialogue", menuName = "Dialogue")]

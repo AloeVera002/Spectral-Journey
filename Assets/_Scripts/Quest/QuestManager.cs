@@ -1,10 +1,17 @@
+using System.Data;
+using TMPro;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-    [SerializeField] QuestScriptableObj CurrentQuest;
+    public QuestScriptableObj questRef;
     [SerializeField] GameObject questField;
-
+    basicQuest currentQuest;
+    [SerializeField] GameObject[] questObjectives;
+    [SerializeField] TMP_Text questDetailsText, questCompletionValue;
+    [SerializeField] bool hasCompletedObjective;
+    int questIndex;
+    int qObjectiveIndex = 0;
 
     [SerializeField] bool isToggled;
     /*
@@ -26,6 +33,19 @@ public class QuestManager : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (qObjectiveIndex <= currentQuest.questObjective.Length)
+        {
+            if (other.gameObject == currentQuest.questObjective[qObjectiveIndex])
+            {
+                Destroy(other.gameObject);
+                qObjectiveIndex++;
+                UpdateQuest();
+            }
+        }
+    }
+
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.J))
@@ -44,5 +64,32 @@ public class QuestManager : MonoBehaviour
         {
             questField.SetActive(false);
         }
+    }
+
+    public void UpdateQuest()
+    {
+        currentQuest.questProgress = 1;
+        if (questObjectives.Length <= 0)
+        {
+            Debug.Log("quest");
+            CompleteQuest();
+        }
+    }
+
+    void CompleteQuest()
+    {
+        GetComponentInParent<pPlayerComponent>().ectoplasm += currentQuest.ectoplasmReward;
+    }
+
+    void StartQuest()
+    {
+        SetQuestData();
+        ShowHideQuestUI();
+    }
+
+    void SetQuestData()
+    {
+        questDetailsText.text = currentQuest.questDetails;
+        questObjectives = currentQuest.questObjective;
     }
 }

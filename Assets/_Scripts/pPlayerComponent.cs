@@ -14,6 +14,8 @@ public class pPlayerComponent : MonoBehaviour
     [SerializeField] Vector3 dialogueVector;
 
     [SerializeField] CinemachineCamera NormalCam, DialogueCam;
+    
+    public int ectoplasm;
 
     void Start()
     {

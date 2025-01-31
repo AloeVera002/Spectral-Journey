@@ -11,7 +11,11 @@ GameObject:
   - component: {fileID: 4766099593146972034}
   - component: {fileID: 6997790072387460654}
   - component: {fileID: 5987624622956538264}
+<<<<<<< Updated upstream:Assets/Prefabs/TestPrefabs/Player.prefab
   - component: {fileID: 3894744949022168910}
+=======
+  - component: {fileID: 1306271502318409808}
+>>>>>>> Stashed changes:Assets/Prefabs/Player.prefab
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -93,7 +97,11 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3352443855073470260}
   m_Enabled: 1
+<<<<<<< Updated upstream:Assets/Prefabs/TestPrefabs/Player.prefab
 --- !u!114 &3894744949022168910
+=======
+--- !u!114 &1306271502318409808
+>>>>>>> Stashed changes:Assets/Prefabs/Player.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

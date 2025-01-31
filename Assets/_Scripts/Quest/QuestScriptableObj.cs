@@ -11,27 +11,23 @@ public struct basicQuest
 
     public string questDetails;
 
-    public bool isFetchQuest;
+    public GameObject[] questObjective;
 
-    public bool isCollectableReward;
+    public bool isCompleted;
 
-    public GameObject rewardObj;
-}
+    public int questProgress;
 
-[System.Serializable]
-public struct rewardQuest
-{
-    public bool isCollectableReward;
+    public GameObject ectoplasmObject;
 
-    public GameObject rewardObj;
+    public int ectoplasmReward;
+
+    public so_Dialogue CompletedQuestDialogue;
 }
 
 [System.Serializable]
 public struct QuestStruct
 {
     public basicQuest quest;
-
-    public rewardQuest[] rewardsToDec;
 
     public UnityEvent[] reward;
 
@@ -44,8 +40,8 @@ public struct QuestStruct
     }
 }
 
-[CreateAssetMenu(fileName = "QuestScriptableObj", menuName = "Scriptable Objects/Quest", order = 1)]
+[CreateAssetMenu(fileName = "QuestScriptableObj", menuName = "Quest", order = 1)]
 public class QuestScriptableObj : ScriptableObject
 {
-    public QuestStruct[] quests;
+    public basicQuest quest;
 }
