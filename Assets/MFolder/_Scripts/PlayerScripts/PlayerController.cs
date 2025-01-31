@@ -2,6 +2,8 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem.Utilities;
 using UnityEngine.UIElements;
+using TMPro;
+using System.ComponentModel;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +18,16 @@ public class PlayerController : MonoBehaviour
     private float? lastGroundedTime;
     private float? jumpButtonPressedTime;
 
+    public Transform slingshotPivot;
+    public GameObject slingshot;
+    public GameObject pebblePrefab;
+    public float pebbleSpeed = 500f;
+
+    public bool pebbleInstantiated = false;
+
+    public int pebbleCount;
+    public TMP_Text pebbleCountText;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -23,9 +35,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {
-        
-
+    {        
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
@@ -73,5 +83,47 @@ public class PlayerController : MonoBehaviour
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, playerRotationSpeed * Time.deltaTime);
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            PreppingSlingshot();
+            Debug.Log("Bla");
+            if (!pebbleInstantiated) { return; }
+
+            pebblePrefab.transform.position = slingshotPivot.transform.position;
+        }
+
+        // Firing the slingshot
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            FireSlingshot();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("GroundPebble"))
+        {
+            Destroy(other.gameObject);
+            pebbleCount ++;
+        }
+    }
+
+    void PreppingSlingshot()
+    {
+        Instantiate(pebblePrefab, slingshotPivot.position, slingshotPivot.rotation);
+        pebblePrefab.transform.parent = this.transform;
+        pebbleInstantiated = true;
+        while (Input.GetKey(KeyCode.Mouse0))
+        {
+            transform.position = slingshotPivot.transform.position;
+        }
+    }
+    void FireSlingshot()
+    {
+
+        //GameObject newPebble = Instantiate(pebblePrefab, slingshotPivot.position, slingshotPivot.rotation);
+        //pebblePrefab.GetComponent<Rigidbody>().AddForce(transform.forward * pebbleSpeed);
+        //newPebble.GetComponent<TestingPebbleShootingMechanic>().aimPos = slingshotPivot.position;
     }
 }
