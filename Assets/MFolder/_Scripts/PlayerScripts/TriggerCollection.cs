@@ -7,7 +7,7 @@ public class TriggerCollection : MonoBehaviour
     [Header("NPCInteraction")]
     [SerializeField] GameObject interactKey;
 
-
+    [SerializeField] GameObject player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,6 +25,12 @@ public class TriggerCollection : MonoBehaviour
         {
             interactKey.SetActive(true);
         }
+
+        if (other.gameObject.CompareTag("Zombie")){
+            Destroy(player);
+        }
+
+      
     }
 
     void OnTriggerExit(Collider other)
@@ -34,4 +40,6 @@ public class TriggerCollection : MonoBehaviour
             interactKey.SetActive(false);
         }
     }
+
+   
 }

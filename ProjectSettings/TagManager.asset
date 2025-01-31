@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Ghost
   - Water
+  - Zombie
   layers:
   - Default
   - TransparentFX
