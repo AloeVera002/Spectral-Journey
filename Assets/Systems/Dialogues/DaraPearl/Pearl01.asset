@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d84b4961e7e16a14483bd4b0cd7769fa, type: 3}
+  m_Name: Pearl01
+  m_EditorClassIdentifier: 
+  dialogue:
+  - Name: 
+    text: Oh how I miss having a physical form. I'm quite jealous of you stranger.
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: Player
+    text: Isn't it fun to be able to float around and spook people though?
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: ???
+    text: I don't think so. I used to be terrified of ghosts as a kid.
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: ???
+    text: All I want is a little company, scaring people away is the last thing I'd
+      want to do.
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: ???
+    text: So it makes me happy to see that you don't seem scared at all.
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: 
+    text: Where are my manners! My name is Dara, and you are?
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: Player
+    text: Someone to keep you company
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: Dara
+    text: "Well thank you dear. It\u2019s not every day us ghosts see a human, and
+      a friendly one at that!"
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: Dara
+    text: Last week we had a gang of humans with vacuums on their back chasing us.
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: Dara
+    text: "Called themselves the ghost, what was it\u2026 Dusters?"
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: Dara
+    text: You are nothing like them thankfully. Do you think you could do me a favor?
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: Dara
+    text: 'When I was a young girl, me and my best friend would go and look for pearls. '
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: Dara
+    text: "While in this form, I can\u2019t really do that. Could you go and find
+      5 pearls for me?"
+    isQuestion: 1
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
