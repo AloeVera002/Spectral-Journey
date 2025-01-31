@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -57,7 +58,8 @@ public class FriendshipManager : MonoBehaviour
         if (friend >= 0 && friend < friendships.Length)
         {
             friendships[friend].friendshipValue = newValue;
-            UpdateFriendMeter();
+            StartCoroutine(SmoothUpdateFriendMeter(friend));
+        //    UpdateFriendMeter();
         }
     }
 
@@ -70,5 +72,22 @@ public class FriendshipManager : MonoBehaviour
                 friendshipMeters[i].value = friendships[i].GetFriendValue();
             }
         }
+    }
+
+    IEnumerator SmoothUpdateFriendMeter(int friend)
+    {
+        float targetValue = friendships[friend].GetFriendValue();
+        float currentValue = friendshipMeters[friend].value;
+
+        // Smoothly transition from the current value to the target value
+        while (!Mathf.Approximately(currentValue, targetValue))
+        {
+            currentValue = Mathf.MoveTowards(currentValue, targetValue, 1f * Time.deltaTime);
+            friendshipMeters[friend].value = currentValue;
+            yield return null; // Wait until the next frame
+        }
+
+        // Ensure the target value is exactly reached
+        friendshipMeters[friend].value = targetValue;
     }
 }
