@@ -3,6 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
+<<<<<<< Updated upstream
   tags:
   - Ghost
   - PickUp
@@ -11,6 +12,9 @@ TagManager:
   - Zombie
   - GroundPebble
   - Pebble
+=======
+  tags: []
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
