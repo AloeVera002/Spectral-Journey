@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class QuestGiver : MonoBehaviour
@@ -5,6 +6,7 @@ public class QuestGiver : MonoBehaviour
     [SerializeField] QuestScriptableObj questToGive;
     [SerializeField] so_Dialogue Dialogue;
     [SerializeField] bool isQuestGiver;
+    [SerializeField] GameObject interactHUD;
 
     void Start()
     {
@@ -25,11 +27,19 @@ public class QuestGiver : MonoBehaviour
                 if (other.gameObject.GetComponent<pPlayerControlls>())
                 {
                     other.gameObject.GetComponent<DialogueManager>().SetDialogueRef(Dialogue);
-                    other.gameObject.GetComponent<DialogueManager>().StartNewDialogue();
+                    other.gameObject.GetComponent<pPlayerComponent>().isInteracting = true;
+                //    other.gameObject.GetComponent<DialogueManager>().StartNewDialogue();
 
                     other.gameObject.GetComponent<QuestManager>().questRef = questToGive;
+
+                    interactHUD.SetActive(true);
                 }
             }
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        interactHUD?.SetActive(false);
     }
 }

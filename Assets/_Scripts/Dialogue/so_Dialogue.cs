@@ -11,6 +11,8 @@ public struct dialogueLine
 
     public bool isQuestion;
 
+    public bool giveQuest;
+
     public so_Dialogue AcceptedDialogue;
     public so_Dialogue RejectedDialogue;
 }

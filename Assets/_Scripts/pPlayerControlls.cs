@@ -5,21 +5,19 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class pPlayerControlls : MonoBehaviour
 {
-    float movementSpeed = 5;
-    float rotationSpeed = 250;
+    float movementSpeed = 6.5f;
+    float rotationSpeed = 250f;
+    [SerializeField] float jumpHeight = 5f;
+    float gravity = -9.81f;
+
     Vector2 movementInput;
     Vector3 movementVector;
+    Vector3 velocity;
+
     CharacterController charController;
 
     public bool isSpeaking = false;
-
-    public CinemachineFollow cineFollow;
-    public CinemachineCamera cam;
-
-    int normPOV = 60;
-    [SerializeField] int dialoguePOV = 12;
-    [SerializeField] Vector3 normVector;
-    [SerializeField] Vector3 dialogueVector;
+    public bool bCanJump = false;
 
     void Start()
     {
@@ -28,7 +26,25 @@ public class pPlayerControlls : MonoBehaviour
 
     void Update()
     {
-        charController.Move((movementVector) * Time.deltaTime);
+        bool bIsGrounded = charController.isGrounded;
+
+        if (bIsGrounded)
+        {
+            bCanJump = true;
+        }
+        else
+        {
+            bCanJump = false;
+        }
+
+        if (bIsGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+
+        velocity.y += gravity * Time.deltaTime;
+
+        charController.Move((movementVector + velocity) * Time.deltaTime);
         /*
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -46,7 +62,10 @@ public class pPlayerControlls : MonoBehaviour
 
     public void Jump()
     {
-
+        if (bCanJump)
+        {
+            velocity.y = jumpHeight;
+        }
     }
 
     #region Additional Basic Movement stuff
@@ -68,50 +87,4 @@ public class pPlayerControlls : MonoBehaviour
 
     }
     #endregion
-
-    #region Camera
-
-    void Testing()
-    {
-        if (isSpeaking)
-        {
-            isSpeaking = false;
-        }
-        else { isSpeaking = true; }
-
-        ToggleDialogueCamera();
-    }
-
-    void ToggleDialogueCamera()
-    {
-        if (!isSpeaking)
-        {
-            UpdateCineFollow(dialogueVector, dialoguePOV);
-        }
-        else
-        {
-            UpdateCineFollow(normVector, normPOV);
-        }
-    }
-
-    void UpdateCineFollow(Vector3 pos, int fov)
-    {
-        cineFollow.FollowOffset = pos;
-        cam.Lens.FieldOfView = fov;
-    }
-    #endregion
-
-    bool switchBool(bool boolToSwitch)
-    {
-        if (boolToSwitch)
-        {
-            boolToSwitch = false;
-        }
-        else
-        {
-            boolToSwitch = true;
-        }
- //       boolToSwitch = !boolToSwitch;
-        return boolToSwitch;
-    }
 }

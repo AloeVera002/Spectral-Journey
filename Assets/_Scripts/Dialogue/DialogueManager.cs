@@ -46,12 +46,13 @@ public class DialogueManager : MonoBehaviour
             if (lineArray[lineIndex].isQuestion)
             {
                 ShowModal();
+                UpdateDialogue();
             }
             else
             {
-                if (lineArray[lineIndex].isQuestion)
+                if (lineArray[lineIndex].giveQuest)
                 {
-                    UpdateDialogue();
+                    AcceptQuest();
                 }
                 else
                 {
@@ -149,17 +150,24 @@ public class DialogueManager : MonoBehaviour
 
     public void AcceptQuest()
     {
-        ShowModal();
+    //    ShowModal();
      //   SetDialogueRef(lineArray[lineIndex].AcceptedDialogue);
     //    UpdateDialogue();
         QuitDialogue();
         GetComponent<QuestManager>().StartQuest();
     }
 
-    public void RejectQuest()
+    public void AcceptQuestion()
     {
         ShowModal();
         SetDialogueRef(lineArray[lineIndex].AcceptedDialogue);
+        UpdateDialogue();
+    }
+
+    public void RejectQuestion()
+    {
+        ShowModal();
+        SetDialogueRef(lineArray[lineIndex].RejectedDialogue);
         UpdateDialogue();
     }
 

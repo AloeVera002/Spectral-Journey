@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,7 +15,7 @@ public class pPlayerComponent : MonoBehaviour
     [SerializeField] Vector3 normVector;
     [SerializeField] Vector3 dialogueVector;
 
-
+    [SerializeField] TMP_Text ectroplasmText;
     [SerializeField] GameObject NormalCam, DialogueCam;
     
     public int ectoplasm;
@@ -34,7 +35,10 @@ public class pPlayerComponent : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.R))
         {
             SwitchCamera();
+            ectoplasm++;
         }
+
+        ectroplasmText.text = ectoplasm.ToString();
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -44,6 +48,7 @@ public class pPlayerComponent : MonoBehaviour
             WaterDeath();
         }
     }
+
     void UpdateCameraData(Vector3 newOffset, int newPOV, Vector3 newDialogueOffset, int newDialoguePOV)
     {
         NormalCam.GetComponent<CinemachineFollow>().FollowOffset = newOffset;
@@ -56,15 +61,11 @@ public class pPlayerComponent : MonoBehaviour
     {
         if (isInConversation)
         {
-            DialogueCam.SetActive(true);
-            NormalCam.SetActive(false);
-        //    animator.Play("GhostCamera");
+            animator.Play("GhostCamera");
         }
         else
         {
-            DialogueCam.SetActive(false);
-            NormalCam.SetActive(true);
-            //    animator.Play("FollowCamera");
+            animator.Play("FollowCamera");
         }
         isInConversation = !isInConversation;
     }
