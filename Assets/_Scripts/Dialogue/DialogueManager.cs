@@ -46,7 +46,7 @@ public class DialogueManager : MonoBehaviour
             if (lineArray[lineIndex].isQuestion)
             {
                 ShowModal();
-                UpdateDialogue();
+            //    UpdateDialogue();
             }
             else
             {
