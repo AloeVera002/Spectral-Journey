@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d84b4961e7e16a14483bd4b0cd7769fa, type: 3}
+  m_Name: Rott01
+  m_EditorClassIdentifier: 
+  dialogue:
+  - Name: ???
+    text: Sigh...
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: Player
+    text: Hey, what's wrong?
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: ???
+    text: My love... my heart and soul... she is inside a-a a zombie...
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: Player
+    text: I can help you!
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: ???
+    text: Well... Do you know how to maybe... slay zombies?
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: Player
+    text: I can use my slingshot!
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: ???
+    text: Really... a slingshot?
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: Player
+    text: It's a... really special slingshot?
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: ???
+    text: I just... I can't... I don't know how to move on without her.
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: Player
+    text: Let me help you! I'll free your friend.
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: Rott
+    text: That would be really nice actually. My name is Rott by the way and my love's
+      name is Moldy.
+    isQuestion: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: Rott
+    text: So... are you going to help my Moldy be freed from the zombie?
+    isQuestion: 1
+    AcceptedDialogue: {fileID: 11400000, guid: 7be40823b8ce7b242bee594565d5740e, type: 2}
+    RejectedDialogue: {fileID: 11400000, guid: 4404aaedfdaba724f8596f792d45f44a, type: 2}

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d84b4961e7e16a14483bd4b0cd7769fa, type: 3}
-  m_Name: PearlReject
+  m_Name: RottAccept
   m_EditorClassIdentifier: 
   dialogue:
-  - Name: Dara
-    text: "No worries dear, I\u2019m not going anywhere so you can always come back
-      to chat."
+  - Name: Rott
+    text: "That\u2019s really nice of you\u2026You should be able to find it by the
+      smell of it, kinda rotten\u2026in a way\u2026"
     isQuestion: 0
     AcceptedDialogue: {fileID: 0}
     RejectedDialogue: {fileID: 0}

@@ -10,20 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82c9e343c28ffce48a05bad82cd5456e, type: 3}
-  m_Name: PearlQuest
+  m_Name: RottQuest
   m_EditorClassIdentifier: 
   quest:
-    questName: PearlQuest
-    questId: PearlQ01
-    questDetails: Collect 5 pearls and bring them to Dara
-    pickupTag: PickUp
-    questObjective:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    questName: RottQuest
+    questId: RottQ01
+    questDetails: Slay the zombie and save Moldy
+    pickupTag: 
+    questObjective: []
     isCompleted: 0
     questProgress: 0
-    ectoplasmReward: 10
+    ectoplasmReward: 0
     CompletedQuestDialogue: {fileID: 0}
