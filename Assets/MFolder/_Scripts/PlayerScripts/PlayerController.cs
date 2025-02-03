@@ -115,8 +115,11 @@ public class PlayerController : MonoBehaviour
                 pebbleCount = 0;
                 canFire = false;
                 pebbleCountText.text = pebbleCount.ToString();
-                noPebblesScreen.SetActive(true);
-                StartCoroutine(ToggleNoPebbleText());
+                if (isEquipped)
+                {
+                    noPebblesScreen.SetActive(true);
+                    StartCoroutine(ToggleNoPebbleText());
+                }
             }            
         }
         if (Input.GetKeyDown(KeyCode.F))
