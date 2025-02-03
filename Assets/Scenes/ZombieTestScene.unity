@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 1462673313}
   - component: {fileID: 1462673312}
   - component: {fileID: 1462673315}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -671,6 +671,7 @@ GameObject:
   - component: {fileID: 1879850172}
   - component: {fileID: 1879850171}
   - component: {fileID: 1879850170}
+  - component: {fileID: 1879850177}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Zombie
@@ -690,7 +691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c3e38ed40a344156a5ea70004624d51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRadius: 10
+  lookRadius: 9
 --- !u!54 &1879850171
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -832,6 +833,25 @@ Transform:
   - {fileID: 523163918}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1879850177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879850169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 740c0f21c514c4d6f998ac3c2ea0fc11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  range: 15
 --- !u!1 &7342372183948698209 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1882048452700270825, guid: 402af8069c22248d0b858c4f45691c7c, type: 3}
@@ -852,6 +872,14 @@ PrefabInstance:
     - target: {fileID: 1882048452700270825, guid: 402af8069c22248d0b858c4f45691c7c, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882048452700270825, guid: 402af8069c22248d0b858c4f45691c7c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767232547650070786, guid: 402af8069c22248d0b858c4f45691c7c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7586024356350416930, guid: 402af8069c22248d0b858c4f45691c7c, type: 3}
       propertyPath: m_LocalPosition.x
