@@ -88,7 +88,7 @@ public class pPlayerComponent : MonoBehaviour
 
     void WaterDeath()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     IEnumerator ToggleMaxPebbleText()

@@ -15,7 +15,7 @@ MonoBehaviour:
   quest:
     questName: PearlQuest
     questId: PearlQ01
-    questDetails: Collect 5 pearls and bring them to Dara
+    questDetails: Collect pearls for dara {i} / {o}
     pickupTag: PickUp
     questObjective:
     - {fileID: 0}
