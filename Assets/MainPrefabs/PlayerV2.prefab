@@ -662,11 +662,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5294033227431768108}
-  - component: {fileID: 1971993670837860372}
+  - component: {fileID: 8854368891283767757}
   - component: {fileID: 590720886072749752}
   - component: {fileID: 7710913797425181970}
   - component: {fileID: 21481960602476517}
   - component: {fileID: 5219400773821571683}
+  - component: {fileID: 3106472681276180317}
   - component: {fileID: 5344637347331374286}
   m_Layer: 0
   m_Name: PlayerV2
@@ -693,7 +694,7 @@ Transform:
   - {fileID: 1334226314148201291}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1971993670837860372
+--- !u!114 &8854368891283767757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -707,13 +708,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInteracting: 0
   isInConversation: 0
-  normPOV: 60
-  dialoguePOV: 12
-  normVector: {x: 0, y: 0, z: 0}
-  dialogueVector: {x: 0, y: 0, z: 0}
+  canCollectPebble: 1
+  canNotCollectPebble: 0
+  pebbleCount: 3
+  pebbleCountText: {fileID: 0}
+  maxPebbles: 3
+  maxPebblesText: {fileID: 0}
+  maxPebblesScreen: {fileID: 0}
+  noPebblesText: {fileID: 0}
+  noPebblesScreen: {fileID: 0}
   ectroplasmText: {fileID: 0}
-  NormalCam: {fileID: 0}
-  DialogueCam: {fileID: 0}
+  slingshotPivot: {fileID: 7952557910075664771}
+  slingshot: {fileID: 392404536551009782}
+  pebblePrefab: {fileID: 4404885963847451094, guid: f51aa99f7a6588e49b0cf61ad7eae27d, type: 3}
   ectoplasm: 0
 --- !u!114 &590720886072749752
 MonoBehaviour:
@@ -858,8 +865,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpHeight: 5
+  pebbleSpeed: 1800
   isSpeaking: 0
   bCanJump: 0
+  canFire: 0
+  isEquipped: 0
 --- !u!114 &21481960602476517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -898,6 +908,24 @@ MonoBehaviour:
   questCompletionValue: {fileID: 0}
   hasCompletedObjective: 0
   isToggled: 0
+--- !u!114 &3106472681276180317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6970084884534529251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bff2107b8bb69449a6d381daa73f4a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  friendshipNames:
+  - {fileID: 0}
+  friendshipMeters:
+  - {fileID: 0}
+  friendships: []
+  friendShipField: {fileID: 0}
 --- !u!143 &5344637347331374286
 CharacterController:
   m_ObjectHideFlags: 0

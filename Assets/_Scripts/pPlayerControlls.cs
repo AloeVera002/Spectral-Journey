@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,6 +11,10 @@ public class pPlayerControlls : MonoBehaviour
     [SerializeField] float jumpHeight = 5f;
     float gravity = -9.81f;
 
+    private pPlayerComponent playerData;
+
+    [SerializeField] float pebbleSpeed = 1800f;
+
     Vector2 movementInput;
     Vector3 movementVector;
     Vector3 velocity;
@@ -19,37 +24,60 @@ public class pPlayerControlls : MonoBehaviour
     public bool isSpeaking = false;
     public bool bCanJump = false;
 
+    public bool canFire = false;
+    public bool isEquipped = false;
+
     void Start()
     {
         charController = GetComponent<CharacterController>();
+        playerData = GetComponent<pPlayerComponent>();
     }
 
     void Update()
     {
+        #region Movement
         bool bIsGrounded = charController.isGrounded;
 
         if (bIsGrounded)
         {
             bCanJump = true;
+            if (velocity.y < 0)
+            {
+                velocity.y = -2f;
+            }
         }
         else
         {
             bCanJump = false;
         }
 
-        if (bIsGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-        }
-
         velocity.y += gravity * Time.deltaTime;
 
         charController.Move((movementVector + velocity) * Time.deltaTime);
-        /*
-        if (Input.GetKeyDown(KeyCode.R))
+        #endregion
+
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            Testing();
-        }*/
+            ToggleSlingshot();
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (playerData.pebbleCount > 0 && isEquipped)
+            {
+                FireSlingShot();
+                Debug.Log("Bla");
+            }
+            else
+            {
+                ResetSlingshot();
+                if (isEquipped)
+                {
+                    playerData.ActivateNoPebbleText();
+                }
+            }
+            playerData.UpdatePebbleText();
+        }
     }
 
     #region Basic Movement
@@ -84,6 +112,41 @@ public class pPlayerControlls : MonoBehaviour
     #region Interactable Actions
     void Interact()
     {
+
+    }
+    #endregion
+
+    #region Slingshot
+    void FireSlingShot()
+    {
+        GameObject newPebble = Instantiate(playerData.pebblePrefab, playerData.slingshotPivot.position, playerData.slingshotPivot.rotation);
+        newPebble.AddComponent<Rigidbody>();
+
+        newPebble.GetComponent<Rigidbody>().AddForce(transform.forward * pebbleSpeed);
+        newPebble.GetComponent<TestingPebbleShootingMechanic>().aimPos = playerData.slingshotPivot.position;
+        newPebble.tag = "Pebble";
+
+        playerData.DecreasePebbleCount(1);
+    }
+
+    void ToggleSlingshot()
+    {
+        if (!isEquipped)
+        {
+            playerData.slingshot.SetActive(true);
+            canFire = true;
+        }
+        else
+        {
+            playerData.slingshot.SetActive(false);
+            canFire = false;
+        }
+        isEquipped = !isEquipped;
+    }
+
+    void ResetSlingshot()
+    {
+        playerData.SetPebbleCount(0);
 
     }
     #endregion

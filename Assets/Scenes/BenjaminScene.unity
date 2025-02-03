@@ -773,10 +773,18 @@ PrefabInstance:
       propertyPath: dialogueField
       value: 
       objectReference: {fileID: 2063286057}
-    - target: {fileID: 1971993670837860372, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
-      propertyPath: ectroplasmText
+    - target: {fileID: 3106472681276180317, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: friendShipField
       value: 
-      objectReference: {fileID: 1460058553}
+      objectReference: {fileID: 1488686393}
+    - target: {fileID: 3106472681276180317, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: 'friendshipNames.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1550020256}
+    - target: {fileID: 3106472681276180317, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: 'friendshipMeters.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1128240258}
     - target: {fileID: 5219400773821571683, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: questField
       value: 
@@ -829,42 +837,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerV2
       objectReference: {fileID: 0}
+    - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: noPebblesText
+      value: 
+      objectReference: {fileID: 1831095216}
+    - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: ectroplasmText
+      value: 
+      objectReference: {fileID: 1460058553}
+    - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: maxPebblesText
+      value: 
+      objectReference: {fileID: 277619534}
+    - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: noPebblesScreen
+      value: 
+      objectReference: {fileID: 522686422}
+    - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: pebbleCountText
+      value: 
+      objectReference: {fileID: 869048489}
+    - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: maxPebblesScreen
+      value: 
+      objectReference: {fileID: 2096823725}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6970084884534529251, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 303709073}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
---- !u!1 &303709071 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6970084884534529251, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
-  m_PrefabInstance: {fileID: 303709070}
-  m_PrefabAsset: {fileID: 0}
 --- !u!20 &303709072 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8907353051972921665, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
   m_PrefabInstance: {fileID: 303709070}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &303709073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303709071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bff2107b8bb69449a6d381daa73f4a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  friendshipNames:
-  - {fileID: 1550020256}
-  friendshipMeters:
-  - {fileID: 1128240258}
-  friendships: []
-  friendShipField: {fileID: 1488686393}
 --- !u!1 &363096801
 GameObject:
   m_ObjectHideFlags: 0
@@ -3832,13 +3838,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInteracting: 0
   isInConversation: 0
-  normPOV: 60
-  dialoguePOV: 12
-  normVector: {x: 0, y: 0, z: 0}
-  dialogueVector: {x: 0, y: 0, z: 0}
+  canCollectPebble: 1
+  canNotCollectPebble: 0
+  pebbleCount: 0
+  pebbleCountText: {fileID: 0}
+  maxPebbles: 3
+  maxPebblesText: {fileID: 0}
+  maxPebblesScreen: {fileID: 0}
+  noPebblesText: {fileID: 0}
+  noPebblesScreen: {fileID: 0}
   ectroplasmText: {fileID: 0}
-  NormalCam: {fileID: 391228267}
-  DialogueCam: {fileID: 1874648100}
+  slingshotPivot: {fileID: 0}
+  slingshot: {fileID: 0}
+  pebblePrefab: {fileID: 0}
   ectoplasm: 0
 --- !u!95 &1994482455
 Animator:
