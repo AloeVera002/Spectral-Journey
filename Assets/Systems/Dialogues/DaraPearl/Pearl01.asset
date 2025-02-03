@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pearl01
   m_EditorClassIdentifier: 
   dialogue:
-  - Name: 
+  - Name: ???
     text: Oh how I miss having a physical form. I'm quite jealous of you stranger.
     isQuestion: 0
     AcceptedDialogue: {fileID: 0}
@@ -39,7 +39,7 @@ MonoBehaviour:
     isQuestion: 0
     AcceptedDialogue: {fileID: 0}
     RejectedDialogue: {fileID: 0}
-  - Name: 
+  - Name: Dara
     text: Where are my manners! My name is Dara, and you are?
     isQuestion: 0
     AcceptedDialogue: {fileID: 0}
@@ -79,5 +79,5 @@ MonoBehaviour:
     text: "While in this form, I can\u2019t really do that. Could you go and find
       5 pearls for me?"
     isQuestion: 1
-    AcceptedDialogue: {fileID: 0}
-    RejectedDialogue: {fileID: 0}
+    AcceptedDialogue: {fileID: 11400000, guid: 26d23a2918956fb48a1d333c3c25021b, type: 2}
+    RejectedDialogue: {fileID: 11400000, guid: 7483ff52f00e946489391cf13c868fe7, type: 2}

@@ -10,6 +10,7 @@ TagManager:
   - Ghost
   - Water
   - Zombie
+  - PickUp
   layers:
   - Default
   - TransparentFX
