@@ -445,15 +445,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4301101664446024411, guid: 22916ba900af643aca58fb3907ec51cd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 434.41
+      value: 435.22
       objectReference: {fileID: 0}
     - target: {fileID: 4301101664446024411, guid: 22916ba900af643aca58fb3907ec51cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.35
+      value: 22.17
       objectReference: {fileID: 0}
     - target: {fileID: 4301101664446024411, guid: 22916ba900af643aca58fb3907ec51cd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 51.62
+      value: 51.29
       objectReference: {fileID: 0}
     - target: {fileID: 4301101664446024411, guid: 22916ba900af643aca58fb3907ec51cd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -620,6 +620,7 @@ MonoBehaviour:
   questToGive: {fileID: 11400000, guid: f480163d2ed5f9d4188edcb53d91a684, type: 2}
   Dialogue: {fileID: 11400000, guid: e2a309c6d214e20499c71622bd95a113, type: 2}
   isQuestGiver: 1
+  interactHUD: {fileID: 0}
 --- !u!65 &294507556
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2349,12 +2350,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e558f41f053c739438c0b0e2efe8624c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpHeight: 5
   isSpeaking: 0
-  cineFollow: {fileID: 0}
-  cam: {fileID: 0}
-  dialoguePOV: 12
-  normVector: {x: 0, y: 0, z: 0}
-  dialogueVector: {x: 0, y: 0, z: 0}
+  bCanJump: 0
 --- !u!114 &922185590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2373,6 +2371,7 @@ MonoBehaviour:
   dialoguePOV: 12
   normVector: {x: 0, y: 0, z: 0}
   dialogueVector: {x: 0, y: 0, z: 0}
+  ectroplasmText: {fileID: 0}
   NormalCam: {fileID: 0}
   DialogueCam: {fileID: 0}
   ectoplasm: 0
@@ -3508,7 +3507,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 922185591}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: RejectQuest
+        m_MethodName: RejectQuestion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3778,7 +3777,7 @@ Transform:
   m_GameObject: {fileID: 1350100547}
   serializedVersion: 2
   m_LocalRotation: {x: -0.35677117, y: 0.0005594045, z: -0.00020974313, w: -0.93419164}
-  m_LocalPosition: {x: 434.56, y: 31.92, z: 42.329998}
+  m_LocalPosition: {x: 435.37, y: 30.74, z: 42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3854,7 +3853,7 @@ Transform:
   m_GameObject: {fileID: 1380904387}
   serializedVersion: 2
   m_LocalRotation: {x: -0.35677117, y: 0.0005594045, z: -0.00020974313, w: -0.93419164}
-  m_LocalPosition: {x: 434.41, y: 21.400002, z: 51.62}
+  m_LocalPosition: {x: 435.22, y: 20.220001, z: 51.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4522,7 +4521,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 922185591}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: AcceptQuest
+        m_MethodName: AcceptQuestion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4878,7 +4877,7 @@ Transform:
   m_GameObject: {fileID: 1792230338}
   serializedVersion: 2
   m_LocalRotation: {x: 0.21470617, y: -0.15448195, z: 0.034415096, w: 0.9637698}
-  m_LocalPosition: {x: 435.28, y: 14.360002, z: 57.81}
+  m_LocalPosition: {x: 436.09, y: 13.180001, z: 57.480003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5101,6 +5100,7 @@ MonoBehaviour:
   questToGive: {fileID: 11400000, guid: 87e3a388a88d1bf4c94c8a76297025e5, type: 2}
   Dialogue: {fileID: 11400000, guid: decbc1e47cde0db4eb73a27d77bcdace, type: 2}
   isQuestGiver: 1
+  interactHUD: {fileID: 0}
 --- !u!65 &1846113848
 BoxCollider:
   m_ObjectHideFlags: 0
