@@ -12,6 +12,9 @@ public class QuestManager : MonoBehaviour
     [SerializeField] bool hasCompletedObjective;
     int qObjectiveIndex = 0;
 
+    [SerializeField] AudioClip pickupSound;
+    [SerializeField] AudioSource pickupAudioSource;
+
     [SerializeField] bool isToggled;
     /*
     public QuestScriptableObj GetElementByIdentifier(string identifier)
@@ -29,7 +32,7 @@ public class QuestManager : MonoBehaviour
 
     void Start()
     {
-        
+        pickupAudioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,6 +42,7 @@ public class QuestManager : MonoBehaviour
             if (other.gameObject.tag == currentQuest.pickupTag)
             {
                 Destroy(other.gameObject);
+                pickupAudioSource.PlayOneShot(pickupSound);
                 qObjectiveIndex++;
                 UpdateQuest();
             }
@@ -72,13 +76,14 @@ public class QuestManager : MonoBehaviour
     }
 
     public void UpdateQuest()
-    {
+    {/*
         currentQuest.questProgress = 1;
         if (questObjectives.Length <= 0)
         {
             Debug.Log("quest");
             CompleteQuest();
-        }
+        }*/
+        UpdateQuestDetails();
     }
 
     void CompleteQuest()
@@ -95,8 +100,20 @@ public class QuestManager : MonoBehaviour
 
     void SetQuestData()
     {
-        Debug.Log("Set data q");
-        questDetailsText.text = currentQuest.questDetails;
+        Debug.Log("Set quest data");
+
+        //   questDetailsText.text = currentQuest.questDetails;
+        UpdateQuestDetails();
+
         questObjectives = currentQuest.questObjective;
+    }
+
+    void UpdateQuestDetails()
+    {
+        string finalOutput = currentQuest.questDetails;
+        finalOutput = GetComponent<DialogueManager>().ReplacePlaceholderText(finalOutput, "{i}", ((questObjectives.Length - 1) - qObjectiveIndex).ToString());
+        finalOutput = GetComponent<DialogueManager>().ReplacePlaceholderText(finalOutput, "{o}", (questObjectives.Length - 1).ToString());
+
+        questDetailsText.text = finalOutput;
     }
 }

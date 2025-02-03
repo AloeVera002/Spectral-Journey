@@ -87,7 +87,15 @@ public class DialogueManager : MonoBehaviour
     private void UpdateTextInput(string newSpeaker, string newText)
     {
         speaker.text = newSpeaker;
-        line.text = newText;
+        //    string finalOutput = ReplacePlaceholderText(newText, "{i}", lineIndex.ToString());
+        line.text = newText; // finalOutput;
+    }
+
+    public string ReplacePlaceholderText(string uneditedText, string replaceText, string editedText)
+    {
+        uneditedText = uneditedText.Replace(replaceText, editedText);
+
+        return uneditedText;
     }
 
     private void UpdateText(string newSpeaker)
