@@ -28,7 +28,7 @@ public class QuestGiver : MonoBehaviour
                 {
                     other.gameObject.GetComponent<DialogueManager>().SetDialogueRef(Dialogue);
                     other.gameObject.GetComponent<pPlayerComponent>().isInteracting = true;
-                //    other.gameObject.GetComponent<DialogueManager>().StartNewDialogue();
+                    other.gameObject.GetComponent<DialogueManager>().StartNewDialogue();
 
                     other.gameObject.GetComponent<QuestManager>().questRef = questToGive;
 
