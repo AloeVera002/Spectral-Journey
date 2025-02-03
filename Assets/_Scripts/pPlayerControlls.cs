@@ -53,6 +53,10 @@ public class pPlayerControlls : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
 
+        if (playerData.isInConversation)
+        {
+            return;
+        }
         charController.Move((movementVector + velocity) * Time.deltaTime);
         #endregion
 
