@@ -3,7 +3,7 @@ using UnityEngine;
 public class AttackManager : MonoBehaviour
 {
     int zombieHelth = 100;
-    int bebbleDamage = 20;
+    int pebbleDamage = 20;
 
     [SerializeField] bool isHeadShot = false;
 
@@ -27,7 +27,7 @@ public class AttackManager : MonoBehaviour
             if (other.gameObject.CompareTag("Pebble"))
             {
                 Debug.Log("Zombie is hit");
-                zombieHelth -= bebbleDamage;
+                zombieHelth -= pebbleDamage;
                 if (zombieHelth <= 0)
                 {
                     Destroy(gameObject);
@@ -40,7 +40,7 @@ public class AttackManager : MonoBehaviour
             if (other.gameObject.CompareTag("Pebble"))
             {
                 Debug.Log("Zombie got hit with a fucking headshot swag gangster!:)");
-                zombieHelth -= bebbleDamage * 2;
+                zombieHelth -= pebbleDamage * 2;
                 if (zombieHelth <= 0)
                 {
                     Destroy(gameObject);

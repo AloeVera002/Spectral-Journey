@@ -4,6 +4,10 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - Ghost
+  - PickUp
+  - Water
+  - Wall
   - Zombie
   - GroundPebble
   - Pebble
@@ -14,7 +18,7 @@ TagManager:
   - 
   - Water
   - UI
-  - NavMeshLayer
+  - 
   - 
   - 
   - 
