@@ -1,6 +1,6 @@
 using UnityEditor.Search;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class TriggerCollection : MonoBehaviour
 {
 
@@ -8,6 +8,7 @@ public class TriggerCollection : MonoBehaviour
     [SerializeField] GameObject interactKey;
 
     [SerializeField] GameObject player;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,6 +20,7 @@ public class TriggerCollection : MonoBehaviour
     {
         
     }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ghost"))
@@ -28,6 +30,7 @@ public class TriggerCollection : MonoBehaviour
 
         if (other.gameObject.CompareTag("Zombie")){
             Destroy(player);
+            SceneManager.LoadScene("ZombieTestScene");
         }
 
       
@@ -40,6 +43,4 @@ public class TriggerCollection : MonoBehaviour
             interactKey.SetActive(false);
         }
     }
-
-   
 }

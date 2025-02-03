@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MikaelTestScenes.unity
     guid: 3b2520d5a654b4ec587debc281836ca0
+  - enabled: 1
+    path: Assets/Scenes/ZombieTestScene.unity
+    guid: 39fd312d74826415397b768adb82668c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -10,11 +10,8 @@ TagManager:
   - Ghost
   - Water
   - Zombie
-<<<<<<< Updated upstream
   - PickUp
-=======
-  - Pebble
->>>>>>> Stashed changes
+  - ShootablePebble
   layers:
   - Default
   - TransparentFX
