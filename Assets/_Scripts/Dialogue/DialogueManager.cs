@@ -161,11 +161,17 @@ public class DialogueManager : MonoBehaviour
     {
         ShowModal();
         SetDialogueRef(lineArray[lineIndex].AcceptedDialogue);
-        UpdateDialogue();
+    //    UpdateDialogue();
     }
 
     public void RejectQuestion()
     {
+        if (!lineArray[lineArray.Length].RejectedDialogue)
+        {
+            QuitDialogue();
+            return;
+        }
+
         ShowModal();
         SetDialogueRef(lineArray[lineIndex].RejectedDialogue);
         UpdateDialogue();
