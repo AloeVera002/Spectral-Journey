@@ -32,8 +32,6 @@ public class TriggerCollection : MonoBehaviour
             Destroy(player);
             SceneManager.LoadScene("ZombieTestScene");
         }
-
-      
     }
 
     void OnTriggerExit(Collider other)

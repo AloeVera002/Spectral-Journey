@@ -12,6 +12,7 @@ TagManager:
   - Zombie
   - PickUp
   - ShootablePebble
+  - Pebble
   layers:
   - Default
   - TransparentFX
