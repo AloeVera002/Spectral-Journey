@@ -271,9 +271,9 @@ MonoBehaviour:
   playerRotationSpeed: 250
   jumpSpeed: 5
   jumpButtonGracePeriod: 0.2
-  slingshotPivot: {fileID: 0}
-  slingshot: {fileID: 0}
-  pebblePrefab: {fileID: 0}
+  slingshotPivot: {fileID: 4569674215714399451}
+  slingshot: {fileID: 8259125479020292030}
+  pebblePrefab: {fileID: 4404885963847451094, guid: f51aa99f7a6588e49b0cf61ad7eae27d, type: 3}
   pebbleSpeed: 500
   pebbleInstantiated: 0
   pebbleCount: 0
