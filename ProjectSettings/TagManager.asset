@@ -10,7 +10,11 @@ TagManager:
   - Ghost
   - Water
   - Zombie
+<<<<<<< Updated upstream
   - PickUp
+=======
+  - Pebble
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

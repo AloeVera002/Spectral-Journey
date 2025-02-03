@@ -18,26 +18,26 @@ public class PlayerController : MonoBehaviour
     private float originaleStepOffset;
     private float? lastGroundedTime;
     private float? jumpButtonPressedTime;
-    /*
+    
     public Transform slingshotPivot;
     public GameObject slingshot;
     public GameObject pebblePrefab;
     public float pebbleSpeed = 500f;
 
-    public bool pebbleInstantiated = false;*/
+    public bool pebbleInstantiated = false;
 
     public int pebbleCount = 0;
     public TMP_Text pebbleCountText;
 
     public int maxPebbles = 3;
-    public float maxPebblesScreenTime = 0;
+    public float maxPebblesScreenTime = 1;
     public TMP_Text maxPebblesText;
     public GameObject maxPebblesScreen;
 
 
     public bool canCollectPebble = true;
-
     public bool canNotCollectPebble = false;
+    public bool canFire = false;
 
     void Start()
     {
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            if (GetComponent<pPlayerComponent>().isInConversation) return;
+            //if (GetComponent<pPlayerComponent>().isInConversation) return;
 
             jumpButtonPressedTime = Time.time;
         }
@@ -98,15 +98,28 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            PreppingSlingshot();
-            Debug.Log("Bla");
-        /*    if (!pebbleInstantiated) { return; }
+            if (pebbleCount > 0)
+            {
+
+                canFire = true;
+                FireSlingshot();
+                pebbleCount--;
+                pebbleCountText.text = pebbleCount.ToString();
+                Debug.Log("Bla");
+            }
+            if (pebbleCount <= 0)
+            {
+                pebbleCount = 0;
+                canFire = false;
+                pebbleCountText.text = pebbleCount.ToString();
+            }
+         /* if (!pebbleInstantiated) { return; }
 
             pebblePrefab.transform.position = slingshotPivot.transform.position;*/
         }
 
         // Firing the slingshot
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        /*if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             FireSlingshot();
         }
@@ -119,10 +132,10 @@ public class PlayerController : MonoBehaviour
                 maxPebblesScreen.SetActive(false);
             }
             maxPebblesScreenTime += Time.deltaTime;
-        }
+        }*/
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("GroundPebble"))
         {
@@ -137,6 +150,7 @@ public class PlayerController : MonoBehaviour
                 canCollectPebble = false;
                 canNotCollectPebble = true;
                 maxPebblesScreen.SetActive(true);
+                StartCoroutine(ToggleMaxPebbleText());
             }
         }
     }
@@ -149,9 +163,16 @@ public class PlayerController : MonoBehaviour
     }
     void FireSlingshot()
     {
+        GameObject newPebble = Instantiate(pebblePrefab, slingshotPivot.position, slingshotPivot.rotation);
+        pebblePrefab.GetComponent<Rigidbody>().AddForce(transform.forward * pebbleSpeed);
+        newPebble.GetComponent<TestingPebbleShootingMechanic>().aimPos = slingshotPivot.position;
+        newPebble.tag = "Pebble";
+    }
 
-        //GameObject newPebble = Instantiate(pebblePrefab, slingshotPivot.position, slingshotPivot.rotation);
-        //pebblePrefab.GetComponent<Rigidbody>().AddForce(transform.forward * pebbleSpeed);
-        //newPebble.GetComponent<TestingPebbleShootingMechanic>().aimPos = slingshotPivot.position;
+    IEnumerator ToggleMaxPebbleText()
+    {
+        yield return new WaitForSeconds(maxPebblesScreenTime);
+        maxPebblesScreen.SetActive(false);
+        Debug.Log("Hello, please disappear");
     }
 }
