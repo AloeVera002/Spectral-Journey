@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6082308004013222700}
   - component: {fileID: -2311162779256552710}
   m_Layer: 0
-  m_Name: TestPebble
+  m_Name: ShootPebble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

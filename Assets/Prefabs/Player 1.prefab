@@ -130,6 +130,20 @@ MonoBehaviour:
   playerRotationSpeed: 250
   jumpSpeed: 5
   jumpButtonGracePeriod: 0.2
+  slingshotPivot: {fileID: 0}
+  slingshot: {fileID: 0}
+  pebblePrefab: {fileID: 0}
+  pebbleSpeed: 500
+  pebbleInstantiated: 0
+  pebbleCount: 0
+  pebbleCountText: {fileID: 0}
+  maxPebbles: 3
+  maxPebblesScreenTime: 0
+  maxPebblesText: {fileID: 0}
+  maxPebblesScreen: {fileID: 0}
+  canCollectPebble: 1
+  canNotCollectPebble: 0
+  canFire: 1
 --- !u!143 &3730998454420995894
 CharacterController:
   m_ObjectHideFlags: 0
@@ -168,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactKey: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &4767232547650070786
 GameObject:
   m_ObjectHideFlags: 0
