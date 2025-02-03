@@ -34,7 +34,7 @@ public class QuestManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (qObjectiveIndex <= currentQuest.questObjective.Length)
+        if (qObjectiveIndex < currentQuest.questObjective.Length - 1)
         {
             if (other.gameObject.tag == currentQuest.pickupTag)
             {
@@ -42,6 +42,12 @@ public class QuestManager : MonoBehaviour
                 qObjectiveIndex++;
                 UpdateQuest();
             }
+        }
+        else
+        {
+            currentQuest.isCompleted = true;
+            Debug.Log("completed quest!");
+            CompleteQuest();
         }
     }
 
