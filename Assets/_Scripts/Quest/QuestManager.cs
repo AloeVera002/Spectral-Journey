@@ -45,13 +45,13 @@ public class QuestManager : MonoBehaviour
                 pickupAudioSource.PlayOneShot(pickupSound);
                 qObjectiveIndex++;
                 UpdateQuest();
+                if (qObjectiveIndex == currentQuest.questObjective.Length)
+                {
+                    currentQuest.isCompleted = true;
+                    Debug.Log("completed quest!");
+                    CompleteQuest();
+                }
             }
-        }
-        else
-        {
-            currentQuest.isCompleted = true;
-            Debug.Log("completed quest!");
-            CompleteQuest();
         }
     }
 
