@@ -108,19 +108,6 @@ public class pPlayerComponent : MonoBehaviour
         StartCoroutine(ToggleNoPebbleText());
     }
 
-    public bool SetActiveSlingShot(bool equipped)
-    {
-        if (!equipped)
-        {
-            slingshot.SetActive(true);
-        }
-        else
-        {
-            slingshot.SetActive(false);
-        }
-        return equipped = !equipped;
-    }
-
     public void SetPebbleCount(int newCount)
     {
         pebbleCount = newCount;
