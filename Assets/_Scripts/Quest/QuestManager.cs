@@ -103,16 +103,16 @@ public class QuestManager : MonoBehaviour
         Debug.Log("Set quest data");
 
         //   questDetailsText.text = currentQuest.questDetails;
-        UpdateQuestDetails();
 
         questObjectives = currentQuest.questObjective;
+        UpdateQuestDetails();
     }
 
     void UpdateQuestDetails()
     {
         string finalOutput = currentQuest.questDetails;
-        finalOutput = GetComponent<DialogueManager>().ReplacePlaceholderText(finalOutput, "{i}", ((questObjectives.Length - 1) - qObjectiveIndex).ToString());
-        finalOutput = GetComponent<DialogueManager>().ReplacePlaceholderText(finalOutput, "{o}", (questObjectives.Length - 1).ToString());
+        finalOutput = GetComponent<DialogueManager>().ReplacePlaceholderText(finalOutput, "{i}", (qObjectiveIndex + 1).ToString());
+        finalOutput = GetComponent<DialogueManager>().ReplacePlaceholderText(finalOutput, "{o}", (questObjectives.Length).ToString());
 
         questDetailsText.text = finalOutput;
     }
