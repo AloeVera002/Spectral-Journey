@@ -4,6 +4,10 @@ public class AttackManager : MonoBehaviour
 {
     int zombieHelth = 100;
     int bebbleDamage = 20;
+
+    [SerializeField] bool isHeadShot = false;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,14 +21,35 @@ public class AttackManager : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision other){
-        if (other.gameObject.CompareTag("Pebble")){
-            Debug.Log("Zombie is hit");
-            zombieHelth -= bebbleDamage;
-            if (zombieHelth <= 0){
-                Destroy(gameObject);
-                Debug.Log("Zobie wittewally ded");
+
+        if (!isHeadShot)
+        {
+            if (other.gameObject.CompareTag("Pebble"))
+            {
+                Debug.Log("Zombie is hit");
+                zombieHelth -= bebbleDamage;
+                if (zombieHelth <= 0)
+                {
+                    Destroy(gameObject);
+                    Debug.Log("Zobie wittewally ded");
+                }
+            }
+        }
+        else
+        {
+            if (other.gameObject.CompareTag("Pebble"))
+            {
+                Debug.Log("Zombie got hit with a fucking headshot swag gangster!:)");
+                zombieHelth -= bebbleDamage * 2;
+                if (zombieHelth <= 0)
+                {
+                    Destroy(gameObject);
+                    Debug.Log("Zobie wittewally ded");
+                }
             }
 
         }
     }
+    
+       
 }
