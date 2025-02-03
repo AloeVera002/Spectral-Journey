@@ -36,10 +36,11 @@ public class PlayerController : MonoBehaviour
     public TMP_Text noPebblesText;
     public GameObject noPebblesScreen;
 
-
     public bool canCollectPebble = true;
     public bool canNotCollectPebble = false;
     public bool canFire = false;
+
+    public bool isEquipped = false;
 
     void Start()
     {
@@ -100,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (pebbleCount > 0)
+            if (pebbleCount > 0 && isEquipped)
             {
 
                 canFire = true;
@@ -116,27 +117,12 @@ public class PlayerController : MonoBehaviour
                 pebbleCountText.text = pebbleCount.ToString();
                 noPebblesScreen.SetActive(true);
                 StartCoroutine(ToggleNoPebbleText());
-            }
-         /* if (!pebbleInstantiated) { return; }
-
-            pebblePrefab.transform.position = slingshotPivot.transform.position;*/
+            }            
         }
-
-        // Firing the slingshot
-        /*if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            FireSlingshot();
+            EquipSlingshot();
         }
-
-        if (canNotCollectPebble)
-        {
-            if (maxPebblesScreenTime < 3)
-            {
-                maxPebblesScreenTime = 0;
-                maxPebblesScreen.SetActive(false);
-            }
-            maxPebblesScreenTime += Time.deltaTime;
-        }*/
     }
 
     public void OnTriggerEnter(Collider other)
@@ -157,6 +143,20 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(ToggleMaxPebbleText());
             }
         }
+    }
+
+
+    void EquipSlingshot()
+    {
+        if (!isEquipped)
+        {
+            slingshot.SetActive(true);
+        }
+        else
+        {
+            slingshot.SetActive(false);
+        }
+        isEquipped = !isEquipped;
     }
 
     void PreppingSlingshot()
