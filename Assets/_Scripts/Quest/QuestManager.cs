@@ -37,7 +37,7 @@ public class QuestManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (qObjectiveIndex < currentQuest.questObjective.Length - 1)
+        if (qObjectiveIndex < currentQuest.questObjective.Length)
         {
             if (other.gameObject.tag == currentQuest.pickupTag)
             {
@@ -89,6 +89,7 @@ public class QuestManager : MonoBehaviour
     void CompleteQuest()
     {
         GetComponentInParent<pPlayerComponent>().ectoplasm += currentQuest.ectoplasmReward;
+        questDetailsText.text = "Completed quest here is 10 Ectoplasm!";
     }
 
     public void StartQuest()
@@ -111,7 +112,7 @@ public class QuestManager : MonoBehaviour
     void UpdateQuestDetails()
     {
         string finalOutput = currentQuest.questDetails;
-        finalOutput = GetComponent<DialogueManager>().ReplacePlaceholderText(finalOutput, "{i}", (qObjectiveIndex + 1).ToString());
+        finalOutput = GetComponent<DialogueManager>().ReplacePlaceholderText(finalOutput, "{i}", qObjectiveIndex.ToString());
         finalOutput = GetComponent<DialogueManager>().ReplacePlaceholderText(finalOutput, "{o}", (questObjectives.Length).ToString());
 
         questDetailsText.text = finalOutput;
