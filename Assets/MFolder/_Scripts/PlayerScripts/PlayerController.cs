@@ -30,9 +30,11 @@ public class PlayerController : MonoBehaviour
     public TMP_Text pebbleCountText;
 
     public int maxPebbles = 3;
-    public float maxPebblesScreenTime = 1;
     public TMP_Text maxPebblesText;
     public GameObject maxPebblesScreen;
+
+    public TMP_Text noPebblesText;
+    public GameObject noPebblesScreen;
 
 
     public bool canCollectPebble = true;
@@ -112,6 +114,8 @@ public class PlayerController : MonoBehaviour
                 pebbleCount = 0;
                 canFire = false;
                 pebbleCountText.text = pebbleCount.ToString();
+                noPebblesScreen.SetActive(true);
+                StartCoroutine(ToggleNoPebbleText());
             }
          /* if (!pebbleInstantiated) { return; }
 
@@ -171,8 +175,14 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator ToggleMaxPebbleText()
     {
-        yield return new WaitForSeconds(maxPebblesScreenTime);
+        yield return new WaitForSeconds(1);
         maxPebblesScreen.SetActive(false);
         Debug.Log("Hello, please disappear");
+    }
+
+    IEnumerator ToggleNoPebbleText()
+    {
+        yield return new WaitForSeconds(1.5f);
+        noPebblesScreen.SetActive(false);
     }
 }
