@@ -15,7 +15,7 @@ public class pPlayerComponent : MonoBehaviour
     [SerializeField] Vector3 dialogueVector;
 
 
-    [SerializeField] CinemachineCamera NormalCam, DialogueCam;
+    [SerializeField] GameObject NormalCam, DialogueCam;
     
     public int ectoplasm;
 
@@ -47,23 +47,28 @@ public class pPlayerComponent : MonoBehaviour
     void UpdateCameraData(Vector3 newOffset, int newPOV, Vector3 newDialogueOffset, int newDialoguePOV)
     {
         NormalCam.GetComponent<CinemachineFollow>().FollowOffset = newOffset;
-        NormalCam.Lens.FieldOfView = newPOV;
+        NormalCam.GetComponent<CinemachineCamera>().Lens.FieldOfView = newPOV;
 
-        DialogueCam.Lens.FieldOfView = dialoguePOV;
+        DialogueCam.GetComponent<CinemachineCamera>().Lens.FieldOfView = dialoguePOV;
     }
 
     void SwitchCamera()
     {
         if (isInConversation)
         {
-            animator.Play("GhostCamera");
+            DialogueCam.SetActive(true);
+            NormalCam.SetActive(false);
+        //    animator.Play("GhostCamera");
         }
         else
         {
-            animator.Play("FollowCamera");
+            DialogueCam.SetActive(false);
+            NormalCam.SetActive(true);
+            //    animator.Play("FollowCamera");
         }
         isInConversation = !isInConversation;
     }
+
     void WaterDeath()
     {
         SceneManager.LoadScene(0);

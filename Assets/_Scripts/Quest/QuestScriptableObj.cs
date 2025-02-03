@@ -11,13 +11,13 @@ public struct basicQuest
 
     public string questDetails;
 
+    public string pickupTag;
+
     public GameObject[] questObjective;
 
     public bool isCompleted;
 
     public int questProgress;
-
-    public GameObject ectoplasmObject;
 
     public int ectoplasmReward;
 

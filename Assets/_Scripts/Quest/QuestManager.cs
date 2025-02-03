@@ -36,7 +36,7 @@ public class QuestManager : MonoBehaviour
     {
         if (qObjectiveIndex <= currentQuest.questObjective.Length)
         {
-            if (other.gameObject == currentQuest.questObjective[qObjectiveIndex])
+            if (other.gameObject.tag == currentQuest.pickupTag)
             {
                 Destroy(other.gameObject);
                 qObjectiveIndex++;
