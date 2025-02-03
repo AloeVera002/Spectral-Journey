@@ -279,9 +279,10 @@ MonoBehaviour:
   pebbleCount: 0
   pebbleCountText: {fileID: 0}
   maxPebbles: 3
-  maxPebblesScreenTime: 1
   maxPebblesText: {fileID: 0}
   maxPebblesScreen: {fileID: 0}
+  noPebblesText: {fileID: 0}
+  noPebblesScreen: {fileID: 0}
   canCollectPebble: 1
   canNotCollectPebble: 0
   canFire: 0
@@ -323,7 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactKey: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 7342372185851898104}
 --- !u!1 &8259125479020292030
 GameObject:
   m_ObjectHideFlags: 0
