@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] float textSpeed;
 
     [SerializeField] bool isQuestioned;
+    bool isCameraswitched;
 
     private dialogueLine[] lineArray;
     int lineIndex = 0;
@@ -73,6 +74,11 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("started dialogue");
         lineIndex = 0;
         dialogueField.SetActive(true);
+
+        if (!isCameraswitched)
+        {
+            GetComponent<pPlayerComponent>().SwitchCamera();
+        }
 
         GetComponent<pPlayerComponent>().isInConversation = true;
 
@@ -141,6 +147,8 @@ public class DialogueManager : MonoBehaviour
         dialogueField.SetActive(false);
 
         if (!dialogueField.activeInHierarchy) GetComponent<pPlayerComponent>().isInConversation = false;
+
+        GetComponent<pPlayerComponent>().SwitchCamera();
     }
 
     void ShowModal()

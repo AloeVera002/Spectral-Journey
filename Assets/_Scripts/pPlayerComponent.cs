@@ -73,7 +73,7 @@ public class pPlayerComponent : MonoBehaviour
         }
     }
 
-    void SwitchCamera()
+    public void SwitchCamera()
     {
         if (isInConversation)
         {
