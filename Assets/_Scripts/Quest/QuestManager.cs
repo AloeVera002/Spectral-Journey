@@ -61,6 +61,11 @@ public class QuestManager : MonoBehaviour
         {
             ShowHideQuestUI();
         }
+
+        if (Input.GetKeyUp(KeyCode.Y))
+        {
+            CompleteQuest();
+        }
     }
 
     public void ShowHideQuestUI()
@@ -89,6 +94,7 @@ public class QuestManager : MonoBehaviour
     void CompleteQuest()
     {
         GetComponentInParent<pPlayerComponent>().ectoplasm += currentQuest.ectoplasmReward;
+        GetComponent<DialogueManager>().SetDialogueRef(currentQuest.CompletedQuestDialogue);
         questDetailsText.text = "Completed quest here is 10 Ectoplasm!";
     }
 

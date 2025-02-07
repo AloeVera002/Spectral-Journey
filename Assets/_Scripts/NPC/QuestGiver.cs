@@ -4,9 +4,12 @@ using UnityEngine;
 public class QuestGiver : MonoBehaviour
 {
     [SerializeField] QuestScriptableObj questToGive;
-    [SerializeField] so_Dialogue Dialogue;
+    [SerializeField] so_Dialogue[] Dialogue;
     [SerializeField] bool isQuestGiver;
     [SerializeField] GameObject interactHUD;
+
+    [SerializeField] int dialogueIndex;
+    [SerializeField] public bool hasQuest;
 
     void Start()
     {
@@ -26,7 +29,16 @@ public class QuestGiver : MonoBehaviour
             {
                 if (other.gameObject.GetComponent<pPlayerControlls>())
                 {
-                    other.gameObject.GetComponent<DialogueManager>().SetDialogueRef(Dialogue);
+                    if (!hasQuest)
+                    {
+                        other.gameObject.GetComponent<DialogueManager>().SetDialogueRef(Dialogue[dialogueIndex]);
+                        other.gameObject.GetComponent<DialogueManager>().oppositeTalker = this.gameObject;
+                    }
+                    else
+                    {
+                        Debug.Log("Already Has Dialogue");
+                    }
+
                     other.gameObject.GetComponent<pPlayerComponent>().isInteracting = true;
                     other.gameObject.GetComponent<DialogueManager>().StartNewDialogue();
 

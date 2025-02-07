@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] so_Dialogue dialogueRef;
     [SerializeField] TMP_Text speaker, line;
     [SerializeField] float textSpeed;
+    [SerializeField] public GameObject oppositeTalker;
 
     [SerializeField] bool isQuestioned;
     bool isCameraswitched;
@@ -178,6 +179,7 @@ public class DialogueManager : MonoBehaviour
         ShowModal();
         SetDialogueRef(lineArray[lineIndex].AcceptedDialogue);
         UpdateDialogue();
+        oppositeTalker.GetComponent<QuestGiver>().hasQuest = true;
     }
 
     public void RejectQuestion()
