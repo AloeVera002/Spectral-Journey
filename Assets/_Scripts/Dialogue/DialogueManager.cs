@@ -167,7 +167,7 @@ public class DialogueManager : MonoBehaviour
     public void AcceptQuest()
     {
     //    ShowModal();
-     //   SetDialogueRef(lineArray[lineIndex].AcceptedDialogue);
+    //   SetDialogueRef(lineArray[lineIndex].AcceptedDialogue);
     //    UpdateDialogue();
         QuitDialogue();
         GetComponent<QuestManager>().StartQuest();
