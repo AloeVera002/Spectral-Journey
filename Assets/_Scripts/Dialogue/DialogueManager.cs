@@ -77,7 +77,7 @@ public class DialogueManager : MonoBehaviour
 
         if (!isCameraswitched)
         {
-            GetComponent<pPlayerComponent>().SwitchCamera();
+            //GetComponent<pPlayerComponent>().SwitchCamera();
         }
 
         GetComponent<pPlayerComponent>().isInConversation = true;
@@ -148,7 +148,7 @@ public class DialogueManager : MonoBehaviour
 
         if (!dialogueField.activeInHierarchy) GetComponent<pPlayerComponent>().isInConversation = false;
 
-        GetComponent<pPlayerComponent>().SwitchCamera();
+        //GetComponent<pPlayerComponent>().SwitchCamera();
     }
 
     void ShowModal()

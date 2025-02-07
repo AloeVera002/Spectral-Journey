@@ -7,7 +7,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class pPlayerControlls : MonoBehaviour
 {
     [SerializeField] float movementSpeed = 5f;
-    float rotationSpeed = 250f;
+    [SerializeField] float rotationSpeed = 250f;
     [SerializeField] float jumpHeight = 4f;
     float gravity = -9.81f;
 
@@ -82,6 +82,13 @@ public class pPlayerControlls : MonoBehaviour
             }
             playerData.UpdatePebbleText();
         }
+
+        if (movementVector != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(movementVector, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        }
     }
 
     #region Basic Movement
@@ -127,7 +134,7 @@ public class pPlayerControlls : MonoBehaviour
         newPebble.AddComponent<Rigidbody>();
 
         newPebble.GetComponent<Rigidbody>().AddForce(transform.forward * pebbleSpeed);
-        newPebble.GetComponent<TestingPebbleShootingMechanic>().aimPos = playerData.slingshotPivot.position;
+        newPebble.GetComponent<PebbleController>().aimPos = playerData.slingshotPivot.position;
         newPebble.tag = "Pebble";
 
         playerData.DecreasePebbleCount(1);

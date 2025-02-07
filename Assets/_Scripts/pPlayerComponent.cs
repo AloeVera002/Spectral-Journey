@@ -42,7 +42,6 @@ public class pPlayerComponent : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.R))
         {
-            SwitchCamera();
             ectoplasm++;
         }
 
@@ -71,19 +70,11 @@ public class pPlayerComponent : MonoBehaviour
                 StartCoroutine(ToggleMaxPebbleText());
             }
         }
-    }
-
-    public void SwitchCamera()
-    {
-        if (isInConversation)
+        if (other.gameObject.CompareTag("Zombie"))
         {
-            animator.Play("GhostCamera");
+            Destroy(this.gameObject);
+            SceneManager.LoadScene("ZombieTestScene");
         }
-        else
-        {
-            animator.Play("FollowCamera");
-        }
-        isInConversation = !isInConversation;
     }
 
     void WaterDeath()

@@ -3,6 +3,8 @@ using UnityEngine.Rendering;
 
 public class TestPlayerManager : MonoBehaviour
 {
+    public GameObject player;
+
     #region Singelton
     public static TestPlayerManager instance;
 
@@ -12,6 +14,5 @@ public class TestPlayerManager : MonoBehaviour
 
     #endregion
 
-    public GameObject player;
 
 }
