@@ -14,6 +14,7 @@ public class pPlayerControlls : MonoBehaviour
     private pPlayerComponent playerData;
 
     [SerializeField] float pebbleSpeed = 1800f;
+    [SerializeField] GameObject pebblePlaceHolder;
 
     Vector2 movementInput;
     Vector3 movementVector;
@@ -60,14 +61,14 @@ public class pPlayerControlls : MonoBehaviour
         charController.Move((movementVector + velocity) * Time.deltaTime);
         #endregion
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            ToggleSlingshot();
-        }
-
         if (Input.GetMouseButtonDown(0))
         {
-            if (playerData.pebbleCount > 0 && isEquipped)
+            pebblePlaceHolder.SetActive(true);
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (playerData.pebbleCount > 0)
             {
                 FireSlingShot();
                 Debug.Log("Bla");
@@ -75,10 +76,7 @@ public class pPlayerControlls : MonoBehaviour
             else
             {
                 ResetSlingshot();
-                if (isEquipped)
-                {
-                    playerData.ActivateNoPebbleText();
-                }
+                playerData.ActivateNoPebbleText();
             }
             playerData.UpdatePebbleText();
         }
@@ -130,6 +128,7 @@ public class pPlayerControlls : MonoBehaviour
     #region Slingshot
     void FireSlingShot()
     {
+        pebblePlaceHolder.SetActive(false);
         GameObject newPebble = Instantiate(playerData.pebblePrefab, playerData.slingshotPivot.position, playerData.slingshotPivot.rotation);
         newPebble.AddComponent<Rigidbody>();
 
@@ -138,21 +137,6 @@ public class pPlayerControlls : MonoBehaviour
         newPebble.tag = "Pebble";
 
         playerData.DecreasePebbleCount(1);
-    }
-
-    void ToggleSlingshot()
-    {
-        if (!isEquipped)
-        {
-            playerData.slingshot.SetActive(true);
-            canFire = true;
-        }
-        else
-        {
-            playerData.slingshot.SetActive(false);
-            canFire = false;
-        }
-        isEquipped = !isEquipped;
     }
 
     void ResetSlingshot()
