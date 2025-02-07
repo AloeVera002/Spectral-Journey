@@ -15,26 +15,26 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 0.48235294, g: 0.73333335, b: 0.7607843, a: 1}
-  m_FogMode: 3
-  m_FogDensity: 0.002
+  m_FogColor: {r: 0.9387721, g: 0.6862745, b: 1, a: 1}
+  m_FogMode: 2
+  m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.039738342, g: 0.1792453, b: 0.049038798, a: 1}
   m_AmbientEquatorColor: {r: 0.032128863, g: 0.033295713, b: 0.3584906, a: 1}
   m_AmbientGroundColor: {r: 0.16037738, g: 0.114231065, b: 0.02193842, a: 1}
   m_AmbientIntensity: 0.64
-  m_AmbientMode: 3
+  m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: dc929673b664e420fb6a91719c494741, type: 2}
   m_HaloStrength: 0.538
   m_FlareStrength: 1
-  m_FlareFadeSpeed: 3
+  m_FlareFadeSpeed: 12.68
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
-  m_DefaultReflectionResolution: 128
-  m_ReflectionBounces: 1
+  m_DefaultReflectionResolution: 64
+  m_ReflectionBounces: 2
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 410087040}
@@ -43,7 +43,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 13
-  m_BakeOnSceneLoad: 0
+  m_BakeOnSceneLoad: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -66,7 +66,7 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_ReflectionCompression: 2
+    m_ReflectionCompression: 0
     m_MixedBakeMode: 2
     m_BakeBackend: 1
     m_PVRSampling: 1
@@ -93,8 +93,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: c34c224dd18154bf4a2c41994e711331, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 55204ab8aaa8941d6ad8992e9fa8e2fa, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2337,6 +2337,8 @@ MonoBehaviour:
   questDetailsText: {fileID: 958365733}
   questCompletionValue: {fileID: 0}
   hasCompletedObjective: 0
+  pickupSound: {fileID: 0}
+  pickupAudioSource: {fileID: 0}
   isToggled: 0
 --- !u!114 &922185589
 MonoBehaviour:
@@ -2350,9 +2352,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e558f41f053c739438c0b0e2efe8624c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 6.5
   jumpHeight: 5
+  pebbleSpeed: 1800
   isSpeaking: 0
   bCanJump: 0
+  canFire: 0
+  isEquipped: 0
 --- !u!114 &922185590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2367,13 +2373,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInteracting: 0
   isInConversation: 0
-  normPOV: 60
-  dialoguePOV: 12
-  normVector: {x: 0, y: 0, z: 0}
-  dialogueVector: {x: 0, y: 0, z: 0}
+  canCollectPebble: 1
+  canNotCollectPebble: 0
+  pebbleCount: 3
+  pebbleCountText: {fileID: 0}
+  maxPebbles: 3
+  maxPebblesText: {fileID: 0}
+  maxPebblesScreen: {fileID: 0}
+  noPebblesText: {fileID: 0}
+  noPebblesScreen: {fileID: 0}
   ectroplasmText: {fileID: 0}
-  NormalCam: {fileID: 0}
-  DialogueCam: {fileID: 0}
+  slingshotPivot: {fileID: 0}
+  slingshot: {fileID: 0}
+  pebblePrefab: {fileID: 0}
   ectoplasm: 0
 --- !u!114 &922185591
 MonoBehaviour:
