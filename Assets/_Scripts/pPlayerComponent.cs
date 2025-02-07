@@ -117,14 +117,6 @@ public class pPlayerComponent : MonoBehaviour
         Debug.Log("after " + this.gameObject.transform.position + "after checkpoint " + checkPoint.position);
     }
 
-    IEnumerator ToggleDialogueCamera()
-    {
-        //pCamera.transform.position = Vector3.Lerp(pCamera.transform.position, dialogueCamera, 1f);
-        pCamera.GetComponent<CameraController>().minCamPosition = dialogueCamera;
-        pCamera.GetComponent<CameraController>().maxCamPosition = dialogueCamera;
-        yield return new WaitForEndOfFrame();
-    }
-
     IEnumerator ToggleMaxPebbleText()
     {
         yield return new WaitForSeconds(1);
