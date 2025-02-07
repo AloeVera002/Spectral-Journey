@@ -15,7 +15,7 @@ MonoBehaviour:
   quest:
     questName: PearlQuest
     questId: PearlQ01
-    questDetails: Collect pearls for dara {i} / {o}
+    questDetails: Collect pearls for Dara {i} / {o}
     pickupTag: PickUp
     questObjective:
     - {fileID: 0}
