@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using TMPro;
@@ -12,6 +13,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] TMP_Text speaker, line;
     [SerializeField] float textSpeed;
     [SerializeField] public GameObject oppositeTalker;
+    public Transform checkPoint;
+    
 
     [SerializeField] bool isQuestioned;
     bool isCameraswitched;
@@ -27,6 +30,14 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log("Teleportation commenced");
+            Debug.Log("Teleportation commenced");
+            this.gameObject.SetActive(false);
+            this.gameObject.transform.position = checkPoint.position;
+            this.gameObject.SetActive(true);
+        }
         if (Input.GetKeyUp(KeyCode.H))
         {
             if (GetComponent<pPlayerComponent>().isInConversation) return;
