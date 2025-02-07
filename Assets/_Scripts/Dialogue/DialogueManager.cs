@@ -33,7 +33,6 @@ public class DialogueManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             Debug.Log("Teleportation commenced");
-            Debug.Log("Teleportation commenced");
             this.gameObject.SetActive(false);
             this.gameObject.transform.position = checkPoint.position;
             this.gameObject.SetActive(true);
