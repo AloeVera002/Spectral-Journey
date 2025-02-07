@@ -80,10 +80,10 @@ public class pPlayerComponent : MonoBehaviour
 
     void WaterDeath()
     {
-        Debug.Log("before " + transform.position + "before checkpoint " + checkPoint.position);
+        Debug.Log("before " + this.gameObject.transform.position + "before checkpoint " + checkPoint.position);
         
-        this.transform.position = checkPoint.position;
-        Debug.Log("after " + transform.position + "after checkpoint " + checkPoint.position);
+        this.gameObject.transform.position = checkPoint.position;
+        Debug.Log("after " + this.gameObject.transform.position + "after checkpoint " + checkPoint.position);
     }
 
     IEnumerator ToggleMaxPebbleText()
