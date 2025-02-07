@@ -16,6 +16,11 @@ public class CameraController : MonoBehaviour
     public Vector3 minCamPosition;
     public Vector3 maxCamPosition;
 
+    private void Start()
+    {
+        this.transform.parent = null;
+    }
+
     private void LateUpdate()
     {
         Vector3 desiredPosition = player.transform.position + offset;
