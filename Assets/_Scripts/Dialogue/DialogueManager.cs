@@ -30,13 +30,6 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Debug.Log("Teleportation commenced");
-            this.gameObject.SetActive(false);
-            this.gameObject.transform.position = checkPoint.position;
-            this.gameObject.SetActive(true);
-        }
         if (Input.GetKeyUp(KeyCode.H))
         {
             if (GetComponent<pPlayerComponent>().isInConversation) return;
@@ -85,11 +78,13 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("started dialogue");
         lineIndex = 0;
         dialogueField.SetActive(true);
-
+        /*
         if (!isCameraswitched)
         {
             //GetComponent<pPlayerComponent>().SwitchCamera();
-        }
+        }*/
+
+        GetComponent<pPlayerComponent>().ToggleDialogueCamera();
 
         GetComponent<pPlayerComponent>().isInConversation = true;
 
@@ -159,7 +154,7 @@ public class DialogueManager : MonoBehaviour
 
         if (!dialogueField.activeInHierarchy) GetComponent<pPlayerComponent>().isInConversation = false;
 
-        //GetComponent<pPlayerComponent>().SwitchCamera();
+        GetComponent<pPlayerComponent>().ToggleDialogueCamera();
     }
 
     void ShowModal()

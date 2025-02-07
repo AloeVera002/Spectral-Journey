@@ -111,10 +111,10 @@ public class pPlayerComponent : MonoBehaviour
 
     void WaterDeath()
     {
-        Debug.Log("before " + this.gameObject.transform.position + "before checkpoint " + checkPoint.position);
-        
+        Debug.Log("Teleportation commenced");
+        this.gameObject.SetActive(false);
         this.gameObject.transform.position = checkPoint.position;
-        Debug.Log("after " + this.gameObject.transform.position + "after checkpoint " + checkPoint.position);
+        this.gameObject.SetActive(true);
     }
 
     IEnumerator ToggleMaxPebbleText()
