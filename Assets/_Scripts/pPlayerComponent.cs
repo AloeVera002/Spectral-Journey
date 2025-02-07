@@ -8,6 +8,7 @@ public class pPlayerComponent : MonoBehaviour
 {
     [SerializeField] public bool isInteracting = false;
     [SerializeField] public bool isInConversation = false;
+    [SerializeField] private Transform checkPoint;
 
     Animator animator;
 
@@ -45,7 +46,7 @@ public class pPlayerComponent : MonoBehaviour
             ectoplasm++;
         }
 
-        ectroplasmText.text = ectoplasm.ToString();
+        //ectroplasmText.text = ectoplasm.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -79,7 +80,10 @@ public class pPlayerComponent : MonoBehaviour
 
     void WaterDeath()
     {
-        SceneManager.LoadScene(0);
+        Debug.Log("before " + transform.position + "before checkpoint " + checkPoint.position);
+        
+        this.transform.position = checkPoint.position;
+        Debug.Log("after " + transform.position + "after checkpoint " + checkPoint.position);
     }
 
     IEnumerator ToggleMaxPebbleText()
