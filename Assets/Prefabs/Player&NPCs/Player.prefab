@@ -152,9 +152,7 @@ GameObject:
   - component: {fileID: 4272549722936767535}
   - component: {fileID: 3994721372757241483}
   - component: {fileID: 961755685091032507}
-  - component: {fileID: 4896454225866827777}
   - component: {fileID: 3742668837345608217}
-  - component: {fileID: 5088207963733001191}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -255,38 +253,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4896454225866827777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7342372185851898104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a1ffe2f3570c4399bfd93392401268b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerSpeed: 3
-  playerRotationSpeed: 250
-  jumpSpeed: 5
-  jumpButtonGracePeriod: 0.2
-  slingshotPivot: {fileID: 4569674215714399451}
-  slingshot: {fileID: 8259125479020292030}
-  pebblePrefab: {fileID: 4404885963847451094, guid: f51aa99f7a6588e49b0cf61ad7eae27d, type: 3}
-  pebbleSpeed: 500
-  pebbleInstantiated: 0
-  pebbleCount: 0
-  pebbleCountText: {fileID: 0}
-  maxPebbles: 3
-  maxPebblesText: {fileID: 0}
-  maxPebblesScreen: {fileID: 0}
-  noPebblesText: {fileID: 0}
-  noPebblesScreen: {fileID: 0}
-  canCollectPebble: 1
-  canNotCollectPebble: 0
-  canFire: 0
-  isEquipped: 0
 --- !u!143 &3742668837345608217
 CharacterController:
   m_ObjectHideFlags: 0
@@ -312,20 +278,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5088207963733001191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7342372185851898104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d21f322dde6764e199c7d3797b2029de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactKey: {fileID: 0}
-  player: {fileID: 7342372185851898104}
 --- !u!1 &8259125479020292030
 GameObject:
   m_ObjectHideFlags: 0
