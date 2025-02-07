@@ -7,6 +7,7 @@ public class QuestGiver : MonoBehaviour
     [SerializeField] so_Dialogue[] Dialogue;
     [SerializeField] bool isQuestGiver;
     [SerializeField] GameObject interactHUD;
+    [SerializeField] public FriendshipData friendshipData;
 
     [SerializeField] int dialogueIndex;
     [SerializeField] public bool hasQuest;
