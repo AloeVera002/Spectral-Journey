@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +10,10 @@ public class pPlayerComponent : MonoBehaviour
     [SerializeField] private Transform checkPoint;
 
     Animator animator;
+
+    public Camera pCamera;
+    [SerializeField] Vector3 dialogueCamera;
+    [SerializeField] Vector3 normalCamera;
 
     public bool canCollectPebble = true;
     public bool canNotCollectPebble = false;
@@ -44,6 +47,24 @@ public class pPlayerComponent : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.R))
         {
             ectoplasm++;
+        }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            if (!isInConversation)
+            {
+                pCamera.GetComponent<CameraController>().offset = dialogueCamera;
+                isInConversation = true;
+                //StartCoroutine(ToggleDialogueCamera());
+            }
+            else
+            {
+                pCamera.GetComponent<CameraController>().offset = new Vector3(0, 6, -10);
+                //pCamera.GetComponent<CameraController>().minCamPosition = new Vector3(-100, -100, -100);
+                //pCamera.GetComponent<CameraController>().maxCamPosition = new Vector3(100, 100, 100);
+                isInConversation = false;
+            }
+            
         }
 
         //ectroplasmText.text = ectoplasm.ToString();
@@ -84,6 +105,14 @@ public class pPlayerComponent : MonoBehaviour
         
         this.gameObject.transform.position = checkPoint.position;
         Debug.Log("after " + this.gameObject.transform.position + "after checkpoint " + checkPoint.position);
+    }
+
+    IEnumerator ToggleDialogueCamera()
+    {
+        //pCamera.transform.position = Vector3.Lerp(pCamera.transform.position, dialogueCamera, 1f);
+        pCamera.GetComponent<CameraController>().minCamPosition = dialogueCamera;
+        pCamera.GetComponent<CameraController>().maxCamPosition = dialogueCamera;
+        yield return new WaitForEndOfFrame();
     }
 
     IEnumerator ToggleMaxPebbleText()
