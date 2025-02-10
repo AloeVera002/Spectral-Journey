@@ -99,6 +99,8 @@ public class pPlayerControlls : MonoBehaviour
 
     public void Jump()
     {
+        if (playerData.isInConversation) { return; }
+
         if (bCanJump)
         {
             velocity.y = jumpHeight;

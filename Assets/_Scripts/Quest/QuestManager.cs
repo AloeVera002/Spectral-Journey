@@ -8,7 +8,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] GameObject questField;
     basicQuest currentQuest;
     [SerializeField] GameObject[] questObjectives;
-    [SerializeField] TMP_Text questDetailsText, questCompletionValue;
+    [SerializeField] TMP_Text questDetailsText;
     [SerializeField] bool hasCompletedObjective;
     int qObjectiveIndex = 0;
 

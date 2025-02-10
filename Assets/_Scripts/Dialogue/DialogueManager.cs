@@ -154,7 +154,7 @@ public class DialogueManager : MonoBehaviour
 
         if (!dialogueField.activeInHierarchy) GetComponent<pPlayerComponent>().isInConversation = false;
 
-        GetComponent<pPlayerComponent>().ToggleDialogueCamera();
+        GetComponent<pPlayerComponent>().ToggleDialogueCamera(GetComponent<pPlayerComponent>().isInConversation);
     }
 
     void ShowModal()
