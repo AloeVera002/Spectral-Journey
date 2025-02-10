@@ -152,7 +152,7 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueField.SetActive(false);
 
-        if (!dialogueField.activeInHierarchy) GetComponent<pPlayerComponent>().isInConversation = false;
+        //if (!dialogueField.activeInHierarchy) GetComponent<pPlayerComponent>().isInConversation = false;
 
         GetComponent<pPlayerComponent>().ToggleDialogueCamera();
     }
