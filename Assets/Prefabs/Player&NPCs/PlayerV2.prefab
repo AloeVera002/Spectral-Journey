@@ -493,6 +493,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInteracting: 0
   isInConversation: 0
+  checkPoint: {fileID: 0}
+  pCamera: {fileID: 0}
+  dialogueCamera: {x: 0, y: 0, z: 0}
+  normalCamera: {x: 0, y: 0, z: 0}
+  dialogueRotation: {x: 0, y: 0, z: 0}
   canCollectPebble: 1
   canNotCollectPebble: 0
   pebbleCount: 3
@@ -676,6 +681,8 @@ MonoBehaviour:
   speaker: {fileID: 0}
   line: {fileID: 0}
   textSpeed: 0
+  oppositeTalker: {fileID: 0}
+  checkPoint: {fileID: 0}
   isQuestioned: 0
 --- !u!114 &5219400773821571683
 MonoBehaviour:
