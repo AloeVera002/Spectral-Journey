@@ -158,7 +158,7 @@ MonoBehaviour:
   isQuestGiver: 1
   interactHUD: {fileID: 0}
   friendshipData:
-    friendName: Dara
+    friendName: Gerald
     friendshipValue: 0
   dialogueIndex: 0
   hasQuest: 0
@@ -568,6 +568,14 @@ PrefabInstance:
       propertyPath: checkPoint
       value: 
       objectReference: {fileID: 1767017950}
+    - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: maxPebbles
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: pebbleCount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: noPebblesText
       value: 
