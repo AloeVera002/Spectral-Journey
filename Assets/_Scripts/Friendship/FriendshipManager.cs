@@ -25,6 +25,13 @@ public class FriendshipManager : MonoBehaviour
 
     void Start()
     {
+        QuestGiver[] newFriends = Object.FindObjectsByType<QuestGiver>(FindObjectsSortMode.None);;
+        friendships = new FriendshipData[newFriends.Length];
+
+        for (int i = 0; i < newFriends.Length; i++)
+        {
+            friendships[i] = newFriends[i].friendshipData;
+        }
         UpdateFriendMeter();
     }
 
