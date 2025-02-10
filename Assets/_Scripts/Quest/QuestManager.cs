@@ -103,7 +103,6 @@ public class QuestManager : MonoBehaviour
         currentQuest = questRef.quest;
         SetQuestData();
         ShowHideQuestUI();
-        //GetComponent<FriendshipManager>().friendships;
     }
 
     void SetQuestData()

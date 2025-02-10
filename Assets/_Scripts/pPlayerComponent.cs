@@ -54,9 +54,9 @@ public class pPlayerComponent : MonoBehaviour
         //ectroplasmText.text = ectoplasm.ToString();
     }
 
-    public void ToggleDialogueCamera(bool camBool)
+    public void ToggleDialogueCamera()
     {
-        if (!camBool)
+        if (!isInConversation)
         {
             pCamera.GetComponent<CameraController>().offset = dialogueCamera;
             StartCoroutine(RotateCamera(dialogueRotation));
@@ -66,6 +66,7 @@ public class pPlayerComponent : MonoBehaviour
             pCamera.GetComponent<CameraController>().offset = new Vector3(0, 6, -10);
             StartCoroutine(RotateCamera(new Vector3(40, 0, 0)));
         }
+        isInConversation = !isInConversation;
     }
 
     private IEnumerator RotateCamera(Vector3 end)
