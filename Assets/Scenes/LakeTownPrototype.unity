@@ -321,6 +321,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 21481960602476517, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: line
+      value: 
+      objectReference: {fileID: 683865868}
+    - target: {fileID: 21481960602476517, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: speaker
+      value: 
+      objectReference: {fileID: 1100226411}
+    - target: {fileID: 21481960602476517, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -328,6 +336,26 @@ PrefabInstance:
       propertyPath: checkPoint
       value: 
       objectReference: {fileID: 1767017950}
+    - target: {fileID: 21481960602476517, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: modalButtons
+      value: 
+      objectReference: {fileID: 617065391}
+    - target: {fileID: 21481960602476517, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: dialogueField
+      value: 
+      objectReference: {fileID: 482738076}
+    - target: {fileID: 3106472681276180317, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: friendShipField
+      value: 
+      objectReference: {fileID: 782782132}
+    - target: {fileID: 5219400773821571683, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: questField
+      value: 
+      objectReference: {fileID: 1210694379}
+    - target: {fileID: 5219400773821571683, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: questDetailsText
+      value: 
+      objectReference: {fileID: 1890715453}
     - target: {fileID: 5294033227431768108, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -375,10 +403,10 @@ PrefabInstance:
     - target: {fileID: 7710913797425181970, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: pebblePlaceHolder
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 231730801}
     - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: checkPoint
@@ -420,6 +448,11 @@ PrefabInstance:
       addedObject: {fileID: 612668567}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+--- !u!1 &231730801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2628998031486475400, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+  m_PrefabInstance: {fileID: 231730800}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &233900346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1902,7 +1935,6 @@ Transform:
   - {fileID: 1463949510}
   - {fileID: 1948510150}
   - {fileID: 2110780579}
-  - {fileID: 1846113851}
   - {fileID: 294507559}
   - {fileID: 894255916}
   - {fileID: 396538782}
@@ -4548,11 +4580,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questToGive: {fileID: 11400000, guid: 87e3a388a88d1bf4c94c8a76297025e5, type: 2}
-  Dialogue: []
+  Dialogue:
+  - {fileID: 11400000, guid: decbc1e47cde0db4eb73a27d77bcdace, type: 2}
   isQuestGiver: 1
   interactHUD: {fileID: 0}
   friendshipData:
-    friendName: 
+    friendName: Dara
     friendshipValue: 0
   dialogueIndex: 0
   hasQuest: 0
@@ -4639,11 +4672,11 @@ Transform:
   m_GameObject: {fileID: 1846113846}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 243.85002, y: 23.14, z: 209.15}
+  m_LocalPosition: {x: 4.8500214, y: 1.1399994, z: 10.149994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 619529079}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1889800142
 GameObject:
@@ -5645,6 +5678,7 @@ SceneRoots:
   - {fileID: 2075059296}
   - {fileID: 2035051020}
   - {fileID: 231730800}
+  - {fileID: 1846113851}
   - {fileID: 619529079}
   - {fileID: 1392665670}
   - {fileID: 293511145}
