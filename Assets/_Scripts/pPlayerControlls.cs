@@ -15,6 +15,7 @@ public class pPlayerControlls : MonoBehaviour
 
     [SerializeField] float pebbleSpeed = 1800f;
     [SerializeField] GameObject pebblePlaceHolder;
+    public float chargeTime;
 
     Vector2 movementInput;
     Vector3 movementVector;
@@ -26,7 +27,6 @@ public class pPlayerControlls : MonoBehaviour
     public bool bCanJump = false;
 
     public bool canFire = false;
-    public bool isEquipped = false;
 
     void Start()
     {
@@ -61,15 +61,28 @@ public class pPlayerControlls : MonoBehaviour
         charController.Move((movementVector + velocity) * Time.deltaTime);
         #endregion
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
+            /*if (chargeTime >= 1)
+            { 
+                pebblePlaceHolder.SetActive(true);
+                canFire = true;
+                return;
+            }
+            else
+            {
+                canFire = false;
+            }
+            chargeTime += Time.deltaTime;*/
             pebblePlaceHolder.SetActive(true);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
+            //if (!canFire) return;
             if (playerData.pebbleCount > 0)
             {
+                canFire = true;
                 FireSlingShot();
                 Debug.Log("Bla");
             }
@@ -79,6 +92,7 @@ public class pPlayerControlls : MonoBehaviour
                 playerData.ActivateNoPebbleText();
             }
             playerData.UpdatePebbleText();
+            //chargeTime = 0;
         }
 
         if (movementVector != Vector3.zero)
