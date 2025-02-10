@@ -15,6 +15,8 @@ public struct basicQuest
 
     public GameObject[] questObjective;
 
+    public bool isKilling;
+
     public bool isCompleted;
 
     public int questProgress;

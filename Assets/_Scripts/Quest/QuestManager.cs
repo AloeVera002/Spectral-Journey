@@ -6,7 +6,7 @@ public class QuestManager : MonoBehaviour
 {
     public QuestScriptableObj questRef;
     [SerializeField] GameObject questField;
-    basicQuest currentQuest;
+    public basicQuest currentQuest;
     [SerializeField] GameObject[] questObjectives;
     [SerializeField] TMP_Text questDetailsText;
     [SerializeField] bool hasCompletedObjective;
@@ -91,11 +91,12 @@ public class QuestManager : MonoBehaviour
         UpdateQuestDetails();
     }
 
-    void CompleteQuest()
+    public void CompleteQuest()
     {
         GetComponentInParent<pPlayerComponent>().ectoplasm += currentQuest.ectoplasmReward;
         GetComponent<DialogueManager>().SetDialogueRef(currentQuest.CompletedQuestDialogue);
-        questDetailsText.text = "Completed quest here is 10 Ectoplasm!";
+        GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().dialogueIndex++;
+        questDetailsText.text = "Completed quest go back to your quest giver";
     }
 
     public void StartQuest()
