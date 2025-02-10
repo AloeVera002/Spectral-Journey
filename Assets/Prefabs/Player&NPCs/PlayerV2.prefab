@@ -139,13 +139,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2084337361379639181}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: -0, y: 6, z: -10}
+  m_LocalRotation: {x: 0.309017, y: 0, z: 0, w: 0.95105654}
+  m_LocalPosition: {x: -0, y: 9, z: -12.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5294033227431768108}
-  m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 36, y: 0, z: 0}
 --- !u!20 &8907353051972921665
 Camera:
   m_ObjectHideFlags: 0
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 6970084884534529251}
   smoothSpeed: 5
-  offset: {x: 0, y: 6, z: -10}
+  offset: {x: 0, y: 9, z: -12.5}
   cameraZOffsetMin: -5.58
   cameraZOffsetMax: -8.25
   minCamPosition: {x: -100, y: -100, z: -100}
@@ -495,9 +495,9 @@ MonoBehaviour:
   isInConversation: 0
   checkPoint: {fileID: 0}
   pCamera: {fileID: 0}
-  dialogueCamera: {x: 0, y: 0, z: 0}
+  dialogueCamera: {x: 4, y: 2, z: -1}
   normalCamera: {x: 0, y: 0, z: 0}
-  dialogueRotation: {x: 0, y: 0, z: 0}
+  dialogueRotation: {x: 28, y: -44, z: -2}
   canCollectPebble: 1
   canNotCollectPebble: 0
   pebbleCount: 3
