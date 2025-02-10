@@ -17,7 +17,7 @@ public class randomPatrollingNpc : MonoBehaviour
     void Start()
     {
         zombie = GetComponent<NavMeshAgent>();
-        player = GameObject.Find("Player");
+        player = GameObject.Find("PlayerV2");
     }
 
     // Update is called once per frame
