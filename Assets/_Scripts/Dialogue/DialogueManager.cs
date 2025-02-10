@@ -101,6 +101,7 @@ public class DialogueManager : MonoBehaviour
         speaker.text = newSpeaker;
         //    string finalOutput = ReplacePlaceholderText(newText, "{i}", lineIndex.ToString());
         line.text = newText; // finalOutput;
+        GetComponent<pPlayerComponent>().UpdateText(GetComponent<pPlayerComponent>().ectroplasmText, GetComponent<pPlayerComponent>().ectoplasm.ToString());
     }
 
     public string ReplacePlaceholderText(string uneditedText, string replaceText, string editedText)

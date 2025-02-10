@@ -30,7 +30,7 @@ public class pPlayerComponent : MonoBehaviour
     public TMP_Text noPebblesText;
     public GameObject noPebblesScreen;
 
-    [SerializeField] TMP_Text ectroplasmText;
+    [SerializeField] public TMP_Text ectroplasmText;
 
     public Transform slingshotPivot;
     public GameObject slingshot;
@@ -155,7 +155,7 @@ public class pPlayerComponent : MonoBehaviour
         UpdateText(pebbleCountText, pebbleCount.ToString());
     }
 
-    void UpdateText(TMP_Text texter, string newText)
+    public void UpdateText(TMP_Text texter, string newText)
     {
         texter.text = newText;
     }

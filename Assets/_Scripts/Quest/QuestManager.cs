@@ -96,6 +96,7 @@ public class QuestManager : MonoBehaviour
         GetComponentInParent<pPlayerComponent>().ectoplasm += currentQuest.ectoplasmReward;
         GetComponent<DialogueManager>().SetDialogueRef(currentQuest.CompletedQuestDialogue);
         GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().dialogueIndex++;
+        GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().hasQuest = true;
         questDetailsText.text = "Completed quest go back to your quest giver";
     }
 
