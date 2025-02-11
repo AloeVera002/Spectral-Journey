@@ -42,6 +42,7 @@ public class pPlayerComponent : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         UpdateText(pebbleCountText, pebbleCount.ToString());
+        UpdateText(ectroplasmText, ectoplasm.ToString());
     }
 
     void Update()
@@ -83,7 +84,7 @@ public class pPlayerComponent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Water"))
+        if (other.gameObject.CompareTag("Water") || other.gameObject.CompareTag("Zombie"))
         {
             WaterDeath();
         }
@@ -102,11 +103,6 @@ public class pPlayerComponent : MonoBehaviour
                 maxPebblesScreen.SetActive(true);
                 StartCoroutine(ToggleMaxPebbleText());
             }
-        }
-        if (other.gameObject.CompareTag("Zombie"))
-        {
-            Destroy(this.gameObject);
-            SceneManager.LoadScene("ZombieTestScene");
         }
     }
 

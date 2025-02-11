@@ -61,6 +61,13 @@ public class pPlayerControlls : MonoBehaviour
         charController.Move((movementVector + velocity) * Time.deltaTime);
         #endregion
 
+        if (movementVector != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(movementVector, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        }
+
         if (Input.GetMouseButton(0))
         {
             /*if (chargeTime >= 1)
@@ -74,11 +81,35 @@ public class pPlayerControlls : MonoBehaviour
                 canFire = false;
             }
             chargeTime += Time.deltaTime;*/
-            pebblePlaceHolder.SetActive(true);
+            ///pebblePlaceHolder.SetActive(true);
+            ///
+            if (!canFire)
+            {
+                if (playerData.pebbleCount > 0)
+                {
+                    if (chargeTime >= .6)
+                    {
+                        Debug.Log("ReadyToFire");
+                        pebblePlaceHolder.SetActive(true);
+                        canFire = true;
+                        return;
+                    }
+                    else
+                    {
+                        canFire = false;
+                    }
+                    chargeTime += Time.deltaTime;
+                }
+                else
+                {
+                    ResetSlingshot();
+                    playerData.ActivateNoPebbleText();
+                }
+            }
         }
 
         if (Input.GetMouseButtonUp(0))
-        {
+        {/*
             //if (!canFire) return;
             if (playerData.pebbleCount > 0)
             {
@@ -91,15 +122,19 @@ public class pPlayerControlls : MonoBehaviour
                 ResetSlingshot();
                 playerData.ActivateNoPebbleText();
             }
-            playerData.UpdatePebbleText();
+            playerData.UpdatePebbleText();*/
             //chargeTime = 0;
-        }
 
-        if (movementVector != Vector3.zero)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(movementVector, Vector3.up);
-
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+            if (canFire)
+            {
+                if (playerData.pebbleCount > 0)
+                {
+                    FireSlingShot();
+                    canFire = false;
+                }
+                playerData.UpdatePebbleText();
+            }
+            chargeTime = 0;
         }
     }
 
@@ -158,7 +193,6 @@ public class pPlayerControlls : MonoBehaviour
     void ResetSlingshot()
     {
         playerData.SetPebbleCount(0);
-
     }
     #endregion
 }

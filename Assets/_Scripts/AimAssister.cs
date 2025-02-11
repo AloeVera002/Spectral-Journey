@@ -27,4 +27,9 @@ public class AimAssister : MonoBehaviour
             target = other.gameObject;
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        target = null;
+    }
 }
