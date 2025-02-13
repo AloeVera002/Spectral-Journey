@@ -111,6 +111,7 @@ public class pPlayerComponent : MonoBehaviour
         Debug.Log("Teleportation commenced");
         this.gameObject.SetActive(false);
         this.gameObject.transform.position = checkPoint.position;
+        gameObject.GetComponentInChildren<AimAssister>().ResetAimTarget();
         this.gameObject.SetActive(true);
     }
 

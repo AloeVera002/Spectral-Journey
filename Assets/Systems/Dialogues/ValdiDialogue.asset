@@ -16,26 +16,44 @@ MonoBehaviour:
   - Name: Gary
     text: Hey you! Yeah you!
     isQuestion: 0
+    giveQuest: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
   - Name: Player
     text: Who me?
     isQuestion: 0
+    giveQuest: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
   - Name: Gary
     text: Wait, what? You can see and hear me?!
     isQuestion: 0
+    giveQuest: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
   - Name: Player
     text: Yeah of course, I'm a paranormal scientist
     isQuestion: 0
+    giveQuest: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
   - Name: Gary
     text: Wow, it's not everyday that you see a human here, let alone a live one!
     isQuestion: 0
+    giveQuest: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
   - Name: Gary
     text: Wait this is perfect actually, I need your help! My friend was eaten by
       a zombie
     isQuestion: 0
+    giveQuest: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
   - Name: Gary
     text: Can you slay the zombie? It would free my friend, I could even give you
       some ectoplasm for it
     isQuestion: 1
-  - Name: Gary
-    text: Sure!
-    isQuestion: 0
+    giveQuest: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}

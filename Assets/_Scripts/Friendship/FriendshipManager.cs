@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,8 +21,16 @@ public class FriendshipManager : MonoBehaviour
 {
     [SerializeField] TMP_Text[] friendshipNames;
     [SerializeField] Slider[] friendshipMeters;
+
+    [SerializeField] List<TMP_Text> friendshipNamesList = new List<TMP_Text>();
+    [SerializeField] List<Slider> friendshipMetersList = new List<Slider>();
+
     [SerializeField] public FriendshipData[] friendships;
     [SerializeField] GameObject friendShipField;
+
+    [SerializeField] Transform parentTransform;
+
+    [SerializeField] GameObject friendShipPrefab;
 
     void Start()
     {
@@ -32,6 +41,34 @@ public class FriendshipManager : MonoBehaviour
         {
             friendships[i] = newFriends[i].friendshipData;
         }
+
+        for (int i = 0; i < friendships.Length; i++)
+        {
+            // Instantiate the prefab for each friend
+            GameObject newFriendshipField = Instantiate(friendShipPrefab, parentTransform);
+
+            // Get the TMP_Text and Slider components from the instantiated prefab
+            TMP_Text nameText = newFriendshipField.GetComponentInChildren<TMP_Text>();
+            Slider friendshipSlider = newFriendshipField.GetComponentInChildren<Slider>();
+
+            friendshipMetersList.Add(friendshipSlider);
+            friendshipNamesList.Add(nameText);
+
+            // Set the TMP_Text to the friend's name
+            nameText.text = friendships[i].friendName;
+
+            // Set the slider's value based on the friendship value
+            friendshipSlider.value = friendships[i].GetFriendValue();
+
+            // Adjust the position of the new UI element
+            RectTransform rectTransform = newFriendshipField.GetComponent<RectTransform>();
+            rectTransform.anchoredPosition = new Vector2(0, -i * 100); // Adjust the Y position for each new item
+
+            // Optionally, you can also store these in your arrays for further use
+            // friendshipNames[i] = nameText;
+            // friendshipMeters[i] = friendshipSlider;
+        }
+
         UpdateFriendMeter();
     }
 
