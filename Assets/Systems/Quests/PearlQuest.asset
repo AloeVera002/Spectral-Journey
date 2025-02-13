@@ -23,7 +23,8 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+    isKilling: 0
     isCompleted: 0
     questProgress: 0
     ectoplasmReward: 10
-    CompletedQuestDialogue: {fileID: 11400000, guid: 4e2ecb8782cfea348a0da86fbd6eb1a5, type: 2}
+    CompletedQuestDialogue: {fileID: 11400000, guid: 4d256a124065edc42abf80832c7b4361, type: 2}

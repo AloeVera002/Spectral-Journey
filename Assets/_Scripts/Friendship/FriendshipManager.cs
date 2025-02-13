@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 [System.Serializable]
 public struct FriendshipData
@@ -15,22 +16,26 @@ public struct FriendshipData
         float floatValue = friendshipValue / 100f;
         return floatValue;
     }
+
+    public void SetFriendValue(int newValue)
+    {
+        friendshipValue = newValue;
+    }
+
+    public void IncreaseFriendValue(int incValue)
+    {
+        friendshipValue += incValue;
+    }
 }
 
 public class FriendshipManager : MonoBehaviour
 {
-    [SerializeField] TMP_Text[] friendshipNames;
-    [SerializeField] Slider[] friendshipMeters;
-
-    [SerializeField] List<TMP_Text> friendshipNamesList = new List<TMP_Text>();
-    [SerializeField] List<Slider> friendshipMetersList = new List<Slider>();
-
-    [SerializeField] public FriendshipData[] friendships;
-    [SerializeField] GameObject friendShipField;
-
-    [SerializeField] Transform parentTransform;
-
     [SerializeField] GameObject friendShipPrefab;
+    [SerializeField] public FriendshipData[] friendships;
+    [SerializeField] private List<TMP_Text> friendshipNames = new List<TMP_Text>();
+    [SerializeField] private List<Slider> friendshipMeters = new List<Slider>();
+
+    [SerializeField] private GameObject friendShipField;
 
     void Start()
     {
@@ -44,29 +49,22 @@ public class FriendshipManager : MonoBehaviour
 
         for (int i = 0; i < friendships.Length; i++)
         {
-            // Instantiate the prefab for each friend
-            GameObject newFriendshipField = Instantiate(friendShipPrefab, parentTransform);
+            GameObject newFriendshipField = Instantiate(friendShipPrefab, friendShipField.transform);
 
-            // Get the TMP_Text and Slider components from the instantiated prefab
             TMP_Text nameText = newFriendshipField.GetComponentInChildren<TMP_Text>();
             Slider friendshipSlider = newFriendshipField.GetComponentInChildren<Slider>();
 
-            friendshipMetersList.Add(friendshipSlider);
-            friendshipNamesList.Add(nameText);
+            // Adjust the position of the new UI element
+            RectTransform rectTransform = newFriendshipField.GetComponent<RectTransform>();
+            rectTransform.anchoredPosition = new Vector2(-i * 150, 0);
 
-            // Set the TMP_Text to the friend's name
+            friendshipMeters.Add(friendshipSlider);
+            friendshipNames.Add(nameText);
+
             nameText.text = friendships[i].friendName;
 
             // Set the slider's value based on the friendship value
             friendshipSlider.value = friendships[i].GetFriendValue();
-
-            // Adjust the position of the new UI element
-            RectTransform rectTransform = newFriendshipField.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector2(0, -i * 100); // Adjust the Y position for each new item
-
-            // Optionally, you can also store these in your arrays for further use
-            // friendshipNames[i] = nameText;
-            // friendshipMeters[i] = friendshipSlider;
         }
 
         UpdateFriendMeter();
@@ -90,11 +88,6 @@ public class FriendshipManager : MonoBehaviour
         {
             SetFriendMeterValue(0, 120);
         }
-
-        if (Input.GetKeyUp(KeyCode.O))
-        {
-            friendShipField.SetActive(true);
-        }
     }
 
     void SetFriendMeterValue(int friend, int newValue)
@@ -103,15 +96,19 @@ public class FriendshipManager : MonoBehaviour
         {
             friendships[friend].friendshipValue = newValue;
             StartCoroutine(SmoothUpdateFriendMeter(friend));
-        //    UpdateFriendMeter();
         }
+    }
+
+    public void UpdateFriendMeterExternalCall(int friendIndex)
+    {
+        StartCoroutine(SmoothUpdateFriendMeter(friendIndex));
     }
 
     void UpdateFriendMeter()
     {
-        for (int i = 0; i < friendshipMeters.Length; i++)
+        for (int i = 0; i < friendshipMeters.Count; i++)
         {
-            if (friendshipMeters.Length > i)
+            if (friendshipMeters.Count > i)
             {
                 friendshipMeters[i].value = friendships[i].GetFriendValue();
             }
@@ -128,10 +125,9 @@ public class FriendshipManager : MonoBehaviour
         {
             currentValue = Mathf.MoveTowards(currentValue, targetValue, 1f * Time.deltaTime);
             friendshipMeters[friend].value = currentValue;
-            yield return null; // Wait until the next frame
+            yield return null;
         }
 
-        // Ensure the target value is exactly reached
         friendshipMeters[friend].value = targetValue;
     }
 }

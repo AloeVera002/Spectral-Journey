@@ -4,15 +4,16 @@ using UnityEngine;
 public class AimAssister : MonoBehaviour
 {
     [SerializeField] GameObject target;
+    private GameObject assister;
 
     void Start()
     {
-        
+        assister = transform.parent.gameObject;
     }
 
     void Update()
     {
-        transform.parent.gameObject.transform.LookAt(target.transform);
+        assister.transform.LookAt(target.transform);
     }
 
     void OnTriggerEnter(Collider other)

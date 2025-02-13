@@ -12,8 +12,8 @@ public class QuestManager : MonoBehaviour
     [SerializeField] bool hasCompletedObjective;
     int qObjectiveIndex = 0;
 
-    [SerializeField] AudioClip pickupSound;
-    [SerializeField] AudioSource pickupAudioSource;
+    [SerializeField] public AudioClip pickupSound;
+    [SerializeField] public AudioClip completeObjectiveSound;
 
     [SerializeField] bool isToggled;
     /*
@@ -32,7 +32,7 @@ public class QuestManager : MonoBehaviour
 
     void Start()
     {
-        pickupAudioSource = GetComponent<AudioSource>();
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,7 +42,7 @@ public class QuestManager : MonoBehaviour
             if (other.gameObject.tag == currentQuest.pickupTag)
             {
                 Destroy(other.gameObject);
-                pickupAudioSource.PlayOneShot(pickupSound);
+                GetComponent<pPlayerComponent>().soundAudioSource.PlayOneShot(pickupSound);
                 qObjectiveIndex++;
                 UpdateQuest();
                 if (qObjectiveIndex == currentQuest.questObjective.Length)
@@ -93,10 +93,13 @@ public class QuestManager : MonoBehaviour
 
     public void CompleteQuest()
     {
-        GetComponentInParent<pPlayerComponent>().ectoplasm += currentQuest.ectoplasmReward;
+        GetComponent<pPlayerComponent>().soundAudioSource.PlayOneShot(completeObjectiveSound);
+        GetComponent<pPlayerComponent>().ectoplasm += currentQuest.ectoplasmReward;
         GetComponent<DialogueManager>().SetDialogueRef(currentQuest.CompletedQuestDialogue);
         GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().dialogueIndex++;
         GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().hasQuest = true;
+        GetComponent<FriendshipManager>().friendships[0].IncreaseFriendValue(currentQuest.friendshipIncreaseValue);
+        GetComponent<FriendshipManager>().UpdateFriendMeterExternalCall(0);
         questDetailsText.text = "Completed quest go back to your quest giver";
     }
 

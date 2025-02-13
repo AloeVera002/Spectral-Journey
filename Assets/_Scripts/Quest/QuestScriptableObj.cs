@@ -21,6 +21,8 @@ public struct basicQuest
 
     public int questProgress;
 
+    public int friendshipIncreaseValue;
+
     public int ectoplasmReward;
 
     public so_Dialogue CompletedQuestDialogue;

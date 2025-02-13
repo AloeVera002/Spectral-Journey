@@ -145,6 +145,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            oppositeTalker.GetComponent<QuestGiver>().hasQuest = false;
             QuitDialogue();
         }
     }

@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
 using TMPro;
 using UnityEngine;
@@ -6,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class pPlayerComponent : MonoBehaviour
 {
+    [SerializeField] List<GameObject> listTest = new List<GameObject>();
+
     [SerializeField] public bool isInteracting = false;
     [SerializeField] public bool isInConversation = false;
     [SerializeField] private Transform checkPoint;
@@ -16,6 +20,8 @@ public class pPlayerComponent : MonoBehaviour
     [SerializeField] Vector3 dialogueCamera;
     [SerializeField] Vector3 normalCamera;
     [SerializeField] Vector3 dialogueRotation;
+
+    [SerializeField] public AudioSource soundAudioSource;
 
     public bool canCollectPebble = true;
     public bool canNotCollectPebble = false;
@@ -50,6 +56,7 @@ public class pPlayerComponent : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.R))
         {
             ectoplasm++;
+            listTest.Remove(listTest[0]);
         }
 
         //ectroplasmText.text = ectoplasm.ToString();
@@ -93,6 +100,7 @@ public class pPlayerComponent : MonoBehaviour
             if (pebbleCount < maxPebbles)
             {
                 Destroy(other.gameObject);
+                soundAudioSource.PlayOneShot(GetComponent<QuestManager>().pickupSound);
                 IncreasePebbleCount(1);
                 UpdatePebbleText();
             }
