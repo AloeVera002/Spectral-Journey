@@ -488,6 +488,10 @@ PrefabInstance:
       propertyPath: friendShipField
       value: 
       objectReference: {fileID: 782782132}
+    - target: {fileID: 3106472681276180317, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: friendshipNamesList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5219400773821571683, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: questField
       value: 
@@ -2027,7 +2031,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  player: {fileID: 1314515881}
 --- !u!1 &617065391
 GameObject:
   m_ObjectHideFlags: 0
