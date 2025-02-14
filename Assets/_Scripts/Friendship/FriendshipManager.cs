@@ -35,7 +35,7 @@ public class FriendshipManager : MonoBehaviour
     [SerializeField] public FriendshipData[] friendships;
     [SerializeField] private List<TMP_Text> friendshipNames = new List<TMP_Text>();
     [SerializeField] private List<Slider> friendshipMeters = new List<Slider>();
-    [SerializeField] private Image[] friendMeterImages;
+    [SerializeField] Image[] friendMeterImages;
 
     [SerializeField] private GameObject friendShipField;
 
