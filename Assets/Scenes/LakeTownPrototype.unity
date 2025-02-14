@@ -539,9 +539,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3106472681276180317, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: friendMeterImages.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3106472681276180317, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: friendshipNamesList.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3106472681276180317, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: 'friendMeterImages.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 65942c31c1b7881459473eda67b12032, type: 3}
+    - target: {fileID: 3106472681276180317, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: 'friendMeterImages.Array.data[1]'
+      value: 
+      objectReference: {fileID: 21300000, guid: cee05e40d3fbdab4ea6ed84b17a1d0f7, type: 3}
     - target: {fileID: 5219400773821571683, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: questField
       value: 
@@ -918,8 +930,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questToGive: {fileID: 11400000, guid: f480163d2ed5f9d4188edcb53d91a684, type: 2}
-  Dialogue: []
+  dialogues: []
   isQuestGiver: 1
+  npcMark: {fileID: 0}
   friendshipData:
     friendName: 
     friendshipValue: 0
