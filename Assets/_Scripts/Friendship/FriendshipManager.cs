@@ -35,7 +35,7 @@ public class FriendshipManager : MonoBehaviour
     [SerializeField] public FriendshipData[] friendships;
     [SerializeField] private List<TMP_Text> friendshipNames = new List<TMP_Text>();
     [SerializeField] private List<Slider> friendshipMeters = new List<Slider>();
-    [SerializeField] public Image[] friendMeterImages;
+    [SerializeField] public Sprite[] friendMeterImages;
 
     [SerializeField] private GameObject friendShipField;
 
@@ -55,7 +55,7 @@ public class FriendshipManager : MonoBehaviour
 
             TMP_Text nameText = newFriendshipField.GetComponentInChildren<TMP_Text>();
             Slider friendshipSlider = newFriendshipField.GetComponentInChildren<Slider>();
-            newFriendshipField.transform.Find("Background").GetComponent<Image>().sprite = friendMeterImages[0].sprite;
+            newFriendshipField.transform.Find("Background").GetComponent<Image>().sprite = friendMeterImages[0];
 
             // Adjust the position of the new UI element
             RectTransform rectTransform = newFriendshipField.GetComponent<RectTransform>();
