@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 4992804576102385419}
   - component: {fileID: 8242632250409010662}
   - component: {fileID: 7494172237760732855}
+  - component: {fileID: 1901442683706447895}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -251,6 +252,7 @@ Transform:
   m_Children:
   - {fileID: 1304267164239956433}
   - {fileID: 909269499853346879}
+  - {fileID: 5772326819394051953}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5284299705001728279
@@ -350,3 +352,88 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.9017012
   m_Center: {x: 0, y: 0, z: 0.09213328}
+--- !u!114 &1901442683706447895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817849245407562025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30cccaadadfa53419209140282207e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questToGive: {fileID: 11400000, guid: ff1d493a24b2744249915871c4ae5b5e, type: 2}
+  Dialogue:
+  - {fileID: 11400000, guid: ad2da942a34ec4678ad0430953d102a8, type: 2}
+  - {fileID: 11400000, guid: 463d28ac21db9481ea1b35a084af4a96, type: 2}
+  isQuestGiver: 1
+  friendshipData:
+    friendName: Gerald
+    friendshipValue: 0
+    isActive: 0
+  dialogueIndex: 0
+  hasQuest: 0
+--- !u!1001 &4424507720561329776
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1898691861943443948}
+    m_Modifications:
+    - target: {fileID: 7889302679405025537, guid: 4f78be3cd92fa9a49a6dc65294f7650c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889302679405025537, guid: 4f78be3cd92fa9a49a6dc65294f7650c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.895
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889302679405025537, guid: 4f78be3cd92fa9a49a6dc65294f7650c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889302679405025537, guid: 4f78be3cd92fa9a49a6dc65294f7650c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889302679405025537, guid: 4f78be3cd92fa9a49a6dc65294f7650c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889302679405025537, guid: 4f78be3cd92fa9a49a6dc65294f7650c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889302679405025537, guid: 4f78be3cd92fa9a49a6dc65294f7650c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889302679405025537, guid: 4f78be3cd92fa9a49a6dc65294f7650c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889302679405025537, guid: 4f78be3cd92fa9a49a6dc65294f7650c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889302679405025537, guid: 4f78be3cd92fa9a49a6dc65294f7650c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162112779597563522, guid: 4f78be3cd92fa9a49a6dc65294f7650c, type: 3}
+      propertyPath: m_Name
+      value: GhostIndicator
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4f78be3cd92fa9a49a6dc65294f7650c, type: 3}
+--- !u!4 &5772326819394051953 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7889302679405025537, guid: 4f78be3cd92fa9a49a6dc65294f7650c, type: 3}
+  m_PrefabInstance: {fileID: 4424507720561329776}
+  m_PrefabAsset: {fileID: 0}
