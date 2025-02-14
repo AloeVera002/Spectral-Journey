@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class QuestGiver : MonoBehaviour
 {
-    [SerializeField] QuestScriptableObj questToGive;
+    [SerializeField] public QuestScriptableObj questToGive;
     [SerializeField] so_Dialogue[] Dialogue;
     [SerializeField] bool isQuestGiver;
-    [SerializeField] GameObject interactHUD;
     [SerializeField] public FriendshipData friendshipData;
 
     [SerializeField] public int dialogueIndex;
@@ -44,8 +43,6 @@ public class QuestGiver : MonoBehaviour
                     other.gameObject.GetComponent<DialogueManager>().StartNewDialogue();
 
                     other.gameObject.GetComponent<QuestManager>().questRef = questToGive;
-
-                    interactHUD.SetActive(true);
                 }
             }
         }
@@ -53,6 +50,5 @@ public class QuestGiver : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        interactHUD?.SetActive(false);
     }
 }

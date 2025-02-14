@@ -13,7 +13,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] TMP_Text speaker, line;
     [SerializeField] float textSpeed;
     [SerializeField] public GameObject oppositeTalker;
-    public Transform checkPoint;
+
+    QuestManager questMan;
     
 
     [SerializeField] bool isQuestioned;
@@ -22,6 +23,9 @@ public class DialogueManager : MonoBehaviour
     private dialogueLine[] lineArray;
     int lineIndex = 0;
     bool inProgress = false;
+
+    public delegate void DialogueStarted();
+    public event DialogueStarted OnDialogueStarted;
 
     void Start()
     {
@@ -38,20 +42,10 @@ public class DialogueManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             if (!GetComponent<pPlayerComponent>().isInConversation) return;
-            /*
-            if (inProgress)
-            {
-                FinishLine(lineArray[lineIndex].text);
-            }
-            else
-            {
-                NextLine();
-            }*/
 
             if (lineArray[lineIndex].isQuestion)
             {
                 ShowModal();
-            //    UpdateDialogue();
             }
             else
             {
@@ -78,6 +72,11 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("started dialogue");
         lineIndex = 0;
         dialogueField.SetActive(true);
+
+    /*    if (!questMan.currentQuest)
+        {
+
+        }*/
         /*
         if (!isCameraswitched)
         {
@@ -154,8 +153,6 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueField.SetActive(false);
 
-        //if (!dialogueField.activeInHierarchy) GetComponent<pPlayerComponent>().isInConversation = false;
-
         GetComponent<pPlayerComponent>().ToggleDialogueCamera();
     }
 
@@ -174,9 +171,6 @@ public class DialogueManager : MonoBehaviour
 
     public void AcceptQuest()
     {
-    //    ShowModal();
-    //   SetDialogueRef(lineArray[lineIndex].AcceptedDialogue);
-    //    UpdateDialogue();
         QuitDialogue();
         GetComponent<QuestManager>().StartQuest();
     }
