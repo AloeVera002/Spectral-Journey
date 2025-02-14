@@ -45,7 +45,7 @@ public class AttackManager : MonoBehaviour
             Destroy(gameObject);
             if (GameObject.Find("PlayerV2").GetComponent<QuestManager>().currentQuest.QuestType == QuestTypeEnum.Kill)
             {
-                    OnDeath?.Invoke(tag);
+                    OnDeath?.Invoke(this.gameObject.tag);
             }
             Debug.Log(tag + " wittewally ded");
         }
