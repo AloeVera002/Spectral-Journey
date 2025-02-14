@@ -40,6 +40,7 @@ public class QuestGiver : MonoBehaviour
                         other.gameObject.GetComponent<pPlayerComponent>().ectoplasm += other.gameObject.GetComponent<QuestManager>().currentQuest.ectoplasmReward;
                         other.gameObject.GetComponent<FriendshipManager>().friendships[0].IncreaseFriendValue(other.gameObject.GetComponent<QuestManager>().currentQuest.friendshipIncreaseValue);
                         other.gameObject.GetComponent<FriendshipManager>().UpdateFriendMeterExternalCall(0);
+                        other.gameObject.GetComponent<pPlayerComponent>().UpdateText(other.gameObject.GetComponent<pPlayerComponent>().ectroplasmText, other.gameObject.GetComponent<pPlayerComponent>().ectoplasm.ToString());
                     }
 
                     other.gameObject.GetComponent<pPlayerComponent>().isInteracting = true;

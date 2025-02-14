@@ -55,6 +55,7 @@ public class QuestManager : MonoBehaviour
 
     public void ShowHideQuestUI()
     {
+        Debug.Log(isToggled + "Called ShowHideQuest");
         if (!isToggled)
         {
             questField.SetActive(true);
@@ -63,6 +64,7 @@ public class QuestManager : MonoBehaviour
         {
             questField.SetActive(false);
         }
+        isToggled = !isToggled;
     }
 
     public void CallQuestObjectiveEvent()
@@ -95,12 +97,11 @@ public class QuestManager : MonoBehaviour
     {
         Debug.Log("Updated QuestObjective");
         Debug.Log(currentQuest.questName);
-        
-        UpdateQuestDetails();
 
-        if (qObjectiveIndex > currentQuest.questObjective.Length)
+        if (qObjectiveIndex < currentQuest.questObjective.Length)
         {
             qObjectiveIndex++;
+            UpdateQuestDetails();
             if (qObjectiveIndex == currentQuest.questObjective.Length)
             {
                 Debug.Log("completed quest!");

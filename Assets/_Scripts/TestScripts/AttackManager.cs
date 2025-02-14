@@ -11,7 +11,7 @@ public class AttackManager : MonoBehaviour
 
     [SerializeField] bool isHeadShot = false;
 
-    [SerializeField] QuestManager qMan;
+    private QuestManager qMan;
 
     public delegate void DeathEvent(string tag);
     public event DeathEvent OnDeath;
@@ -33,6 +33,11 @@ public class AttackManager : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         OnHit?.Invoke();
+        if (other.gameObject.CompareTag(tag))
+        {
+            Instantiate(GetComponent<pPlayerComponent>().pebbleGround, other.gameObject.transform.position, Quaternion.identity);
+            Destroy(other.gameObject);
+        }
     }
 
     void HitHandler()

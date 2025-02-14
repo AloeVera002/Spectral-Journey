@@ -53,6 +53,10 @@ public class DialogueManager : MonoBehaviour
                 {
                     AcceptQuest();
                 }
+                else if (lineArray[lineIndex].isQuestion)
+                {
+                    AcceptQuestion();
+                }
                 else
                 {
                     NextLine();

@@ -40,7 +40,7 @@ public class pPlayerComponent : MonoBehaviour
 
     public Transform slingshotPivot;
     public GameObject slingshot;
-    public GameObject pebblePrefab;
+    public GameObject pebblePrefab, pebbleGround;
 
     public int ectoplasm;
 
@@ -58,8 +58,6 @@ public class pPlayerComponent : MonoBehaviour
             ectoplasm++;
             listTest.Remove(listTest[0]);
         }
-
-        //ectroplasmText.text = ectoplasm.ToString();
     }
 
     public void ToggleDialogueCamera()
