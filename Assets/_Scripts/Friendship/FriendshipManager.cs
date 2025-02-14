@@ -32,10 +32,10 @@ public struct FriendshipData
 public class FriendshipManager : MonoBehaviour
 {
     [SerializeField] GameObject friendShipPrefab;
+    [SerializeField] public Image[] friendMeterImages;
     [SerializeField] public FriendshipData[] friendships;
     [SerializeField] private List<TMP_Text> friendshipNames = new List<TMP_Text>();
     [SerializeField] private List<Slider> friendshipMeters = new List<Slider>();
-    [SerializeField] Image[] friendMeterImages;
 
     [SerializeField] private GameObject friendShipField;
 
