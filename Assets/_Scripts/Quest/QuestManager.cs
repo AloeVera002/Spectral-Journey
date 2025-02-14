@@ -22,19 +22,6 @@ public class QuestManager : MonoBehaviour
 
     public delegate void CompleteQuestEvent();
     public event CompleteQuestEvent OnQuestComplete;
-    /*
-    public QuestScriptableObj GetElementByIdentifier(string identifier)
-    {
-        foreach (var BasicQuest in CurrentQuest.quests)
-        {
-            if (basicQuest.identifier == identifier)
-            {
-                return element;
-            }
-        }
-        Debug.LogWarning($"Element with identifier '{identifier}' not found.");
-        return null;
-    }*/
 
     void Start()
     {
@@ -64,11 +51,6 @@ public class QuestManager : MonoBehaviour
         {
             ShowHideQuestUI();
         }
-
-        if (Input.GetKeyUp(KeyCode.Y))
-        {
-            CompleteQuest();
-        }
     }
 
     public void ShowHideQuestUI()
@@ -94,13 +76,7 @@ public class QuestManager : MonoBehaviour
     }
 
     public void UpdateQuest()
-    {/*
-        currentQuest.questProgress = 1;
-        if (questObjectives.Length <= 0)
-        {
-            Debug.Log("quest");
-            CompleteQuest();
-        }*/
+    {
         UpdateQuestDetails();
     }
 
@@ -117,9 +93,19 @@ public class QuestManager : MonoBehaviour
     void UpdateQuestObjective()
     {
         Debug.Log("Updated QuestObjective");
-        qObjectiveIndex++;
+        
         UpdateQuestDetails();
-        if (qObjectiveIndex == currentQuest.questObjective.Length)
+
+        if (qObjectiveIndex > currentQuest.questObjective.Length)
+        {
+            qObjectiveIndex++;
+            if (qObjectiveIndex == currentQuest.questObjective.Length)
+            {
+                Debug.Log("completed quest!");
+                CallQuestOCompleteEvent();
+            }
+        }
+        else
         {
             Debug.Log("completed quest!");
             CallQuestOCompleteEvent();

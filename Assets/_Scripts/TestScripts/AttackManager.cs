@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class AttackManager : MonoBehaviour
 {
-    [SerializeField] QuestManager qMan;
-
     public int hp;
     public int damage;
     public string tag;
@@ -12,6 +10,8 @@ public class AttackManager : MonoBehaviour
     int incomingDamage = 20;
 
     [SerializeField] bool isHeadShot = false;
+
+    [SerializeField] QuestManager qMan;
 
     public delegate void DeathEvent(string tag);
     public event DeathEvent OnDeath;
@@ -37,8 +37,8 @@ public class AttackManager : MonoBehaviour
 
     void HitHandler()
     {
-        damage = CheckIfHeadShot();
-        Debug.Log("Hit: " + tag);
+        CheckIfHeadShot();
+        Debug.Log("Hit: " + this.gameObject.tag + "Damage dealt: " + incomingDamage);
         hitPoints -= incomingDamage;
         if (hitPoints <= 0)
         {
@@ -47,32 +47,32 @@ public class AttackManager : MonoBehaviour
             {
                     OnDeath?.Invoke(this.gameObject.tag);
             }
-            Debug.Log(tag + " wittewally ded");
+            Debug.Log(this.gameObject.tag + " wittewally ded");
         }
     }
 
-    int CheckIfHeadShot()
+    void CheckIfHeadShot()
     {
         if (!isHeadShot)
         {
             if (damage > 0)
             {
-                 return incomingDamage = damage;
+                 incomingDamage = damage;
             }
             else
             {
-                 return incomingDamage = 20;
+                 incomingDamage = 20;
             }
         }
         else
         {
             if (damage > 0)
             {
-                return incomingDamage = damage * 2;
+                incomingDamage = damage * 2;
             }
             else
             {
-                return incomingDamage = 20 * 2;
+                incomingDamage = 20 * 2;
             }
         }
     }
