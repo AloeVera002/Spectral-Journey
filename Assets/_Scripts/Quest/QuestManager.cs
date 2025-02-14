@@ -16,6 +16,12 @@ public class QuestManager : MonoBehaviour
     [SerializeField] public AudioClip completeObjectiveSound;
 
     [SerializeField] bool isToggled;
+
+    public delegate void QuestObjectiveEvent();
+    public event QuestObjectiveEvent OnQuestObjective;
+
+    public delegate void CompleteQuestEvent();
+    public event CompleteQuestEvent OnQuestComplete;
     /*
     public QuestScriptableObj GetElementByIdentifier(string identifier)
     {
@@ -32,7 +38,8 @@ public class QuestManager : MonoBehaviour
 
     void Start()
     {
-
+        OnQuestObjective += UpdateQuestObjective;
+        OnQuestComplete += CompleteQuest;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,16 +48,12 @@ public class QuestManager : MonoBehaviour
         {
             if (other.gameObject.tag == currentQuest.pickupTag)
             {
+                Debug.Log("Picked up a QuestObjective");
                 Destroy(other.gameObject);
+
+                CallQuestObjectiveEvent();
+
                 GetComponent<pPlayerComponent>().soundAudioSource.PlayOneShot(pickupSound);
-                qObjectiveIndex++;
-                UpdateQuest();
-                if (qObjectiveIndex == currentQuest.questObjective.Length)
-                {
-                    currentQuest.isCompleted = true;
-                    Debug.Log("completed quest!");
-                    CompleteQuest();
-                }
             }
         }
     }
@@ -80,6 +83,16 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    public void CallQuestObjectiveEvent()
+    {
+        OnQuestObjective?.Invoke();
+    }
+
+    public void CallQuestOCompleteEvent()
+    {
+        OnQuestComplete?.Invoke();
+    }
+
     public void UpdateQuest()
     {/*
         currentQuest.questProgress = 1;
@@ -93,14 +106,24 @@ public class QuestManager : MonoBehaviour
 
     public void CompleteQuest()
     {
+        currentQuest.isCompleted = true;
         GetComponent<pPlayerComponent>().soundAudioSource.PlayOneShot(completeObjectiveSound);
-        GetComponent<pPlayerComponent>().ectoplasm += currentQuest.ectoplasmReward;
         GetComponent<DialogueManager>().SetDialogueRef(currentQuest.CompletedQuestDialogue);
         GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().dialogueIndex++;
         GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().hasQuest = true;
-        GetComponent<FriendshipManager>().friendships[0].IncreaseFriendValue(currentQuest.friendshipIncreaseValue);
-        GetComponent<FriendshipManager>().UpdateFriendMeterExternalCall(0);
         questDetailsText.text = "Completed quest go back to your quest giver";
+    }
+
+    void UpdateQuestObjective()
+    {
+        Debug.Log("Updated QuestObjective");
+        qObjectiveIndex++;
+        UpdateQuestDetails();
+        if (qObjectiveIndex == currentQuest.questObjective.Length)
+        {
+            Debug.Log("completed quest!");
+            CallQuestOCompleteEvent();
+        }
     }
 
     public void StartQuest()

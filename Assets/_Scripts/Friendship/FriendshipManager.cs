@@ -10,6 +10,7 @@ public struct FriendshipData
 {
     public string friendName;
     public int friendshipValue;
+    public bool isActive;
 
     public float GetFriendValue()
     {
@@ -72,22 +73,7 @@ public class FriendshipManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.K))
-        {
-            SetFriendMeterValue(0, 50);
-        }
-        if (Input.GetKeyUp(KeyCode.J))
-        {
-            SetFriendMeterValue(0, 20);
-        }
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            SetFriendMeterValue(0, 100);
-        }
-        if (Input.GetKeyUp(KeyCode.M))
-        {
-            SetFriendMeterValue(0, 120);
-        }
+
     }
 
     void SetFriendMeterValue(int friend, int newValue)

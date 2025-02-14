@@ -1,6 +1,15 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+
+public enum QuestTypeEnum
+{
+    Pickup,
+    Deliver,
+    Kill,
+    Engage
+}
 
 [System.Serializable]
 public struct basicQuest
@@ -15,7 +24,7 @@ public struct basicQuest
 
     public GameObject[] questObjective;
 
-    public bool isKilling;
+    public QuestTypeEnum QuestType;
 
     public bool isCompleted;
 

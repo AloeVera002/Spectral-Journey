@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class AttackManager : MonoBehaviour
 {
+    [SerializeField] QuestManager qMan;
+
     public int hp;
     public int damage;
     public string tag;
@@ -11,61 +13,82 @@ public class AttackManager : MonoBehaviour
 
     [SerializeField] bool isHeadShot = false;
 
+    public delegate void DeathEvent(string tag);
+    public event DeathEvent OnDeath;
+
+    public delegate void HitEvent();
+    public event HitEvent OnHit;
+
     void Start()
     {
         if (hp > 0) { hitPoints = hp; }
         if (damage > 0) { incomingDamage = damage; }
+
+        qMan = GameObject.Find("PlayerV2").GetComponent<QuestManager>();
+
+        OnDeath += DeathEventHandler;
+        OnHit += HitHandler;
     }
 
-    void OnCollisionEnter(Collision other){
+    void OnCollisionEnter(Collision other)
+    {
+        OnHit?.Invoke();
+    }
 
+    void HitHandler()
+    {
+        damage = CheckIfHeadShot();
+        Debug.Log("Hit: " + tag);
+        hitPoints -= incomingDamage;
+        if (hitPoints <= 0)
+        {
+            Destroy(gameObject);
+            if (GameObject.Find("PlayerV2").GetComponent<QuestManager>().currentQuest.QuestType == QuestTypeEnum.Kill)
+            {
+                    OnDeath?.Invoke(tag);
+            }
+            Debug.Log(tag + " wittewally ded");
+        }
+    }
+
+    int CheckIfHeadShot()
+    {
         if (!isHeadShot)
         {
             if (damage > 0)
             {
-                incomingDamage = damage;
+                 return incomingDamage = damage;
             }
             else
             {
-                incomingDamage = 20;        
+                 return incomingDamage = 20;
             }
         }
         else
-        {/*
-            if (other.gameObject.CompareTag("Pebble"))
-            {
-                Debug.Log("Zombie got hit with a fucking headshot swag gangster!:)");
-                zombieHelth -= pebbleDamage * 2;
-                if (zombieHelth <= 0)
-                {
-                    Destroy(gameObject);
-                    Debug.Log("Zobie wittewally ded");
-                }
-            }*/
+        {
             if (damage > 0)
             {
-                incomingDamage = damage * 2;
+                return incomingDamage = damage * 2;
             }
             else
             {
-                incomingDamage = 20 * 2;
-            }
-        }
-        if (other.gameObject.CompareTag(tag))
-        {
-            Debug.Log("Zombie is hit");
-            hitPoints -= incomingDamage;
-            if (hitPoints <= 0)
-            {
-                Destroy(gameObject);
-                if (GameObject.Find("PlayerV2").GetComponent<QuestManager>().currentQuest.isKilling)
-                {
-                    GameObject.Find("PlayerV2").GetComponent<QuestManager>().CompleteQuest();
-                }
-                Debug.Log("Zobie wittewally ded");
+                return incomingDamage = 20 * 2;
             }
         }
     }
     
-       
+    void DeathEventHandler(string tag)
+    {
+        if (tag == "Zombie")
+        {
+            if (qMan != null)
+            {
+                qMan.CallQuestObjectiveEvent();
+            }
+        }
+        else if (tag == "Player")
+        {
+            Debug.Log("haha you died");
+        }
+    }
 }
