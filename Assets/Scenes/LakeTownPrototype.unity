@@ -2885,9 +2885,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1901442683706447895, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
+      propertyPath: questToGive
+      value: 
+      objectReference: {fileID: 11400000, guid: ff1d493a24b2744249915871c4ae5b5e, type: 2}
+    - target: {fileID: 1901442683706447895, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
+      propertyPath: isQuestGiver
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901442683706447895, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
       propertyPath: Dialogue.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1901442683706447895, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
+      propertyPath: dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901442683706447895, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
+      propertyPath: 'dialogues.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ad2da942a34ec4678ad0430953d102a8, type: 2}
     - target: {fileID: 7817849245407562025, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
       propertyPath: m_Name
       value: Ghost
@@ -5866,13 +5882,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 87e3a388a88d1bf4c94c8a76297025e5, type: 2}
     - target: {fileID: 1901442683706447895, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
+      propertyPath: isQuestGiver
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901442683706447895, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
       propertyPath: Dialogue.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901442683706447895, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
+      propertyPath: dialogues.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1901442683706447895, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
       propertyPath: 'Dialogue.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: decbc1e47cde0db4eb73a27d77bcdace, type: 2}
+    - target: {fileID: 1901442683706447895, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
+      propertyPath: 'dialogues.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: decbc1e47cde0db4eb73a27d77bcdace, type: 2}
+    - target: {fileID: 1901442683706447895, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
+      propertyPath: 'dialogues.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e2a309c6d214e20499c71622bd95a113, type: 2}
     - target: {fileID: 1901442683706447895, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
       propertyPath: friendshipData.friendName
       value: Dara
