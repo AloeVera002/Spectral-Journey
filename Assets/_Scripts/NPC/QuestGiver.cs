@@ -4,8 +4,10 @@ using UnityEngine;
 public class QuestGiver : MonoBehaviour
 {
     [SerializeField] public QuestScriptableObj questToGive;
-    [SerializeField] so_Dialogue[] Dialogue;
+    [SerializeField] so_Dialogue[] dialogues;
     [SerializeField] bool isQuestGiver;
+    bool hasQuestToGive = false;
+    [SerializeField] GameObject npcMark;
     [SerializeField] public FriendshipData friendshipData;
 
     [SerializeField] public int dialogueIndex;
@@ -13,12 +15,16 @@ public class QuestGiver : MonoBehaviour
 
     void Start()
     {
-        
+        if (isQuestGiver) { hasQuestToGive = true; ToggleNPCMark(); }
     }
 
     void Update()
     {
-        
+        if (dialogueIndex > dialogues.Length)
+        {
+            hasQuestToGive = false;
+            ToggleNPCMark();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,5 +60,10 @@ public class QuestGiver : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+    }
+
+    public void ToggleNPCMark()
+    {
+        npcMark.SetActive(hasQuestToGive);
     }
 }
