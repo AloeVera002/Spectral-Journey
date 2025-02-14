@@ -91,7 +91,7 @@ public class pPlayerComponent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Water") || other.gameObject.CompareTag("Zombie"))
+        if (other.gameObject.CompareTag("Water") || other.gameObject.CompareTag("Zombie") || other.gameObject.CompareTag("FallOffWorld"))
         {
             WaterDeath();
         }
