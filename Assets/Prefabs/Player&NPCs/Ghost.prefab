@@ -364,11 +364,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30cccaadadfa53419209140282207e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questToGive: {fileID: 11400000, guid: ff1d493a24b2744249915871c4ae5b5e, type: 2}
-  Dialogue:
-  - {fileID: 11400000, guid: ad2da942a34ec4678ad0430953d102a8, type: 2}
-  - {fileID: 11400000, guid: 463d28ac21db9481ea1b35a084af4a96, type: 2}
-  isQuestGiver: 1
+  questToGive: {fileID: 0}
+  dialogues: []
+  isQuestGiver: 0
+  npcMark: {fileID: 4774201893800034546}
   friendshipData:
     friendName: Gerald
     friendshipValue: 0
@@ -432,6 +431,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f78be3cd92fa9a49a6dc65294f7650c, type: 3}
+--- !u!1 &4774201893800034546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9162112779597563522, guid: 4f78be3cd92fa9a49a6dc65294f7650c, type: 3}
+  m_PrefabInstance: {fileID: 4424507720561329776}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5772326819394051953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7889302679405025537, guid: 4f78be3cd92fa9a49a6dc65294f7650c, type: 3}

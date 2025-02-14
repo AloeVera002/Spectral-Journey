@@ -55,7 +55,6 @@ public class FriendshipManager : MonoBehaviour
 
             TMP_Text nameText = newFriendshipField.GetComponentInChildren<TMP_Text>();
             Slider friendshipSlider = newFriendshipField.GetComponentInChildren<Slider>();
-            newFriendshipField.transform.Find("Background").GetComponent<Image>().sprite = friendMeterImages[0];
 
             // Adjust the position of the new UI element
             RectTransform rectTransform = newFriendshipField.GetComponent<RectTransform>();
