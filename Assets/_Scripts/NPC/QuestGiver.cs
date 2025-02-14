@@ -37,7 +37,7 @@ public class QuestGiver : MonoBehaviour
                 {
                     if (!hasQuest)
                     {
-                        other.gameObject.GetComponent<DialogueManager>().SetDialogueRef(Dialogue[dialogueIndex]);
+                        other.gameObject.GetComponent<DialogueManager>().SetDialogueRef(dialogues[dialogueIndex]);
                         other.gameObject.GetComponent<DialogueManager>().oppositeTalker = this.gameObject;
                     }
                     else
