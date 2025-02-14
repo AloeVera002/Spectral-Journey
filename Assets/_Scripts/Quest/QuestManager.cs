@@ -82,6 +82,7 @@ public class QuestManager : MonoBehaviour
 
     public void CompleteQuest()
     {
+        Debug.Log(currentQuest.questName);
         currentQuest.isCompleted = true;
         GetComponent<pPlayerComponent>().soundAudioSource.PlayOneShot(completeObjectiveSound);
         GetComponent<DialogueManager>().SetDialogueRef(currentQuest.CompletedQuestDialogue);
@@ -93,6 +94,7 @@ public class QuestManager : MonoBehaviour
     void UpdateQuestObjective()
     {
         Debug.Log("Updated QuestObjective");
+        Debug.Log(currentQuest.questName);
         
         UpdateQuestDetails();
 

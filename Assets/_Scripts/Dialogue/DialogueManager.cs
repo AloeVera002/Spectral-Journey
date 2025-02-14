@@ -73,23 +73,11 @@ public class DialogueManager : MonoBehaviour
         lineIndex = 0;
         dialogueField.SetActive(true);
 
-        if (GetComponent<QuestManager>().questRef != null)
-        {
-            GetComponent<QuestManager>().ShowHideQuestUI();
-        }
-
-        /*
-        if (!isCameraswitched)
-        {
-            //GetComponent<pPlayerComponent>().SwitchCamera();
-        }*/
-
         GetComponent<pPlayerComponent>().ToggleDialogueCamera();
 
         GetComponent<pPlayerComponent>().isInConversation = true;
 
         UpdateTextInput(lineArray[lineIndex].Name, lineArray[lineIndex].text);
-        //       UpdateText(lineArray[lineIndex].Name);
 
         /*
         StartCoroutine(TypeLine());

@@ -36,7 +36,10 @@ public class QuestGiver : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Already Has Dialogue");
+                        other.gameObject.GetComponent<QuestManager>().ShowHideQuestUI();
+                        other.gameObject.GetComponent<pPlayerComponent>().ectoplasm += other.gameObject.GetComponent<QuestManager>().currentQuest.ectoplasmReward;
+                        other.gameObject.GetComponent<FriendshipManager>().friendships[0].IncreaseFriendValue(other.gameObject.GetComponent<QuestManager>().currentQuest.friendshipIncreaseValue);
+                        other.gameObject.GetComponent<FriendshipManager>().UpdateFriendMeterExternalCall(0);
                     }
 
                     other.gameObject.GetComponent<pPlayerComponent>().isInteracting = true;
