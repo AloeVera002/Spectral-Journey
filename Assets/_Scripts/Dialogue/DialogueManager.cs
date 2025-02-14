@@ -73,10 +73,11 @@ public class DialogueManager : MonoBehaviour
         lineIndex = 0;
         dialogueField.SetActive(true);
 
-    /*    if (!questMan.currentQuest)
+        if (GetComponent<QuestManager>().questRef != null)
         {
+            GetComponent<QuestManager>().ShowHideQuestUI();
+        }
 
-        }*/
         /*
         if (!isCameraswitched)
         {
