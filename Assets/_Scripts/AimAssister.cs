@@ -13,7 +13,10 @@ public class AimAssister : MonoBehaviour
 
     void Update()
     {
-        assister.transform.LookAt(target.transform);
+        if (target)
+        {
+            assister.transform.LookAt(target.transform);
+        }
     }
 
     void OnTriggerEnter(Collider other)

@@ -127,7 +127,7 @@ public class QuestManager : MonoBehaviour
         Debug.Log("Set quest data");
 
         //   questDetailsText.text = currentQuest.questDetails;
-
+        questObjectives = new GameObject[0];
         questObjectives = currentQuest.questObjective;
         UpdateQuestDetails();
     }

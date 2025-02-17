@@ -35,7 +35,7 @@ public class AttackManager : MonoBehaviour
         OnHit?.Invoke();
         if (other.gameObject.CompareTag(tag))
         {
-            Instantiate(GetComponent<pPlayerComponent>().pebbleGround, other.gameObject.transform.position, Quaternion.identity);
+        //    Instantiate(GetComponent<pPlayerComponent>().pebbleGround, other.gameObject.transform.position, Quaternion.identity);
             Destroy(other.gameObject);
         }
     }
