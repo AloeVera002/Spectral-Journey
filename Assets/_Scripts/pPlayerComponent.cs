@@ -126,8 +126,15 @@ public class pPlayerComponent : MonoBehaviour
         gameObject.GetComponentInChildren<AimAssister>().ResetAimTarget();
         this.gameObject.SetActive(true);
 
-        if (!(ectoplasm < 0)) {
-            ectoplasm--; }
+        if (ectoplasm > 0)
+        {
+            ectoplasm -= 10;
+        }
+        else
+        {
+            ectoplasm = 0;
+        }
+        UpdateText(ectroplasmText, ectoplasm.ToString());
     }
 
     IEnumerator ToggleMaxPebbleText()
