@@ -22,6 +22,7 @@ public class pPlayerComponent : MonoBehaviour
     [SerializeField] Vector3 dialogueRotation;
 
     [SerializeField] public AudioSource soundAudioSource;
+    public float audioPitch;
 
     public bool canCollectPebble = true;
     public bool canNotCollectPebble = false;
@@ -98,6 +99,7 @@ public class pPlayerComponent : MonoBehaviour
             if (pebbleCount < maxPebbles)
             {
                 Destroy(other.gameObject);
+                soundAudioSource.pitch = .3f;
                 soundAudioSource.PlayOneShot(GetComponent<QuestManager>().pickupSound);
                 IncreasePebbleCount(1);
                 UpdatePebbleText();
@@ -112,6 +114,11 @@ public class pPlayerComponent : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        soundAudioSource.pitch = 1f;
+    }
+
     void WaterDeath()
     {
         Debug.Log("Teleportation commenced");
@@ -119,6 +126,15 @@ public class pPlayerComponent : MonoBehaviour
         this.gameObject.transform.position = checkPoint.position;
         gameObject.GetComponentInChildren<AimAssister>().ResetAimTarget();
         this.gameObject.SetActive(true);
+
+        if (!(ectoplasm <= 0))
+        {
+            ectoplasm -= 10;
+        }
+        else
+        {
+            ectoplasm = 0;
+        }
     }
 
     IEnumerator ToggleMaxPebbleText()
