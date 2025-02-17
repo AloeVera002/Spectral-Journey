@@ -16,6 +16,7 @@ public class QuestGiver : MonoBehaviour
     void Start()
     {
         if (isQuestGiver) { hasQuestToGive = true; ToggleNPCMark(); }
+        else { hasQuestToGive = false; ToggleNPCMark(); }
     }
 
     void Update()

@@ -69,7 +69,7 @@ public class pPlayerComponent : MonoBehaviour
         }
         else
         {
-            pCamera.GetComponent<CameraController>().offset = new Vector3(0, 6, -10);
+            pCamera.GetComponent<CameraController>().offset = normalCamera;
             StartCoroutine(RotateCamera(new Vector3(40, 0, 0)));
         }
         isInConversation = !isInConversation;
