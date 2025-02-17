@@ -99,7 +99,7 @@ public class pPlayerComponent : MonoBehaviour
             if (pebbleCount < maxPebbles)
             {
                 Destroy(other.gameObject);
-                soundAudioSource.pitch = audioPitch;
+                soundAudioSource.pitch = Random.Range(audioPitch -0.05f, audioPitch + 0.05f);
                 soundAudioSource.PlayOneShot(GetComponent<QuestManager>().pickupSound);
                 IncreasePebbleCount(1);
                 UpdatePebbleText();
@@ -129,7 +129,7 @@ public class pPlayerComponent : MonoBehaviour
         if (ectoplasm > 0)
         {
             ectoplasm -= 10;
-            if (ectoplasm > 0)
+            if (ectoplasm < 0)
             {
                 ectoplasm = 0;
             }
