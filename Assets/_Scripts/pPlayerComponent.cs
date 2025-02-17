@@ -111,12 +111,8 @@ public class pPlayerComponent : MonoBehaviour
                 maxPebblesScreen.SetActive(true);
                 StartCoroutine(ToggleMaxPebbleText());
             }
+            soundAudioSource.pitch = 1f;
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        soundAudioSource.pitch = 1f;
     }
 
     void WaterDeath()
