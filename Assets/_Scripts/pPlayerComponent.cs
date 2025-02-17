@@ -129,6 +129,10 @@ public class pPlayerComponent : MonoBehaviour
         if (ectoplasm > 0)
         {
             ectoplasm -= 10;
+            if (ectoplasm > 0)
+            {
+                ectoplasm = 0;
+            }
         }
         else
         {
