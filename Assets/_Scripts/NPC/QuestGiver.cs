@@ -38,6 +38,7 @@ public class QuestGiver : MonoBehaviour
                     DialogueManager diaManager = other.gameObject.GetComponent<DialogueManager>();
                     QuestManager queManager = other.gameObject.GetComponent<QuestManager>();
                     FriendshipManager freManager = other.gameObject.GetComponent<FriendshipManager>();
+                    Debug.Log(this.gameObject.name + " interacted with player " + queManager.currentQuest.isCompleted);
 
                     if (!hasQuest)
                     {
@@ -47,34 +48,37 @@ public class QuestGiver : MonoBehaviour
                     else
                     {
                         queManager.ShowHideQuestUI();
-                        other.gameObject.GetComponent<pPlayerComponent>().ectoplasm += other.gameObject.GetComponent<QuestManager>().currentQuest.ectoplasmReward;
-                        other.gameObject.GetComponent<pPlayerComponent>().UpdateText(other.gameObject.GetComponent<pPlayerComponent>().ectroplasmText, other.gameObject.GetComponent<pPlayerComponent>().ectoplasm.ToString());
-
-                        FriendshipData targetFriendshipData = this.friendshipData;
-
-                        // Find the index of the targetFriendshipData in the friendships array
-                        int friendIndex = -1;
-                        for (int i = 0; i < freManager.friendships.Length; i++)
+                        if (queManager.currentQuest.isCompleted)
                         {
-                            if (freManager.friendships[i].friendName == targetFriendshipData.friendName)
+                            other.gameObject.GetComponent<pPlayerComponent>().ectoplasm += other.gameObject.GetComponent<QuestManager>().currentQuest.ectoplasmReward;
+                            other.gameObject.GetComponent<pPlayerComponent>().UpdateText(other.gameObject.GetComponent<pPlayerComponent>().ectroplasmText, other.gameObject.GetComponent<pPlayerComponent>().ectoplasm.ToString());
+
+                            FriendshipData targetFriendshipData = this.friendshipData;
+
+                            // Find the index of the targetFriendshipData in the friendships array
+                            int friendIndex = -1;
+                            for (int i = 0; i < freManager.friendships.Length; i++)
                             {
-                                friendIndex = i;
-                                break;
+                                if (freManager.friendships[i].friendName == targetFriendshipData.friendName)
+                                {
+                                    friendIndex = i;
+                                    break;
+                                }
                             }
-                        }
 
-                        // If a matching FriendshipData was found, update it
-                        if (friendIndex != -1)
-                        {
-                            // Increase the friendship value
-                            freManager.friendships[friendIndex].IncreaseFriendValue(queManager.currentQuest.friendshipIncreaseValue);
+                            // If a matching FriendshipData was found, update it
+                            if (friendIndex != -1)
+                            {
+                                // Increase the friendship value
+                                freManager.friendships[friendIndex].IncreaseFriendValue(queManager.currentQuest.friendshipIncreaseValue);
 
-                            // Update the corresponding Friendship meter (slider)
-                            freManager.UpdateFriendMeterExternalCall(friendIndex);
-                        }
-                        else
-                        {
-                            Debug.LogError("Friendship data not found for: " + targetFriendshipData.friendName);
+                                // Update the corresponding Friendship meter (slider)
+                                freManager.UpdateFriendMeterExternalCall(friendIndex);
+                            }
+                            else
+                            {
+                                Debug.LogError("Friendship data not found for: " + targetFriendshipData.friendName);
+                            }
                         }
                         /*
                         freManager.friendships[0].IncreaseFriendValue(other.gameObject.GetComponent<QuestManager>().currentQuest.friendshipIncreaseValue);

@@ -10,7 +10,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] GameObject[] questObjectives;
     [SerializeField] TMP_Text questDetailsText;
     [SerializeField] bool hasCompletedObjective;
-    int qObjectiveIndex = 0;
+    [SerializeField] int qObjectiveIndex = 0;
 
     [SerializeField] public AudioClip pickupSound;
     [SerializeField] public AudioClip completeObjectiveSound;
@@ -100,10 +100,12 @@ public class QuestManager : MonoBehaviour
 
         if (qObjectiveIndex < currentQuest.questObjective.Length)
         {
+            Debug.Log("updated Quest tihi " + currentQuest.questObjective.Length + " " + qObjectiveIndex);
             qObjectiveIndex++;
             UpdateQuestDetails();
             if (qObjectiveIndex == currentQuest.questObjective.Length)
             {
+                Debug.Log("man quest index is finished " + currentQuest.questObjective.Length + " " + qObjectiveIndex);
                 Debug.Log("completed quest!");
                 CallQuestOCompleteEvent();
             }
@@ -126,7 +128,6 @@ public class QuestManager : MonoBehaviour
     {
         Debug.Log("Set quest data");
 
-        //   questDetailsText.text = currentQuest.questDetails;
         questObjectives = new GameObject[0];
         questObjectives = currentQuest.questObjective;
         UpdateQuestDetails();

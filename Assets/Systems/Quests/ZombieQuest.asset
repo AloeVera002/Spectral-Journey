@@ -15,13 +15,13 @@ MonoBehaviour:
   quest:
     questName: ZombieQuest
     questId: 1632
-    questDetails: Kill the zombie menece
+    questDetails: Kill the zombie menace {i} / {o}
     pickupTag: Zombie
     questObjective:
     - {fileID: 0}
     QuestType: 2
-    isCompleted: 1
+    isCompleted: 0
     questProgress: 0
-    friendshipIncreaseValue: 34
-    ectoplasmReward: 100
+    friendshipIncreaseValue: 25
+    ectoplasmReward: 60
     CompletedQuestDialogue: {fileID: 11400000, guid: e4b197c1e9efdab4b96be75b07915ebc, type: 2}
