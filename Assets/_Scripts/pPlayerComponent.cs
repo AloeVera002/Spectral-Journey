@@ -22,7 +22,7 @@ public class pPlayerComponent : MonoBehaviour
     [SerializeField] Vector3 dialogueRotation;
 
     [SerializeField] public AudioSource soundAudioSource;
-    public float audioPitch;
+    public float audioPitch = .3f; // easter egg horrible
 
     public bool canCollectPebble = true;
     public bool canNotCollectPebble = false;
@@ -99,7 +99,7 @@ public class pPlayerComponent : MonoBehaviour
             if (pebbleCount < maxPebbles)
             {
                 Destroy(other.gameObject);
-                soundAudioSource.pitch = .3f;
+                soundAudioSource.pitch = audioPitch;
                 soundAudioSource.PlayOneShot(GetComponent<QuestManager>().pickupSound);
                 IncreasePebbleCount(1);
                 UpdatePebbleText();
