@@ -27,5 +27,5 @@ MonoBehaviour:
     isCompleted: 0
     questProgress: 0
     friendshipIncreaseValue: 33
-    ectoplasmReward: 23
+    ectoplasmReward: 25
     CompletedQuestDialogue: {fileID: 11400000, guid: 4d256a124065edc42abf80832c7b4361, type: 2}
