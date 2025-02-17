@@ -35,7 +35,7 @@ public class AttackManager : MonoBehaviour
         OnHit?.Invoke();
         if (other.gameObject.CompareTag(tag))
         {
-        //    Instantiate(GetComponent<pPlayerComponent>().pebbleGround, other.gameObject.transform.position, Quaternion.identity);
+            //    Instantiate(GetComponent<pPlayerComponent>().pebbleGround, other.gameObject.transform.position, Quaternion.identity);
             Destroy(other.gameObject);
         }
     }
@@ -50,7 +50,7 @@ public class AttackManager : MonoBehaviour
             Destroy(gameObject);
             if (GameObject.Find("PlayerV2").GetComponent<QuestManager>().currentQuest.QuestType == QuestTypeEnum.Kill)
             {
-                    OnDeath?.Invoke(this.gameObject.tag);
+                OnDeath?.Invoke(this.gameObject.tag);
             }
             Debug.Log(this.gameObject.tag + " wittewally ded");
         }
@@ -62,11 +62,11 @@ public class AttackManager : MonoBehaviour
         {
             if (damage > 0)
             {
-                 incomingDamage = damage;
+                incomingDamage = damage;
             }
             else
             {
-                 incomingDamage = 20;
+                incomingDamage = 20;
             }
         }
         else
@@ -81,19 +81,29 @@ public class AttackManager : MonoBehaviour
             }
         }
     }
-    
+
     void DeathEventHandler(string tag)
     {
-        if (tag == "Zombie")
+        switch (tag)
         {
-            if (qMan != null)
-            {
-                qMan.CallQuestObjectiveEvent();
-            }
-        }
-        else if (tag == "Player")
-        {
-            Debug.Log("haha you died");
+            case "Zombie":
+                {
+                    if (this.gameObject.name == "Enemy")
+                    {
+
+                        if (qMan != null)
+                        {
+                            qMan.CallQuestObjectiveEvent();
+                        }
+                    }
+                }
+                break;
+            case "Player":
+                Debug.Log("haha you died");
+                break;
+            default:
+                break;
         }
     }
 }
+

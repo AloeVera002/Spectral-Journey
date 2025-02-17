@@ -53,7 +53,6 @@ public class QuestGiver : MonoBehaviour
                         {
                             other.gameObject.GetComponent<pPlayerComponent>().ectoplasm += other.gameObject.GetComponent<QuestManager>().currentQuest.ectoplasmReward;
                             other.gameObject.GetComponent<pPlayerComponent>().UpdateText(other.gameObject.GetComponent<pPlayerComponent>().ectroplasmText, other.gameObject.GetComponent<pPlayerComponent>().ectoplasm.ToString());
-                            queManager.currentQuest = new basicQuest();
 
                             FriendshipData targetFriendshipData = this.friendshipData;
 
@@ -81,6 +80,8 @@ public class QuestGiver : MonoBehaviour
                             {
                                 Debug.LogError("Friendship data not found for: " + targetFriendshipData.friendName);
                             }
+
+                            queManager.currentQuest = new basicQuest();
                         }
                         /*
                         freManager.friendships[0].IncreaseFriendValue(other.gameObject.GetComponent<QuestManager>().currentQuest.friendshipIncreaseValue);
