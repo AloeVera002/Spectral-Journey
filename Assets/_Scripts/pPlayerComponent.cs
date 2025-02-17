@@ -96,10 +96,10 @@ public class pPlayerComponent : MonoBehaviour
         }
         if (other.gameObject.CompareTag("GroundPebble"))
         {
-            soundAudioSource.pitch = audioPitch;
             if (pebbleCount < maxPebbles)
             {
                 Destroy(other.gameObject);
+                soundAudioSource.pitch = audioPitch;
                 soundAudioSource.PlayOneShot(GetComponent<QuestManager>().pickupSound);
                 IncreasePebbleCount(1);
                 UpdatePebbleText();
@@ -126,14 +126,8 @@ public class pPlayerComponent : MonoBehaviour
         gameObject.GetComponentInChildren<AimAssister>().ResetAimTarget();
         this.gameObject.SetActive(true);
 
-        if (ectoplasm > 0)
-        {
-            ectoplasm -= 10;
-        }
-        else
-        {
-            ectoplasm = 0;
-        }
+        if (!(ectoplasm < 0)) {
+            ectoplasm--; }
     }
 
     IEnumerator ToggleMaxPebbleText()

@@ -120,6 +120,7 @@ public class QuestManager : MonoBehaviour
     public void StartQuest()
     {
         currentQuest = questRef.quest;
+        qObjectiveIndex = 0;
         SetQuestData();
         ShowHideQuestUI();
     }
