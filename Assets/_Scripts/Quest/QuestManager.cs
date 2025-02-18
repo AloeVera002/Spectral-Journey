@@ -129,10 +129,10 @@ public class QuestManager : MonoBehaviour
         if (currentQuest.QuestType == QuestTypeEnum.Pickup)
         {
             parentPickuoStuff.SetActive(true);
-        /*    foreach (Transform child in parentPickuoStuff.transform)
+            foreach (Transform child in parentPickuoStuff.transform)
             {
                 child.gameObject.SetActive(true);
-            }*/
+            }
         }
         else
         {

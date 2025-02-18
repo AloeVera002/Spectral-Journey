@@ -40,16 +40,16 @@ public class QuestGiver : MonoBehaviour
                     QuestManager queManager = other.gameObject.GetComponent<QuestManager>();
                     FriendshipManager freManager = other.gameObject.GetComponent<FriendshipManager>();
                     Debug.Log(this.gameObject.name + " interacted with player " + queManager.currentQuest.isCompleted);
+                    other.gameObject.GetComponent<pPlayerComponent>().canInteract = true;
 
                     if (!hasQuest)
                     {
                         diaManager.SetDialogueRef(dialogues[dialogueIndex]);
-                        diaManager.oppositeTalker = this.gameObject;
                     }
                     else
                     {
                         queManager.ShowHideQuestUI();
-                        if (queManager.currentQuest.isCompleted)
+                        if (queManager.currentQuest.isCompleted && queManager.questRef == this.questToGive)
                         {
                             other.gameObject.GetComponent<pPlayerComponent>().ectoplasm += other.gameObject.GetComponent<QuestManager>().currentQuest.ectoplasmReward;
                             other.gameObject.GetComponent<pPlayerComponent>().UpdateText(other.gameObject.GetComponent<pPlayerComponent>().ectroplasmText, other.gameObject.GetComponent<pPlayerComponent>().ectoplasm.ToString());
@@ -88,8 +88,9 @@ public class QuestGiver : MonoBehaviour
                         freManager.UpdateFriendMeterExternalCall(0);*/
                     }
 
+                    diaManager.oppositeTalker = this.gameObject;
                     other.gameObject.GetComponent<pPlayerComponent>().isInteracting = true;
-                    diaManager.StartNewDialogue();
+                //    diaManager.StartNewDialogue();
 
                     queManager.questRef = questToGive;
                 }
@@ -99,6 +100,10 @@ public class QuestGiver : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.gameObject.name == "PlayerV2")
+        {
+            other.gameObject.GetComponent<pPlayerComponent>().canInteract = true;
+        }
     }
 
     public void ToggleNPCMark()

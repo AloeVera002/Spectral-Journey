@@ -34,10 +34,12 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.H))
+        if (Input.GetKeyUp(KeyCode.E))
         {
+            if (!GetComponent<pPlayerComponent>().canInteract) return;
             if (GetComponent<pPlayerComponent>().isInConversation) return;
-            StartDialogue();
+
+            StartNewDialogue();
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -45,17 +47,20 @@ public class DialogueManager : MonoBehaviour
 
             if (lineArray[lineIndex].isQuestion)
             {
-                ShowModal();
+                if (modalButtons.active == false)
+                {
+                    ShowModal();
+                }
+                else
+                {
+                    AcceptQuestion();
+                }
             }
             else
             {
                 if (lineArray[lineIndex].giveQuest)
                 {
                     AcceptQuest();
-                }
-                else if (lineArray[lineIndex].isQuestion)
-                {
-                    AcceptQuestion();
                 }
                 else
                 {
@@ -178,7 +183,7 @@ public class DialogueManager : MonoBehaviour
 
     public void RejectQuestion()
     {
-        if (!lineArray[lineArray.Length -1].RejectedDialogue)
+        if (!lineArray[lineArray.Length].RejectedDialogue)
         {
             QuitDialogue();
             return;

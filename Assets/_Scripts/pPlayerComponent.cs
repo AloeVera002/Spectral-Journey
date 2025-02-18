@@ -11,6 +11,7 @@ public class pPlayerComponent : MonoBehaviour
     [SerializeField] List<GameObject> listTest = new List<GameObject>();
 
     [SerializeField] public bool isInteracting = false;
+    [SerializeField] public bool canInteract = false;
     [SerializeField] public bool isInConversation = false;
     [SerializeField] private Transform checkPoint;
 
