@@ -139,7 +139,7 @@ public class pPlayerControlls : MonoBehaviour
                     FireSlingShot();
                     canFire = false;
                 }
-                playerData.UpdatePebbleText();
+            //    playerData.UpdatePebbleText();
             }
             chargeTime = 0;
         }

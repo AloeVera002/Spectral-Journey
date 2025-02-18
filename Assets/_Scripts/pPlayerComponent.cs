@@ -56,6 +56,7 @@ public class pPlayerComponent : MonoBehaviour
         UpdateText(ectroplasmText, ectoplasm.ToString());
 
         InitializePebblesHUD(maxPebbles);
+        IncreasePebbleHUD();
     }
 
     void Update()
@@ -108,7 +109,7 @@ public class pPlayerComponent : MonoBehaviour
                 soundAudioSource.pitch = Random.Range(audioPitch -0.05f, audioPitch + 0.05f);
                 soundAudioSource.PlayOneShot(GetComponent<QuestManager>().pickupSound);
                 IncreasePebbleCount(1);
-                UpdatePebbleText();
+            //    UpdatePebbleText();
             }
             else
             {
@@ -178,11 +179,11 @@ public class pPlayerComponent : MonoBehaviour
             RectTransform rectTransform = pebbleUIElement.GetComponent<RectTransform>();
             rectTransform.anchoredPosition = new Vector2(i * 100, 0);
         }
-        IncreasePebbleHUD();
     }
 
     void DecreasePebbleHUD()
     {
+        Debug.Log("decreased pebble ui");
         for (int i = pebbleHUDField.transform.childCount - 1; i >= 0; i--)
         {
             GameObject pebbleElement = pebbleHUDField.transform.GetChild(i).gameObject;
@@ -196,6 +197,7 @@ public class pPlayerComponent : MonoBehaviour
 
     void IncreasePebbleHUD()
     {
+        Debug.Log("increased pebble ui");
         for (int i = 0; i < pebbleHUDField.transform.childCount; i++)
         {
             GameObject pebbleElement = pebbleHUDField.transform.GetChild(i).gameObject;
