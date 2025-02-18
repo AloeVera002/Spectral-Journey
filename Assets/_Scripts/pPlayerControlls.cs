@@ -190,7 +190,8 @@ public class pPlayerControlls : MonoBehaviour
         GameObject newPebble = Instantiate(playerData.pebblePrefab, playerData.slingshotPivot.position, playerData.slingshotPivot.rotation);
         newPebble.AddComponent<Rigidbody>();
 
-        newPebble.GetComponent<Rigidbody>().AddForce(transform.forward * pebbleSpeed);
+        Vector3 aimRot = new Vector3(transform.forward.x, playerData.slingshotPivot.position.y, transform.forward.z);
+        newPebble.GetComponent<Rigidbody>().AddForce(aimRot * pebbleSpeed);
         newPebble.GetComponent<PebbleController>().aimPos = playerData.slingshotPivot.position;
         newPebble.tag = "Pebble";
 

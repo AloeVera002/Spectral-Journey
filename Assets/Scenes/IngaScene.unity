@@ -3681,6 +3681,10 @@ PrefabInstance:
       value: 650
       objectReference: {fileID: 0}
     - target: {fileID: 7710913797425181970, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: canShootIndicator
+      value: 
+      objectReference: {fileID: 745199880}
+    - target: {fileID: 7710913797425181970, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: pebblePlaceHolder
       value: 
       objectReference: {fileID: 787564442}
@@ -3688,6 +3692,14 @@ PrefabInstance:
       propertyPath: pCamera
       value: 
       objectReference: {fileID: 1667212689}
+    - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: audioPitch
+      value: 0.625
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: pebbleCount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: dialogueCamera.x
       value: 4
