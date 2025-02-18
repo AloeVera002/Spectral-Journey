@@ -54,6 +54,8 @@ public class pPlayerComponent : MonoBehaviour
         animator = GetComponent<Animator>();
         UpdateText(pebbleCountText, pebbleCount.ToString());
         UpdateText(ectroplasmText, ectoplasm.ToString());
+
+        InitializePebblesHUD(maxPebbles);
     }
 
     void Update()
@@ -63,20 +65,6 @@ public class pPlayerComponent : MonoBehaviour
             ectoplasm++;
             listTest.Remove(listTest[0]);
         }*/
-
-
-        if (Input.GetKeyUp(KeyCode.X))
-        {
-            DecreasePebbleHUD();
-        }
-        if (Input.GetKeyUp(KeyCode.C))
-        {
-            IncreasePebbleHUD();
-        }
-        if (Input.GetKeyUp(KeyCode.LeftAlt))
-        {
-            InitializePebblesHUD(maxPebbles);
-        }
     }
 
     public void ToggleDialogueCamera()
@@ -188,8 +176,9 @@ public class pPlayerComponent : MonoBehaviour
             GameObject pebbleUIElement = Instantiate(pebbleUIPrefab, pebbleHUDField.transform);
 
             RectTransform rectTransform = pebbleUIElement.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector2(i * 50, 0);
+            rectTransform.anchoredPosition = new Vector2(i * 100, 0);
         }
+        IncreasePebbleHUD();
     }
 
     void DecreasePebbleHUD()
@@ -231,11 +220,13 @@ public class pPlayerComponent : MonoBehaviour
     public void IncreasePebbleCount(int increaseAmount)
     {
         pebbleCount += increaseAmount;
+        IncreasePebbleHUD();
     }
 
     public void DecreasePebbleCount(int decreaseAmount)
     {
         pebbleCount -= decreaseAmount;
+        DecreasePebbleHUD();
     }
 
     public void UpdatePebbleText()
