@@ -11,8 +11,6 @@ public class pPlayerControlls : MonoBehaviour
     [SerializeField] float jumpHeight = 4f;
     float gravity = -9.81f;
 
-    [SerializeField] GameObject canShootIndicator;
-
     private pPlayerComponent playerData;
 
     [SerializeField] float pebbleSpeed = 1800f;
@@ -92,11 +90,6 @@ public class pPlayerControlls : MonoBehaviour
                     if (chargeTime >= .6)
                     {
                         Debug.Log("ReadyToFire");
-
-                        // can shoot ui
-                        canShootIndicator.SetActive(true);
-
-                        // pebble in slingshot
                         pebblePlaceHolder.SetActive(true);
                         canFire = true;
                         return;
@@ -195,7 +188,6 @@ public class pPlayerControlls : MonoBehaviour
         newPebble.tag = "Pebble";
 
         playerData.DecreasePebbleCount(1);
-        canShootIndicator.SetActive(false);
     }
 
     void ResetSlingshot()
