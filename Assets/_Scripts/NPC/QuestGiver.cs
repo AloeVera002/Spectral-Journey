@@ -110,7 +110,7 @@ public class QuestGiver : MonoBehaviour
     {
         if (other.gameObject.name == "PlayerV2")
         {
-            other.gameObject.GetComponent<pPlayerComponent>().canInteract = true;
+            other.gameObject.GetComponent<pPlayerComponent>().canInteract = false;
         }
     }
 

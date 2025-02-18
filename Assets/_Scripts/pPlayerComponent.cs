@@ -119,6 +119,11 @@ public class pPlayerComponent : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+   //     canInteract = false;
+    }
+
     void WaterDeath()
     {
         Debug.Log("Teleportation commenced");
