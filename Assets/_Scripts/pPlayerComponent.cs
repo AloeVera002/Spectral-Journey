@@ -51,12 +51,11 @@ public class pPlayerComponent : MonoBehaviour
 
     void Start()
     {
-        InitializePebblesHUD(maxPebbles);
-        IncreasePebbleHUD();
         animator = GetComponent<Animator>();
-        UpdateText(pebbleCountText, pebbleCount.ToString());
         UpdateText(ectroplasmText, ectoplasm.ToString());
 
+        InitializePebblesHUD(maxPebbles);
+        IncreasePebbleHUD();
     }
 
     void Update()
@@ -179,7 +178,7 @@ public class pPlayerComponent : MonoBehaviour
             GameObject pebbleUIElement = Instantiate(pebbleUIPrefab, pebbleHUDField.transform);
 
             RectTransform rectTransform = pebbleUIElement.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector2(i * 100, 0);
+            rectTransform.anchoredPosition = new Vector2(i * 75, 0);
         }
         Debug.Log("finished initializing pebble ui with max pebbles: " + count + " / " + maxPebbles + " amount initiated = " + pebbleHUDField.transform.childCount);
         Debug.Log(" after: pebble field = " + pebbleHUDField.gameObject.name + " pebbleui = " + pebbleUIPrefab.gameObject.name);
