@@ -51,12 +51,12 @@ public class pPlayerComponent : MonoBehaviour
 
     void Start()
     {
+        InitializePebblesHUD(maxPebbles);
+        IncreasePebbleHUD();
         animator = GetComponent<Animator>();
         UpdateText(pebbleCountText, pebbleCount.ToString());
         UpdateText(ectroplasmText, ectoplasm.ToString());
 
-        InitializePebblesHUD(maxPebbles);
-        IncreasePebbleHUD();
     }
 
     void Update()
