@@ -55,6 +55,30 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    public void ShowQuestHUD()
+    {
+        isToggled = true;
+        ShowHideQuestUINew();
+    }
+
+    public void HideQuestHUD()
+    {
+        isToggled = false;
+        ShowHideQuestUINew();
+    }
+
+    public void ShowHideQuestUINew()
+    {
+        if (!isToggled)
+        {
+            questField.SetActive(true);
+        }
+        else
+        {
+            questField.SetActive(false);
+        }
+    }
+
     public void ShowHideQuestUI()
     {
         Debug.Log(isToggled + "Called ShowHideQuest");
@@ -124,7 +148,8 @@ public class QuestManager : MonoBehaviour
         currentQuest = questRef.quest;
         qObjectiveIndex = 0;
         SetQuestData();
-        ShowHideQuestUI();
+        ShowQuestHUD();
+     //   ShowHideQuestUI();
 
         if (currentQuest.QuestType == QuestTypeEnum.Pickup)
         {
