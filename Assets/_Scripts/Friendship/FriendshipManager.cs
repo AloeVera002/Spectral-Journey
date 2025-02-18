@@ -41,7 +41,17 @@ public class FriendshipManager : MonoBehaviour
 
     void Start()
     {
-        QuestGiver[] newFriends = Object.FindObjectsByType<QuestGiver>(FindObjectsSortMode.None);;
+        InitiateFriendshipMeters();
+        //   UpdateFriendMeter();
+    }
+
+    void Update()
+    {
+    }
+
+    void InitiateFriendshipMeters()
+    {
+        QuestGiver[] newFriends = Object.FindObjectsByType<QuestGiver>(FindObjectsSortMode.None); ;
         friendships = new FriendshipData[newFriends.Length];
 
         for (int i = 0; i < newFriends.Length; i++)
@@ -68,13 +78,6 @@ public class FriendshipManager : MonoBehaviour
             // Set the slider's value based on the friendship value
             friendshipSlider.value = friendships[i].GetFriendValue();
         }
-
-     //   UpdateFriendMeter();
-    }
-
-    void Update()
-    {
-
     }
 
     void SetFriendMeterValue(int friend, int newValue)

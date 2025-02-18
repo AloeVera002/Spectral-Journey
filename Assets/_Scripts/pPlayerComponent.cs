@@ -22,6 +22,9 @@ public class pPlayerComponent : MonoBehaviour
     [SerializeField] Vector3 normalCamera;
     [SerializeField] Vector3 dialogueRotation;
 
+    [SerializeField] GameObject pebbleHUDField;
+    [SerializeField] GameObject pebbleUIPrefab;
+
     [SerializeField] public AudioSource soundAudioSource;
     public float audioPitch = .3f; // easter egg horrible
 
@@ -54,11 +57,25 @@ public class pPlayerComponent : MonoBehaviour
     }
 
     void Update()
-    {
+    {/*
         if (Input.GetKeyUp(KeyCode.R))
         {
             ectoplasm++;
             listTest.Remove(listTest[0]);
+        }*/
+
+
+        if (Input.GetKeyUp(KeyCode.X))
+        {
+            DecreasePebbleHUD();
+        }
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            IncreasePebbleHUD();
+        }
+        if (Input.GetKeyUp(KeyCode.LeftAlt))
+        {
+            InitializePebblesHUD(maxPebbles);
         }
     }
 
@@ -157,6 +174,48 @@ public class pPlayerComponent : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         noPebblesScreen.SetActive(false);
+    }
+
+    void InitializePebblesHUD(int count)
+    {
+        foreach (Transform child in pebbleHUDField.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        for (int i = 0; i < count; i++)
+        {
+            GameObject pebbleUIElement = Instantiate(pebbleUIPrefab, pebbleHUDField.transform);
+
+            RectTransform rectTransform = pebbleUIElement.GetComponent<RectTransform>();
+            rectTransform.anchoredPosition = new Vector2(i * 50, 0);
+        }
+    }
+
+    void DecreasePebbleHUD()
+    {
+        for (int i = pebbleHUDField.transform.childCount - 1; i >= 0; i--)
+        {
+            GameObject pebbleElement = pebbleHUDField.transform.GetChild(i).gameObject;
+
+            if (i >= pebbleCount)
+            {
+                pebbleElement.SetActive(false);
+            }
+        }
+    }
+
+    void IncreasePebbleHUD()
+    {
+        for (int i = 0; i < pebbleHUDField.transform.childCount; i++)
+        {
+            GameObject pebbleElement = pebbleHUDField.transform.GetChild(i).gameObject;
+
+            if (i < pebbleCount)
+            {
+                pebbleElement.SetActive(true);
+            }
+        }
     }
 
     public void ActivateNoPebbleText()

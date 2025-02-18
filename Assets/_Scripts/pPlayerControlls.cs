@@ -197,6 +197,7 @@ public class pPlayerControlls : MonoBehaviour
 
         playerData.DecreasePebbleCount(1);
         canShootIndicator.SetActive(false);
+        chargeTime = 0;
     }
 
     void ResetSlingshot()
