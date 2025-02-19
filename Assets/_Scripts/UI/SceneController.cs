@@ -12,7 +12,7 @@ public class SceneController : MonoBehaviour
 
     void Update() 
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("wmfweo");
             SceneManager.LoadScene("LakeTownPrototype");
