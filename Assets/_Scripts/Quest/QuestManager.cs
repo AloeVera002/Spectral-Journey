@@ -12,7 +12,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] bool hasCompletedObjective;
     [SerializeField] int qObjectiveIndex = 0;
 
-    [SerializeField] GameObject parentPickuoStuff;
+    [SerializeField] GameObject parentPickupStuff;
 
     [SerializeField] public AudioClip pickupSound;
     [SerializeField] public AudioClip completeObjectiveSound;
@@ -153,15 +153,15 @@ public class QuestManager : MonoBehaviour
 
         if (currentQuest.QuestType == QuestTypeEnum.Pickup)
         {
-            parentPickuoStuff.SetActive(true);
-            foreach (Transform child in parentPickuoStuff.transform)
+            parentPickupStuff.SetActive(true);
+            foreach (Transform child in parentPickupStuff.transform)
             {
                 child.gameObject.SetActive(true);
             }
         }
         else
         {
-            parentPickuoStuff.SetActive(false);
+            parentPickupStuff.SetActive(false);
         }
     }
 
