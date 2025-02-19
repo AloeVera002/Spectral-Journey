@@ -1,0 +1,29 @@
+using UnityEngine;
+using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
+public class SceneController : MonoBehaviour
+{
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    void Update() 
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("wmfweo");
+            SceneManager.LoadScene("LakeTownPrototype");
+        }
+       //LoadNewScene();
+    }
+
+
+    void LoadNewScene()
+    {
+
+    }
+
+}
