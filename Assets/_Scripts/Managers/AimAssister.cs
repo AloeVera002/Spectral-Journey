@@ -9,7 +9,7 @@ public class AimAssister : MonoBehaviour
     void Start()
     {
         assister = transform.parent.gameObject;
-        ResetAimTarget();
+        target.GetComponent<Outline>().enabled = false;
     }
 
     void Update()
@@ -25,6 +25,18 @@ public class AimAssister : MonoBehaviour
         if (other.gameObject.CompareTag("Zombie"))
         {
             target = other.gameObject;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        OutlineCheck();
+    }
+
+    void OutlineCheck()
+    {
+        if (target.GetComponent<Outline>().enabled)
+        {
             target.GetComponent<Outline>().enabled = true;
         }
     }
