@@ -39,10 +39,10 @@ public class AimAssister : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         OutlineCheck();
-    }*/
+    }
 
     void OutlineCheck()
-    {/*
+    {
         if (!targetOutline.enabled)
         {
             targetOutline.enabled = true;
@@ -50,19 +50,19 @@ public class AimAssister : MonoBehaviour
         else
         {
             targetOutline.enabled = false;
-        }*/
-    }/*
+        }
+    }*/
 
     private void OnTriggerExit(Collider other)
     {
         target.GetComponent<Outline>().enabled = false;
     }
-    /*
+    
     public void RemoveOutline()
     {
         target.GetComponent<Outline>().enabled = false;
     //    Invoke("ResetAimTarget", 0.1f);
-    }*/
+    }
 
     public void ResetAimTarget()
     {
