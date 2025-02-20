@@ -106,7 +106,7 @@ public class DialogueManager : MonoBehaviour
             npcSpeakerBubble.SetActive(true);
             playerSpeakerBubble.SetActive(false);
         }
-        else
+        else if (newSpeaker == "Player")
         {
             speaker = playerSpeakerBubble.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<TMP_Text>();
             playerSpeakerBubble.SetActive(true);
