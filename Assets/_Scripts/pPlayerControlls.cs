@@ -188,7 +188,7 @@ public class pPlayerControlls : MonoBehaviour
     {
         pebblePlaceHolder.SetActive(false);
         GameObject newPebble = Instantiate(playerData.pebblePrefab, playerData.slingshotPivot.position, playerData.slingshotPivot.rotation);
-        newPebble.AddComponent<Rigidbody>();
+        newPebble.AddComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
 
         Vector3 aimRot = new Vector3(transform.forward.x, playerData.slingshotPivot.position.y, transform.forward.z);
         newPebble.GetComponent<Rigidbody>().AddForce(aimRot * pebbleSpeed);

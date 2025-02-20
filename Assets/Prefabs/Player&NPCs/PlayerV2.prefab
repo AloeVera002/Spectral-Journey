@@ -470,7 +470,7 @@ Transform:
   m_GameObject: {fileID: 3804550107280114624}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.216, y: 0, z: 0.462}
+  m_LocalPosition: {x: 0.21, y: 0, z: 0.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -780,13 +780,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listTest: []
   isInteracting: 0
+  canInteract: 0
   isInConversation: 0
   checkPoint: {fileID: 0}
   pCamera: {fileID: 8907353051972921665}
   dialogueCamera: {x: 4, y: 2, z: -1}
   normalCamera: {x: 0, y: 9, z: -12.5}
   dialogueRotation: {x: 28, y: -44, z: -2}
+  pebbleHUDField: {fileID: 0}
+  pebbleUIPrefab: {fileID: 0}
   soundAudioSource: {fileID: 8409872706168742890}
+  audioPitch: 0.3
   canCollectPebble: 1
   canNotCollectPebble: 0
   pebbleCount: 3
@@ -947,6 +951,7 @@ MonoBehaviour:
   movementSpeed: 5
   rotationSpeed: 250
   jumpHeight: 5
+  canShootIndicator: {fileID: 0}
   pebbleSpeed: 1800
   pebblePlaceHolder: {fileID: 2628998031486475400}
   chargeTime: 0
@@ -1003,6 +1008,7 @@ MonoBehaviour:
   questDetailsText: {fileID: 0}
   hasCompletedObjective: 0
   qObjectiveIndex: 0
+  parentPickupStuff: {fileID: 0}
   pickupSound: {fileID: 8300000, guid: c5bb92b2af2758c4ca0f1d011eb752f2, type: 3}
   completeObjectiveSound: {fileID: 8300000, guid: 95c13a58f6db4cd43b31e649578cb03d, type: 3}
   isToggled: 0
