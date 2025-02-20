@@ -5,10 +5,13 @@ public class AimAssister : MonoBehaviour
 {
     [SerializeField] GameObject target;
     private GameObject assister;
+    private Outline targetOutline;
 
     void Start()
     {
-        target.GetComponent<Outline>().enabled = false;
+        targetOutline = GetComponent<Outline>();
+        targetOutline.enabled = false;
+
         assister = transform.parent.gameObject;
     }
 
@@ -16,7 +19,12 @@ public class AimAssister : MonoBehaviour
     {
         if (target)
         {
-            assister.transform.LookAt(target.transform);
+            if (Vector3.Distance(assister.transform.position, target.transform.position) < .5)
+            {
+                Debug.Log(Vector3.Distance(assister.transform.position, target.transform.position));
+                assister.transform.LookAt(target.transform);
+                OutlineCheck();
+            }
         }
     }
 
@@ -35,9 +43,13 @@ public class AimAssister : MonoBehaviour
 
     void OutlineCheck()
     {
-        if (!target.GetComponent<Outline>().enabled)
+        if (!targetOutline.enabled)
         {
-            target.GetComponent<Outline>().enabled = true;
+            targetOutline.enabled = true;
+        }
+        else
+        {
+            targetOutline.enabled = false;
         }
     }
 
