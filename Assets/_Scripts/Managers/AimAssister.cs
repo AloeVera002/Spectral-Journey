@@ -19,12 +19,12 @@ public class AimAssister : MonoBehaviour
     {
         if (target)
         {
-            if (Vector3.Distance(assister.transform.position, target.transform.position) < .5)
-            {
+        //    if (Vector3.Distance(assister.transform.position, target.transform.position) < .5)
+        //    {
                 Debug.Log(Vector3.Distance(assister.transform.position, target.transform.position));
                 assister.transform.LookAt(target.transform);
-                OutlineCheck();
-            }
+        //        OutlineCheck();
+        //    }
         }
     }
 
@@ -34,7 +34,7 @@ public class AimAssister : MonoBehaviour
         {
             target = other.gameObject;
         }
-    }
+    }/*
 
     private void OnTriggerStay(Collider other)
     {
@@ -51,18 +51,18 @@ public class AimAssister : MonoBehaviour
         {
             targetOutline.enabled = false;
         }
-    }
+    }*/
 
     private void OnTriggerExit(Collider other)
     {
         target.GetComponent<Outline>().enabled = false;
     }
-
+    /*
     public void RemoveOutline()
     {
         target.GetComponent<Outline>().enabled = false;
     //    Invoke("ResetAimTarget", 0.1f);
-    }
+    }*/
 
     public void ResetAimTarget()
     {
