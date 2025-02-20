@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - Name: Gerald
-    text: Great! I think I saw it last time somewhere furhter to my right. Be careful.
+    text: Great!
+    isQuestion: 0
+    giveQuest: 0
+    AcceptedDialogue: {fileID: 0}
+    RejectedDialogue: {fileID: 0}
+  - Name: Gerald
+    text: I think I saw it last time somewhere furhter to my right. Be careful.
     isQuestion: 0
     giveQuest: 1
     AcceptedDialogue: {fileID: 0}
