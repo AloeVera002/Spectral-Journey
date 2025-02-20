@@ -18,6 +18,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        target = GameObject.Find("PlayerV2");
         this.transform.parent = null;
     }
 
