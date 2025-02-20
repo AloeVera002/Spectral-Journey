@@ -74,11 +74,13 @@ public class pPlayerComponent : MonoBehaviour
         if (!isInConversation)
         {
             pCamera.GetComponent<CameraController>().offset = dialogueCamera;
+            pCamera.GetComponent<CameraController>().target = GetComponent<DialogueManager>().oppositeTalker.gameObject;
             StartCoroutine(RotateCamera(dialogueRotation));
         }
         else
         {
             pCamera.GetComponent<CameraController>().offset = normalCamera;
+            pCamera.GetComponent<CameraController>().target = this.gameObject;
             StartCoroutine(RotateCamera(new Vector3(40, 0, 0)));
         }
         isInConversation = !isInConversation;

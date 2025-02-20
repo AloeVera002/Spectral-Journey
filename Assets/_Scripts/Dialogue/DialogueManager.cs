@@ -8,7 +8,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] GameObject dialogueField;
-    GameObject oppositeSpeakerBubble, playerSpeakerBubble;
+    GameObject npcSpeakerBubble, playerSpeakerBubble;
     [SerializeField] GameObject modalButtons;
     [SerializeField] so_Dialogue dialogueRef;
     [SerializeField] TMP_Text speaker, line;
@@ -17,7 +17,6 @@ public class DialogueManager : MonoBehaviour
 
     QuestManager questMan;
     
-
     [SerializeField] bool isQuestioned;
     bool isCameraswitched;
 
@@ -31,6 +30,8 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         GetInfo();
+        npcSpeakerBubble = dialogueField.transform.GetChild(0).transform.GetChild(0).gameObject;
+        playerSpeakerBubble = dialogueField.transform.GetChild(1).transform.GetChild(0).gameObject;
     }
 
     void Update()
@@ -96,11 +97,20 @@ public class DialogueManager : MonoBehaviour
 
     private void UpdateTextInput(string newSpeaker, string newText)
     {
-        speaker.text = newSpeaker;
-        if (speaker.text != "Player" || speaker.text != "{p}")
-        {
 
+        if (newSpeaker != "Player" || speaker.text != "{p}")
+        {
+            speaker = npcSpeakerBubble.transform.GetChild(0).gameObject.GetComponent<TMP_Text>();
+            npcSpeakerBubble.SetActive(true);
+            playerSpeakerBubble.SetActive(false);
         }
+        else
+        {
+            speaker = playerSpeakerBubble.transform.GetChild(0).gameObject.GetComponent<TMP_Text>();
+            playerSpeakerBubble.SetActive(true);
+            npcSpeakerBubble.SetActive(false);
+        }
+        speaker.text = newSpeaker;
         //    string finalOutput = ReplacePlaceholderText(newText, "{i}", lineIndex.ToString());
         line.text = newText; // finalOutput;
         GetComponent<pPlayerComponent>().UpdateText(GetComponent<pPlayerComponent>().ectroplasmText, GetComponent<pPlayerComponent>().ectoplasm.ToString());
