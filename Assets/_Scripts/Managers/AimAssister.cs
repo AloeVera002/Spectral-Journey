@@ -39,10 +39,10 @@ public class AimAssister : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         OutlineCheck();
-    }
+    }*/
 
     void OutlineCheck()
-    {
+    {/*
         if (!targetOutline.enabled)
         {
             targetOutline.enabled = true;
@@ -50,8 +50,8 @@ public class AimAssister : MonoBehaviour
         else
         {
             targetOutline.enabled = false;
-        }
-    }*/
+        }*/
+    }/*
 
     private void OnTriggerExit(Collider other)
     {
