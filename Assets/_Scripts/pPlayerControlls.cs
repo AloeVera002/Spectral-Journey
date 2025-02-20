@@ -72,24 +72,11 @@ public class pPlayerControlls : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            /*if (chargeTime >= 1)
-            { 
-                pebblePlaceHolder.SetActive(true);
-                canFire = true;
-                return;
-            }
-            else
-            {
-                canFire = false;
-            }
-            chargeTime += Time.deltaTime;*/
-            ///pebblePlaceHolder.SetActive(true);
-            ///
             if (!canFire)
             {
                 if (playerData.pebbleCount > 0)
                 {
-                    if (chargeTime >= .6)
+                    if (chargeTime >= 1)
                     {
                         Debug.Log("ReadyToFire");
 
@@ -116,22 +103,7 @@ public class pPlayerControlls : MonoBehaviour
         }
 
         if (Input.GetMouseButtonUp(0))
-        {/*
-            //if (!canFire) return;
-            if (playerData.pebbleCount > 0)
-            {
-                canFire = true;
-                FireSlingShot();
-                Debug.Log("Bla");
-            }
-            else
-            {
-                ResetSlingshot();
-                playerData.ActivateNoPebbleText();
-            }
-            playerData.UpdatePebbleText();*/
-            //chargeTime = 0;
-
+        {
             if (canFire)
             {
                 if (playerData.pebbleCount > 0)
@@ -139,7 +111,6 @@ public class pPlayerControlls : MonoBehaviour
                     FireSlingShot();
                     canFire = false;
                 }
-            //    playerData.UpdatePebbleText();
             }
             chargeTime = 0;
         }
@@ -192,7 +163,6 @@ public class pPlayerControlls : MonoBehaviour
 
         Vector3 aimRot = new Vector3(transform.forward.x, playerData.slingshotPivot.position.y, transform.forward.z);
         newPebble.GetComponent<Rigidbody>().AddForce(aimRot * pebbleSpeed);
-        newPebble.GetComponent<PebbleController>().aimPos = playerData.slingshotPivot.position;
         newPebble.tag = "Pebble";
 
         playerData.DecreasePebbleCount(1);
