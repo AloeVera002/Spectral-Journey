@@ -9,6 +9,7 @@ public class AimAssister : MonoBehaviour
     void Start()
     {
         assister = transform.parent.gameObject;
+        ResetAimTarget();
     }
 
     void Update()

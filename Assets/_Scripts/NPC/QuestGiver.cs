@@ -19,7 +19,9 @@ public class QuestGiver : MonoBehaviour
     {
         if (isQuestGiver) { hasQuestToGive = true; ToggleNPCMark(); }
         else { hasQuestToGive = false; ToggleNPCMark(); }
+
         outlinething = GetComponent<Outline>();
+        outlinething.enabled = false;
     }
 
     void Update()
