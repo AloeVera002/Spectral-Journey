@@ -13,11 +13,13 @@ public class QuestGiver : MonoBehaviour
     [SerializeField] public int dialogueIndex;
     [SerializeField] public int questIndex;
     [SerializeField] public bool hasQuest;
+    private Outline outlinething;
 
     void Start()
     {
         if (isQuestGiver) { hasQuestToGive = true; ToggleNPCMark(); }
         else { hasQuestToGive = false; ToggleNPCMark(); }
+        outlinething = GetComponent<Outline>();
     }
 
     void Update()
@@ -37,6 +39,7 @@ public class QuestGiver : MonoBehaviour
             {
                 if (other.gameObject.GetComponent<pPlayerControlls>())
                 {
+                    outlinething.enabled = true;
                     DialogueManager diaManager = other.gameObject.GetComponent<DialogueManager>();
                     QuestManager queManager = other.gameObject.GetComponent<QuestManager>();
                     FriendshipManager freManager = other.gameObject.GetComponent<FriendshipManager>();
@@ -49,7 +52,10 @@ public class QuestGiver : MonoBehaviour
                     }
                     else
                     {
-                        queManager.HideQuestHUD();
+                        if (!queManager.questRef)
+                        {
+                            queManager.HideQuestHUD();
+                        }
                         if (queManager.currentQuest.isCompleted)
                         {
                             if (queManager.questRef == this.questToGive[questIndex - 1])
@@ -84,6 +90,7 @@ public class QuestGiver : MonoBehaviour
         {
             other.gameObject.GetComponent<pPlayerComponent>().canInteract = false;
         }
+        outlinething.enabled = false;
     }
 
     public void ToggleNPCMark()

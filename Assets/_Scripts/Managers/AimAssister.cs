@@ -24,7 +24,7 @@ public class AimAssister : MonoBehaviour
         if (other.gameObject.CompareTag("Zombie"))
         {
             target = other.gameObject;
-            // toggle an outline on the target
+            target.GetComponent<Outline>().enabled = true;
         }
     }
 
@@ -35,6 +35,7 @@ public class AimAssister : MonoBehaviour
 
     public void ResetAimTarget()
     {
+        target.GetComponent<Outline>().enabled = false;
         target = null;
     }
 }

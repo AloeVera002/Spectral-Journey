@@ -112,7 +112,6 @@ public class pPlayerComponent : MonoBehaviour
                 soundAudioSource.pitch = Random.Range(audioPitch -0.05f, audioPitch + 0.05f);
                 soundAudioSource.PlayOneShot(GetComponent<QuestManager>().pickupSound);
                 IncreasePebbleCount(1);
-            //    UpdatePebbleText();
             }
             else
             {
