@@ -8,8 +8,8 @@ public class AimAssister : MonoBehaviour
 
     void Start()
     {
-        assister = transform.parent.gameObject;
         target.GetComponent<Outline>().enabled = false;
+        assister = transform.parent.gameObject;
     }
 
     void Update()
@@ -35,7 +35,7 @@ public class AimAssister : MonoBehaviour
 
     void OutlineCheck()
     {
-        if (target.GetComponent<Outline>().enabled)
+        if (!target.GetComponent<Outline>().enabled)
         {
             target.GetComponent<Outline>().enabled = true;
         }
@@ -43,12 +43,17 @@ public class AimAssister : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        ResetAimTarget();
+        target.GetComponent<Outline>().enabled = false;
+    }
+
+    public void RemoveOutline()
+    {
+        target.GetComponent<Outline>().enabled = false;
+        Invoke("ResetAimTarget", 0.1f);
     }
 
     public void ResetAimTarget()
     {
-        target.GetComponent<Outline>().enabled = false;
         target = null;
     }
 }
