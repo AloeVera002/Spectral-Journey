@@ -660,6 +660,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: dialogueCamera.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: dialogueCamera.y
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
+      propertyPath: dialogueCamera.z
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: maxPebblesScreen
       value: 
       objectReference: {fileID: 947585600}

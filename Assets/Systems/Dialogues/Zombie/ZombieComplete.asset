@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ZombieComplete
   m_EditorClassIdentifier: 
   dialogue:
-  - Name: Zombie Bob
+  - Name: Gerald
     text: Thank you very much, now that poor soul is free from that horrifying vessel.
       Take this as a reward.
     isQuestion: 0
