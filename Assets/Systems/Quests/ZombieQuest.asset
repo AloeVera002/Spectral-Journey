@@ -16,7 +16,7 @@ MonoBehaviour:
     questName: ZombieQuest
     questId: 1632
     questDetails: Kill the zombie menace {i} / {o}
-    pickupTag: Zombie
+    pickupTag: 
     questObjective:
     - {fileID: 0}
     QuestType: 2
