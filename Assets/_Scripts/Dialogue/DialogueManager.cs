@@ -29,11 +29,11 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
-        GetInfo();
         npcSpeakerBubble = dialogueField.transform.GetChild(0).gameObject;
         playerSpeakerBubble = dialogueField.transform.GetChild(1).gameObject;
         Debug.Log("NPC speaker: " + dialogueField.transform.GetChild(0).gameObject.name +
             " PlayerSpeaker: " + dialogueField.transform.GetChild(1).gameObject.name);
+        GetInfo();
     }
 
     void Update()
@@ -102,13 +102,13 @@ public class DialogueManager : MonoBehaviour
 
         if (newSpeaker != "Player" || speaker.text != "{p}")
         {
-            speaker = npcSpeakerBubble.transform.GetChild(0).gameObject.GetComponent<TMP_Text>();
+            speaker = npcSpeakerBubble.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<TMP_Text>();
             npcSpeakerBubble.SetActive(true);
             playerSpeakerBubble.SetActive(false);
         }
         else
         {
-            speaker = playerSpeakerBubble.transform.GetChild(0).gameObject.GetComponent<TMP_Text>();
+            speaker = playerSpeakerBubble.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<TMP_Text>();
             playerSpeakerBubble.SetActive(true);
             npcSpeakerBubble.SetActive(false);
         }
