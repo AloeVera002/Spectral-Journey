@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - Name: Gerald
-    text: Wonderful! A zombie has ben plaguing my town for quite some time now. Any
-      chance you could kill him for me?
+    text: Great! I think I saw it last time somewhere furhter to my right. Be careful.
     isQuestion: 0
     giveQuest: 1
     AcceptedDialogue: {fileID: 0}
