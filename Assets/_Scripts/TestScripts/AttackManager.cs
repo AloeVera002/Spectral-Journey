@@ -50,7 +50,12 @@ public class AttackManager : MonoBehaviour
             Destroy(gameObject);
             if (GameObject.Find("PlayerV2").GetComponent<QuestManager>().currentQuest.QuestType == QuestTypeEnum.Kill)
             {
+                Debug.Log(this.gameObject.tag + " ueq" + " current quest is of type: " + GameObject.Find("PlayerV2").GetComponent<QuestManager>().currentQuest.QuestType + " tried to invoke OnDeathEvent");
                 OnDeath?.Invoke(this.gameObject.tag);
+            }
+            else
+            {
+                Debug.Log(this.gameObject.tag + " wue" + " current quest is of type: " + GameObject.Find("PlayerV2").GetComponent<QuestManager>().currentQuest.QuestType);
             }
             Debug.Log(this.gameObject.tag + " wittewally ded");
         }
@@ -95,6 +100,14 @@ public class AttackManager : MonoBehaviour
                         {
                             qMan.CallQuestObjectiveEvent();
                         }
+                        else
+                        {
+                            Debug.Log("qMan for DeathEvent null");
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("this object is not Enemy");
                     }
                 }
                 break;

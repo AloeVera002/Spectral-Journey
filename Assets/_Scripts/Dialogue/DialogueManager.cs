@@ -8,6 +8,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] GameObject dialogueField;
+    GameObject oppositeSpeakerBubble, playerSpeakerBubble;
     [SerializeField] GameObject modalButtons;
     [SerializeField] so_Dialogue dialogueRef;
     [SerializeField] TMP_Text speaker, line;
@@ -47,7 +48,7 @@ public class DialogueManager : MonoBehaviour
 
             if (lineArray[lineIndex].isQuestion)
             {
-                if (modalButtons.active == false)
+                if (modalButtons.activeInHierarchy == false)
                 {
                     ShowModal();
                 }
@@ -96,6 +97,10 @@ public class DialogueManager : MonoBehaviour
     private void UpdateTextInput(string newSpeaker, string newText)
     {
         speaker.text = newSpeaker;
+        if (speaker.text != "Player" || speaker.text != "{p}")
+        {
+
+        }
         //    string finalOutput = ReplacePlaceholderText(newText, "{i}", lineIndex.ToString());
         line.text = newText; // finalOutput;
         GetComponent<pPlayerComponent>().UpdateText(GetComponent<pPlayerComponent>().ectroplasmText, GetComponent<pPlayerComponent>().ectoplasm.ToString());

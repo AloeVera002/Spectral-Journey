@@ -22,6 +22,8 @@ public class pPlayerComponent : MonoBehaviour
     [SerializeField] Vector3 normalCamera;
     [SerializeField] Vector3 dialogueRotation;
 
+    public bool tutorialQuestDone = false;
+
     [SerializeField] GameObject pebbleHUDField;
     [SerializeField] GameObject pebbleUIPrefab;
 
@@ -166,8 +168,6 @@ public class pPlayerComponent : MonoBehaviour
 
     void InitializePebblesHUD(int count)
     {
-        Debug.Log("initiated pebble ui with max pebbles: " + count + " / " + maxPebbles);
-        Debug.Log(" before: pebble field = " + pebbleHUDField.gameObject.name + " pebbleui = " + pebbleUIPrefab.gameObject.name);
         foreach (Transform child in pebbleHUDField.transform)
         {
             Destroy(child.gameObject);
@@ -180,8 +180,6 @@ public class pPlayerComponent : MonoBehaviour
             RectTransform rectTransform = pebbleUIElement.GetComponent<RectTransform>();
             rectTransform.anchoredPosition = new Vector2(i * 75, 0);
         }
-        Debug.Log("finished initializing pebble ui with max pebbles: " + count + " / " + maxPebbles + " amount initiated = " + pebbleHUDField.transform.childCount);
-        Debug.Log(" after: pebble field = " + pebbleHUDField.gameObject.name + " pebbleui = " + pebbleUIPrefab.gameObject.name);
     }
 
     void DecreasePebbleHUD()

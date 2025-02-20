@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class QuestGiver : MonoBehaviour
 {
-    [SerializeField] public QuestScriptableObj questToGive;
+    [SerializeField] public QuestScriptableObj[] questToGive;
     [SerializeField] so_Dialogue[] dialogues;
     [SerializeField] bool isQuestGiver;
     bool hasQuestToGive = false;
@@ -11,6 +11,7 @@ public class QuestGiver : MonoBehaviour
     [SerializeField] public FriendshipData friendshipData;
 
     [SerializeField] public int dialogueIndex;
+    [SerializeField] public int questIndex;
     [SerializeField] public bool hasQuest;
 
     void Start()
@@ -51,56 +52,27 @@ public class QuestGiver : MonoBehaviour
                         queManager.HideQuestHUD();
                         if (queManager.currentQuest.isCompleted)
                         {
-                            if (queManager.questRef == this.questToGive)
+                            if (queManager.questRef == this.questToGive[questIndex - 1])
                             {
                                 other.gameObject.GetComponent<pPlayerComponent>().ectoplasm += other.gameObject.GetComponent<QuestManager>().currentQuest.ectoplasmReward;
                                 other.gameObject.GetComponent<pPlayerComponent>().UpdateText(other.gameObject.GetComponent<pPlayerComponent>().ectroplasmText, other.gameObject.GetComponent<pPlayerComponent>().ectoplasm.ToString());
 
-                                FriendshipData targetFriendshipData = this.friendshipData;
-
-                                // Find the index of the targetFriendshipData in the friendships array
-                                int friendIndex = -1;
-                                for (int i = 0; i < freManager.friendships.Length; i++)
-                                {
-                                    if (freManager.friendships[i].friendName == targetFriendshipData.friendName)
-                                    {
-                                        friendIndex = i;
-                                        break;
-                                    }
-                                }
-
-                                // If a matching FriendshipData was found, update it
-                                if (friendIndex != -1)
-                                {
-                                    // Increase the friendship value
-                                    freManager.friendships[friendIndex].IncreaseFriendValue(queManager.currentQuest.friendshipIncreaseValue);
-
-                                    // Update the corresponding Friendship meter (slider)
-                                    freManager.UpdateFriendMeterExternalCall(friendIndex);
-                                }
-                                else
-                                {
-                                    Debug.LogError("Friendship data not found for: " + targetFriendshipData.friendName);
-                                }
+                                queManager.UpdateFriendMeter();
 
                                 queManager.currentQuest = new basicQuest();
+                                queManager.ResetQuestObjectives();
                             }
                             else
                             {
-                                Debug.Log("QuestRef: not the correct quest person? current quest = " + queManager.questRef.quest.questName + " / quest of person talked to: " + this.questToGive.quest.questName);
-                                Debug.Log("currentquest: not the correct quest person? current quest = " + queManager.currentQuest.questName + " / quest of person talked to: " + this.questToGive.quest.questName);
+                                Debug.Log("QuestRef: not the correct quest person? current quest = " + queManager.questRef.quest.questName + " / quest of person talked to: " + this.questToGive[questIndex].quest.questName);
+                                Debug.Log("currentquest: not the correct quest person? current quest = " + queManager.currentQuest.questName + " / quest of person talked to: " + this.questToGive[questIndex].quest.questName);
                             }
                         }
-                        /*
-                        freManager.friendships[0].IncreaseFriendValue(other.gameObject.GetComponent<QuestManager>().currentQuest.friendshipIncreaseValue);
-                        freManager.UpdateFriendMeterExternalCall(0);*/
                     }
 
                     diaManager.oppositeTalker = this.gameObject;
                     other.gameObject.GetComponent<pPlayerComponent>().isInteracting = true;
                 //    diaManager.StartNewDialogue();
-
-                    queManager.questRef = questToGive;
                 }
             }
         }

@@ -115,7 +115,11 @@ public class QuestManager : MonoBehaviour
         GetComponent<pPlayerComponent>().soundAudioSource.PlayOneShot(completeObjectiveSound);
         GetComponent<DialogueManager>().SetDialogueRef(currentQuest.CompletedQuestDialogue);
         GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().dialogueIndex++;
-        GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().hasQuest = true;
+        GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex++;
+        if (GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questToGive[GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex - 1] == questRef)
+        {
+            GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().hasQuest = true;
+        }
         questDetailsText.text = "Completed quest go back to your quest giver";
     }
 
@@ -143,26 +147,41 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    public bool InitializeQuest()
+    {
+        questRef = GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questToGive[GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex];
+        if (questRef == GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questToGive[GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex])
+        {
+            return true;
+        }
+        else { return false; }
+    }
+
     public void StartQuest()
     {
-        currentQuest = questRef.quest;
-        qObjectiveIndex = 0;
-        SetQuestData();
-        ShowQuestHUD();
-     //   ShowHideQuestUI();
-
-        if (currentQuest.QuestType == QuestTypeEnum.Pickup)
+        if (InitializeQuest())
         {
-            parentPickupStuff.SetActive(true);
-            foreach (Transform child in parentPickupStuff.transform)
+            currentQuest = questRef.quest;
+            qObjectiveIndex = 0;
+            SetQuestData();
+            ShowQuestHUD();
+            //   ShowHideQuestUI();
+
+            if (currentQuest.QuestType == QuestTypeEnum.Pickup)
             {
-                child.gameObject.SetActive(true);
+                parentPickupStuff.SetActive(true);
+                foreach (Transform child in parentPickupStuff.transform)
+                {
+                    child.gameObject.SetActive(true);
+                    Debug.Log("activated pearl?");
+                }
+            }
+            else
+            {
+                parentPickupStuff.SetActive(false);
             }
         }
-        else
-        {
-            parentPickupStuff.SetActive(false);
-        }
+        Debug.Log(InitializeQuest());
     }
 
     void SetQuestData()
@@ -174,6 +193,11 @@ public class QuestManager : MonoBehaviour
         UpdateQuestDetails();
     }
 
+    public void ResetQuestObjectives()
+    {
+        questObjectives = new GameObject[0];
+    }
+
     void UpdateQuestDetails()
     {
         string finalOutput = currentQuest.questDetails;
@@ -181,5 +205,35 @@ public class QuestManager : MonoBehaviour
         finalOutput = GetComponent<DialogueManager>().ReplacePlaceholderText(finalOutput, "{o}", (questObjectives.Length).ToString());
 
         questDetailsText.text = finalOutput;
+    }
+
+    public void UpdateFriendMeter()
+    {
+        FriendshipData targetFriendshipData = GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().friendshipData;
+
+        // Find the index of the targetFriendshipData in the friendships array
+        int friendIndex = -1;
+        for (int i = 0; i < GetComponent<FriendshipManager>().friendships.Length; i++)
+        {
+            if (GetComponent<FriendshipManager>().friendships[i].friendName == targetFriendshipData.friendName)
+            {
+                friendIndex = i;
+                break;
+            }
+        }
+
+        // If a matching FriendshipData was found, update it
+        if (friendIndex != -1)
+        {
+            // Increase the friendship value
+            GetComponent<FriendshipManager>().friendships[friendIndex].IncreaseFriendValue(currentQuest.friendshipIncreaseValue);
+
+            // Update the corresponding Friendship meter (slider)
+            GetComponent<FriendshipManager>().UpdateFriendMeterExternalCall(friendIndex);
+        }
+        else
+        {
+            Debug.LogError("Friendship data not found for: " + targetFriendshipData.friendName);
+        }
     }
 }

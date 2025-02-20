@@ -24,6 +24,7 @@ public class AimAssister : MonoBehaviour
         if (other.gameObject.CompareTag("Zombie"))
         {
             target = other.gameObject;
+            // toggle an outline on the target
         }
     }
 
