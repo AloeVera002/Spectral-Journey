@@ -29,12 +29,11 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
+        GetInfo();
         npcSpeakerBubble = dialogueField.transform.GetChild(0).gameObject;
         playerSpeakerBubble = dialogueField.transform.GetChild(1).gameObject;
         Debug.Log("NPC speaker: " + dialogueField.transform.GetChild(0).gameObject.name +
             " PlayerSpeaker: " + dialogueField.transform.GetChild(1).gameObject.name);
-        GetInfo();
-        
     }
 
     void Update()
