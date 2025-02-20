@@ -60,7 +60,7 @@ public class AimAssister : MonoBehaviour
     
     public void RemoveOutline()
     {
-        target.GetComponent<Outline>().enabled = false;
+    //    target.GetComponent<Outline>().enabled = false;
     //    Invoke("ResetAimTarget", 0.1f);
     }
 
