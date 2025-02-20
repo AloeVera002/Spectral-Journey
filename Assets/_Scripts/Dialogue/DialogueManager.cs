@@ -99,19 +99,19 @@ public class DialogueManager : MonoBehaviour
 
     private void UpdateTextInput(string newSpeaker, string newText)
     {
-
-        if (newSpeaker != "Player" || speaker.text != "{p}")
-        {
-            speaker = npcSpeakerBubble.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<TMP_Text>();
-            npcSpeakerBubble.SetActive(true);
-            playerSpeakerBubble.SetActive(false);
-        }
-        else if (newSpeaker == "Player")
+        if (newSpeaker == "Player")
         {
             speaker = playerSpeakerBubble.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<TMP_Text>();
             playerSpeakerBubble.SetActive(true);
             npcSpeakerBubble.SetActive(false);
         }
+        else
+        {
+            speaker = npcSpeakerBubble.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<TMP_Text>();
+            npcSpeakerBubble.SetActive(true);
+            playerSpeakerBubble.SetActive(false);
+        }
+
         speaker.text = newSpeaker;
         //    string finalOutput = ReplacePlaceholderText(newText, "{i}", lineIndex.ToString());
         line.text = newText; // finalOutput;
