@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 8454516128263997285}
   - component: {fileID: 2670397629203360259}
   m_Layer: 0
-  m_Name: GhostIndicator
+  m_Name: QuestIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
