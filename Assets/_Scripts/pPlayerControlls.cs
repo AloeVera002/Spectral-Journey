@@ -72,6 +72,8 @@ public class pPlayerControlls : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
+            if (!playerData.tutorialQuestDone) { return; }
+
             if (!canFire)
             {
                 if (playerData.pebbleCount > 0)

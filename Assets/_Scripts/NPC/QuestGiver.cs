@@ -41,12 +41,16 @@ public class QuestGiver : MonoBehaviour
             {
                 if (other.gameObject.GetComponent<pPlayerControlls>())
                 {
-                    outlinething.enabled = true;
                     DialogueManager diaManager = other.gameObject.GetComponent<DialogueManager>();
                     QuestManager queManager = other.gameObject.GetComponent<QuestManager>();
                     FriendshipManager freManager = other.gameObject.GetComponent<FriendshipManager>();
+
+                    diaManager.oppositeTalker = this.gameObject;
+                    outlinething.enabled = true;
+                   
                     Debug.Log(this.gameObject.name + " interacted with player " + queManager.currentQuest.isCompleted);
                     other.gameObject.GetComponent<pPlayerComponent>().canInteract = true;
+                    other.gameObject.GetComponent<pPlayerComponent>().isInteracting = true;
 
                     if (!hasQuest)
                     {
@@ -54,33 +58,19 @@ public class QuestGiver : MonoBehaviour
                     }
                     else
                     {
-                        if (!queManager.questRef)
-                        {
-                            queManager.HideQuestHUD();
-                        }
                         if (queManager.currentQuest.isCompleted)
-                        {
+                        {/*
                             if (queManager.questRef == this.questToGive[questIndex - 1])
                             {
-                                other.gameObject.GetComponent<pPlayerComponent>().ectoplasm += other.gameObject.GetComponent<QuestManager>().currentQuest.questReward.ectoplasmReward;
-                                other.gameObject.GetComponent<pPlayerComponent>().UpdateText(other.gameObject.GetComponent<pPlayerComponent>().ectroplasmText, other.gameObject.GetComponent<pPlayerComponent>().ectoplasm.ToString());
-
-                                queManager.UpdateFriendMeter();
-
-                                queManager.currentQuest = new basicQuest();
-                                queManager.ResetQuestObjectives();
+                                
                             }
                             else
-                            {
+                            {*/
                                 Debug.Log("QuestRef: not the correct quest person? current quest = " + queManager.questRef.quest.questName + " / quest of person talked to: " + this.questToGive[questIndex].quest.questName);
                                 Debug.Log("currentquest: not the correct quest person? current quest = " + queManager.currentQuest.questName + " / quest of person talked to: " + this.questToGive[questIndex].quest.questName);
-                            }
+                        //    }
                         }
                     }
-
-                    diaManager.oppositeTalker = this.gameObject;
-                    other.gameObject.GetComponent<pPlayerComponent>().isInteracting = true;
-                //    diaManager.StartNewDialogue();
                 }
             }
         }

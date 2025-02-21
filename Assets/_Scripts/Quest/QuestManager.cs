@@ -49,27 +49,25 @@ public class QuestManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.J))
-        {
-            ShowHideQuestUI();
-        }
     }
 
     public void ShowQuestHUD()
     {
+        Debug.Log("showed quest ui");
         isToggled = true;
         ShowHideQuestUINew();
     }
 
     public void HideQuestHUD()
     {
+        Debug.Log("Hid quest ui");
         isToggled = false;
         ShowHideQuestUINew();
     }
 
     public void ShowHideQuestUINew()
     {
-        if (!isToggled)
+        if (isToggled)
         {
             questField.SetActive(true);
         }
@@ -120,7 +118,25 @@ public class QuestManager : MonoBehaviour
         {
             GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().hasQuest = true;
         }
+        if (currentQuest.isTutorialQuest)
+        {
+            GetComponent<pPlayerComponent>().tutorialQuestDone = true;
+        }
         questDetailsText.text = "Completed quest go back to your quest giver";
+    }
+
+    public void GiveQuestReward()
+    {
+        if (questRef == GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questToGive[(GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex - 1)])
+        {
+            GetComponent<pPlayerComponent>().ectoplasm += GetComponent<QuestManager>().currentQuest.questReward.ectoplasmReward;
+            GetComponent<pPlayerComponent>().UpdateText(GetComponent<pPlayerComponent>().ectroplasmText, GetComponent<pPlayerComponent>().ectoplasm.ToString());
+
+            UpdateFriendMeter();
+
+            currentQuest = new basicQuest();
+            ResetQuestObjectives();
+        }
     }
 
     void UpdateQuestObjective()
@@ -165,7 +181,6 @@ public class QuestManager : MonoBehaviour
             qObjectiveIndex = 0;
             SetQuestData();
             ShowQuestHUD();
-            //   ShowHideQuestUI();
 
             if (currentQuest.QuestType == QuestTypeEnum.Pickup)
             {

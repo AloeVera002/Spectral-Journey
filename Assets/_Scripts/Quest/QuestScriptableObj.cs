@@ -26,6 +26,8 @@ public struct basicQuest
 
     public string questDetails;
 
+    public bool isTutorialQuest;
+
     public QuestTypeEnum QuestType;
 
     public string pickupTag;

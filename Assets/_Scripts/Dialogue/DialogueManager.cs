@@ -50,26 +50,26 @@ public class DialogueManager : MonoBehaviour
             if (!GetComponent<pPlayerComponent>().isInConversation) return;
 
             if (lineArray[lineIndex].isQuestion)
-            {
+            {/*
                 if (modalButtons.activeInHierarchy == false)
                 {
                     ShowModal();
                 }
                 else
-                {
-                    AcceptQuestion();
-                }
+                {*/
+                Debug.Log("isQuestion should be: " + lineArray[lineIndex].isQuestion);
+                AcceptQuestion();
+                //    }
+            }
+            else if (lineArray[lineIndex].isGiveQuest)
+            {
+                Debug.Log("isGiveQuest should be: " + lineArray[lineIndex].isGiveQuest);
+                AcceptQuest();
             }
             else
             {
-                if (lineArray[lineIndex].giveQuest)
-                {
-                    AcceptQuest();
-                }
-                else
-                {
-                    NextLine();
-                }
+                Debug.Log("isQuestion and isGiveQuest should be (false): " + "d: " + lineArray[lineIndex].isQuestion + "q: " + lineArray[lineIndex].isGiveQuest);
+                NextLine();
             }
         }
     }
@@ -89,6 +89,8 @@ public class DialogueManager : MonoBehaviour
         GetComponent<pPlayerComponent>().ToggleDialogueCamera();
 
         GetComponent<pPlayerComponent>().isInConversation = true;
+
+        GetComponent<QuestManager>().HideQuestHUD();
 
         UpdateTextInput(lineArray[lineIndex].Name, lineArray[lineIndex].text);
 
@@ -153,14 +155,16 @@ public class DialogueManager : MonoBehaviour
         if (lineIndex < lineArray.Length - 1)
         {
             lineIndex += 1;
-            //    line.text = string.Empty;
-            //    UpdateText(lineArray[lineIndex].Name);
             UpdateTextInput(lineArray[lineIndex].Name, lineArray[lineIndex].text);
         }
         else
         {
             oppositeTalker.GetComponent<QuestGiver>().hasQuest = false;
             QuitDialogue();
+        }
+        if (lineArray[lineIndex].isReward)
+        {
+            GetComponent<QuestManager>().GiveQuestReward();
         }
     }
 
