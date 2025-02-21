@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class QuestGiver : MonoBehaviour
 {
@@ -37,8 +38,12 @@ public class QuestGiver : MonoBehaviour
     {
         if (isQuestGiver)
         {
+            GetComponent<NavMeshAgent>().isStopped = true;
+
             if (other.gameObject.CompareTag("Player"))
             {
+                this.gameObject.transform.LookAt(other.transform.position);
+                other.gameObject.transform.LookAt(this.gameObject.transform.position);
                 if (other.gameObject.GetComponent<pPlayerControlls>())
                 {
                     DialogueManager diaManager = other.gameObject.GetComponent<DialogueManager>();
@@ -83,6 +88,7 @@ public class QuestGiver : MonoBehaviour
             other.gameObject.GetComponent<pPlayerComponent>().canInteract = false;
         }
         outlinething.enabled = false;
+        GetComponent<NavMeshAgent>().isStopped = false;
     }
 
     public void ToggleNPCMark()
