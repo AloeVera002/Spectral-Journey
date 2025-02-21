@@ -35,4 +35,6 @@ public class Wandering : MonoBehaviour
         NavMesh.SamplePosition(randomDirection, out navHit, dist, layermask);
         return navHit.position;
     }
+
+    //this code is made with the help of chatGPT - Veronika
 }
