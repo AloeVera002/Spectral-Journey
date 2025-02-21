@@ -137,7 +137,6 @@ public class pPlayerComponent : MonoBehaviour
         Debug.Log("Teleportation commenced");
         this.gameObject.SetActive(false);
         this.gameObject.transform.position = checkPoint.position;
-        gameObject.GetComponentInChildren<AimAssister>().ResetAimTarget();
         this.gameObject.SetActive(true);
 
         if (ectoplasm > 0)
@@ -153,6 +152,8 @@ public class pPlayerComponent : MonoBehaviour
             ectoplasm = 0;
         }
         UpdateText(ectroplasmText, ectoplasm.ToString());
+
+        gameObject.GetComponentInChildren<AimAssister>().ResetAimTarget();
     }
 
     IEnumerator ToggleMaxPebbleText()
