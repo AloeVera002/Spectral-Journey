@@ -53,6 +53,7 @@ public class pPlayerComponent : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(this);
         animator = GetComponent<Animator>();
         UpdateText(ectroplasmText, ectoplasm.ToString());
 
