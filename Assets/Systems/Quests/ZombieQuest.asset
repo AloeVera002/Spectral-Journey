@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quest:
     questName: ZombieQuest
-    questDetails: Kill the zombie menace {i} / {o}
+    questDetails: Kill the zombie {i} / {o}
+    isTutorialQuest: 0
     QuestType: 2
     pickupTag: 
     questObjectives:

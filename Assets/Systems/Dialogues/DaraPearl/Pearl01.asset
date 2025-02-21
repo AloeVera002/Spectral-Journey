@@ -14,70 +14,78 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - Name: ???
-    text: Oh how I miss having a physical form. I'm quite jealous of you stranger.
+    text: Oh, a traveler? I haven't seen one of you in ages. How are you doing my
+      dear?
     isQuestion: 0
-    giveQuest: 0
+    isGiveQuest: 0
+    isReward: 0
     nextDialogue: {fileID: 0}
   - Name: Player
-    text: Isn't it fun to be able to float around and spook people though?
+    text: I'm doing alright! How about you?
     isQuestion: 0
-    giveQuest: 0
+    isGiveQuest: 0
+    isReward: 0
     nextDialogue: {fileID: 0}
   - Name: ???
-    text: I don't think so. I used to be terrified of ghosts as a kid.
+    text: I have seen better days.
     isQuestion: 0
-    giveQuest: 0
-    nextDialogue: {fileID: 0}
-  - Name: ???
-    text: All I want is a little company, scaring people away is the last thing I'd
-      want to do.
-    isQuestion: 0
-    giveQuest: 0
-    nextDialogue: {fileID: 0}
-  - Name: ???
-    text: So it makes me happy to see that you don't seem scared at all.
-    isQuestion: 0
-    giveQuest: 0
-    nextDialogue: {fileID: 0}
-  - Name: Dara
-    text: Where are my manners! My name is Dara, and you are?
-    isQuestion: 0
-    giveQuest: 0
+    isGiveQuest: 0
+    isReward: 0
     nextDialogue: {fileID: 0}
   - Name: Player
-    text: Someone to keep you company
+    text: What's wrong?
     isQuestion: 0
-    giveQuest: 0
+    isGiveQuest: 0
+    isReward: 0
+    nextDialogue: {fileID: 0}
+  - Name: ???
+    text: I recently started thinking about my bestie, Sadie. I miss spending time
+      with her.
+    isQuestion: 0
+    isGiveQuest: 0
+    isReward: 0
     nextDialogue: {fileID: 0}
   - Name: Dara
-    text: "Well thank you dear. It\u2019s not every day us ghosts see a human, and
-      a friendly one at that!"
+    text: Oh where are my manners? My name is Dara. Sorry sweetheart, I haven't been
+      myself the past few days.
     isQuestion: 0
-    giveQuest: 0
+    isGiveQuest: 0
+    isReward: 0
+    nextDialogue: {fileID: 0}
+  - Name: Player
+    text: It's alright, we all have our good and bad days.
+    isQuestion: 0
+    isGiveQuest: 0
+    isReward: 0
     nextDialogue: {fileID: 0}
   - Name: Dara
-    text: Last week we had a gang of humans with vacuums on their back chasing us.
+    text: You are very kind hearted. Can I ask you a favor?
     isQuestion: 0
-    giveQuest: 0
+    isGiveQuest: 0
+    isReward: 0
+    nextDialogue: {fileID: 0}
+  - Name: Player
+    text: Of course, what do you need?
+    isQuestion: 0
+    isGiveQuest: 0
+    isReward: 0
     nextDialogue: {fileID: 0}
   - Name: Dara
-    text: "Called themselves the ghost, what was it\u2026 Dusters?"
+    text: Sadie and I used to collect pearls when we were kids. Could you find five
+      pearls and bring them to me?
     isQuestion: 0
-    giveQuest: 0
+    isGiveQuest: 0
+    isReward: 0
     nextDialogue: {fileID: 0}
   - Name: Dara
-    text: You are nothing like them thankfully. Do you think you could do me a favor?
+    text: They are pink and glowing and can be found by the big lake.
     isQuestion: 0
-    giveQuest: 0
+    isGiveQuest: 0
+    isReward: 0
     nextDialogue: {fileID: 0}
-  - Name: Dara
-    text: 'When I was a young girl, me and my best friend would go and look for pearls. '
+  - Name: Player
+    text: I'll go get them for you!
     isQuestion: 0
-    giveQuest: 0
+    isGiveQuest: 0
+    isReward: 0
     nextDialogue: {fileID: 0}
-  - Name: Dara
-    text: "While in this form, I can\u2019t really do that. Could you go and find
-      5 pearls for me? They are pink and sphere shaped."
-    isQuestion: 1
-    giveQuest: 0
-    nextDialogue: {fileID: 11400000, guid: 26d23a2918956fb48a1d333c3c25021b, type: 2}

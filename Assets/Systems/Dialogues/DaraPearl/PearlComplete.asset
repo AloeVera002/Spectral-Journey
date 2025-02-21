@@ -14,23 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - Name: Dara
-    text: You found the pearls! They look so pretty. I just know my friend would
-      be jumping in excitement if she was here right now.
+    text: Oh they look beautiful. Sadie would have loved to see them.
     isQuestion: 0
-    giveQuest: 0
-    AcceptedDialogue: {fileID: 0}
-    RejectedDialogue: {fileID: 0}
+    isGiveQuest: 0
+    isReward: 0
+    nextDialogue: {fileID: 0}
   - Name: Dara
-    text: "To be honest, collecting the pearls was fun, but doing it together with
-      her made it so much more special.\r"
+    text: "You are a blessing. Have this for your trouble, it might come in handy.\r"
     isQuestion: 0
-    giveQuest: 0
-    AcceptedDialogue: {fileID: 0}
-    RejectedDialogue: {fileID: 0}
-  - Name: Dara
-    text: "I think I\u2019m ready to see her again. Thank you for helping me. Here,
-      have this for your troubles.\r"
-    isQuestion: 0
-    giveQuest: 0
-    AcceptedDialogue: {fileID: 0}
-    RejectedDialogue: {fileID: 0}
+    isGiveQuest: 0
+    isReward: 1
+    nextDialogue: {fileID: 0}

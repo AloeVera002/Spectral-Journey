@@ -15,6 +15,7 @@ MonoBehaviour:
   quest:
     questName: PearlQuest
     questDetails: Collect pearls for Dara {i} / {o}
+    isTutorialQuest: 1
     QuestType: 0
     pickupTag: PickUp
     questObjectives:
