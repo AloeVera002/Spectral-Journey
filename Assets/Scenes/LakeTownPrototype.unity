@@ -12589,6 +12589,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9096628604418438144, guid: d241a4b8df1ca46498b707a8150470f4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1891554719}
+    - targetCorrespondingSourceObject: {fileID: 9096628604418438144, guid: d241a4b8df1ca46498b707a8150470f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1891554724}
   m_SourcePrefab: {fileID: 100100000, guid: d241a4b8df1ca46498b707a8150470f4, type: 3}
 --- !u!1 &1767017946
 GameObject:
@@ -12996,13 +12999,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891554714}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b75ebe5e3f0792459fd2ba1adcefc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: CafeInside
   spawnPosition: {x: 24.7, y: -26, z: 30.9}
+--- !u!114 &1891554724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891554714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17461a503f904bd4bbcd5bd6baa6b8f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location: {x: 0, y: 0, z: 0}
+  sceneToSwitch: 2
 --- !u!1 &1901742891
 GameObject:
   m_ObjectHideFlags: 0
