@@ -85,7 +85,7 @@ MonoBehaviour:
     nextDialogue: {fileID: 0}
   - Name: Player
     text: I'll go get them for you!
-    isQuestion: 0
+    isQuestion: 1
     isGiveQuest: 0
     isReward: 0
-    nextDialogue: {fileID: 0}
+    nextDialogue: {fileID: 11400000, guid: 26d23a2918956fb48a1d333c3c25021b, type: 2}
