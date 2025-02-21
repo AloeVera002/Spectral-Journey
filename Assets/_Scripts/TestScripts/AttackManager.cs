@@ -43,9 +43,9 @@ public class AttackManager : MonoBehaviour
 
     void HitHandler()
     {
+        GameObject.Find("PlayerV2").GetComponent<pPlayerComponent>().soundAudioSource.PlayOneShot(hitAudio);
         CheckIfHeadShot();
         Debug.Log("Hit: " + this.gameObject.tag + "Damage dealt: " + incomingDamage);
-        GameObject.Find("PlayerV2").GetComponent<pPlayerComponent>().soundAudioSource.PlayOneShot(hitAudio);
         hitPoints -= incomingDamage;
         if (hitPoints <= 0)
         {
