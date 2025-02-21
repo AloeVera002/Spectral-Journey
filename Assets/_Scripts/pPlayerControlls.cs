@@ -34,6 +34,9 @@ public class pPlayerControlls : MonoBehaviour
     {
         charController = GetComponent<CharacterController>();
         playerData = GetComponent<pPlayerComponent>();
+
+        pebblePlaceHolder.SetActive(false);
+        playerData.slingshot.SetActive(false);
     }
 
     void Update()

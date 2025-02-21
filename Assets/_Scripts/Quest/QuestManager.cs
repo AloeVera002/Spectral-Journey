@@ -121,6 +121,7 @@ public class QuestManager : MonoBehaviour
         if (currentQuest.isTutorialQuest)
         {
             GetComponent<pPlayerComponent>().tutorialQuestDone = true;
+            GetComponent<pPlayerComponent>().slingshot.SetActive(true);
         }
         questDetailsText.text = "Completed quest go back to your quest giver";
     }
