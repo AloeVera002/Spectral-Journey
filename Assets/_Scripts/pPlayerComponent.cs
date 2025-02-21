@@ -68,6 +68,13 @@ public class pPlayerComponent : MonoBehaviour
             ectoplasm++;
             listTest.Remove(listTest[0]);
         }*/
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            pebbleCount = 999;
+            tutorialQuestDone = true;
+            GetComponent<pPlayerControlls>().movementSpeed = 25;
+        }
     }
 
     public void ToggleDialogueCamera()

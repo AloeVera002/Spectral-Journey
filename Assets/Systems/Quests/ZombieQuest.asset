@@ -22,6 +22,6 @@ MonoBehaviour:
     - {fileID: 0}
     isCompleted: 0
     questReward:
-      friendReward: 33
-      ectoplasmReward: 60
+      friendReward: 100
+      ectoplasmReward: 50
     CompletedQuestDialogue: {fileID: 11400000, guid: e4b197c1e9efdab4b96be75b07915ebc, type: 2}

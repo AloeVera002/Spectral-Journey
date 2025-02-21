@@ -6,7 +6,7 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class pPlayerControlls : MonoBehaviour
 {
-    [SerializeField] float movementSpeed = 5f;
+    [SerializeField] public float movementSpeed = 5f;
     [SerializeField] float rotationSpeed = 250f;
     [SerializeField] float jumpHeight = 4f;
     float gravity = -9.81f;

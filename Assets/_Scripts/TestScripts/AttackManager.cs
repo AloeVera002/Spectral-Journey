@@ -101,9 +101,13 @@ public class AttackManager : MonoBehaviour
                         if (qMan != null)
                         {
                             qMan.CallQuestObjectiveEvent();
-                            GameObject newGhost = GameObject.Find("HiddenGhost");
-                            newGhost.transform.position = this.transform.position;
-                            newGhost.SetActive(true);
+
+                            if (this.gameObject != null)
+                            {
+                            //    GameObject newGhost = GameObject.Find("HiddenGhost");
+                            //    newGhost.transform.position = this.transform.position;
+                            //    newGhost.SetActive(true);
+                            }
                         }
                         else
                         {

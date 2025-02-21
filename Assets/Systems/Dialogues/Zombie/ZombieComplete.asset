@@ -17,6 +17,6 @@ MonoBehaviour:
     text: Thank you very much, now that poor soul is free from that horrifying vessel.
       Take this as a reward.
     isQuestion: 0
-    giveQuest: 0
-    AcceptedDialogue: {fileID: 0}
-    RejectedDialogue: {fileID: 0}
+    isGiveQuest: 0
+    isReward: 1
+    nextDialogue: {fileID: 0}
