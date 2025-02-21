@@ -898,7 +898,7 @@ PrefabInstance:
       objectReference: {fileID: 832172433}
     - target: {fileID: 5294033227431768108, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 29.6
       objectReference: {fileID: 0}
     - target: {fileID: 5294033227431768108, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -906,7 +906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5294033227431768108, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -58.35
       objectReference: {fileID: 0}
     - target: {fileID: 5294033227431768108, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5648,6 +5648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d1f9367d9904f72b6626ec83ea3b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerText: {fileID: 0}
 --- !u!1 &1106388475
 GameObject:
   m_ObjectHideFlags: 0
@@ -9594,6 +9595,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cafe
       objectReference: {fileID: 0}
+    - target: {fileID: 8191164386245836756, guid: d241a4b8df1ca46498b707a8150470f4, type: 3}
+      propertyPath: m_Size.z
+      value: 1.8873384
+      objectReference: {fileID: 0}
+    - target: {fileID: 8191164386245836756, guid: d241a4b8df1ca46498b707a8150470f4, type: 3}
+      propertyPath: m_Center.z
+      value: -0.3086692
+      objectReference: {fileID: 0}
+    - target: {fileID: 8191164386245836756, guid: d241a4b8df1ca46498b707a8150470f4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8301673259231584521, guid: d241a4b8df1ca46498b707a8150470f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 36.249
@@ -9637,7 +9650,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9096628604418438144, guid: d241a4b8df1ca46498b707a8150470f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1891554719}
   m_SourcePrefab: {fileID: 100100000, guid: d241a4b8df1ca46498b707a8150470f4, type: 3}
 --- !u!1 &1767017946
 GameObject:
@@ -9925,6 +9941,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890715451}
   m_CullTransparentMesh: 1
+--- !u!1 &1891554714 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9096628604418438144, guid: d241a4b8df1ca46498b707a8150470f4, type: 3}
+  m_PrefabInstance: {fileID: 1762168514}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1891554719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891554714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b75ebe5e3f0792459fd2ba1adcefc57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: CafeInside
 --- !u!4 &1916850159 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7372225733440399232, guid: d13a8724502af1a4abb0f68ad9f724fa, type: 3}
