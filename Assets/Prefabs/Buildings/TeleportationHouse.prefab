@@ -34,8 +34,8 @@ Transform:
   - {fileID: 3426306808014908134}
   - {fileID: 687096763561384357}
   - {fileID: 2681305163490194496}
-  - {fileID: 5002857681425528912}
   - {fileID: 7891368010403828613}
+  - {fileID: 5002857681425528912}
   - {fileID: 5236810162305607314}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -700,8 +700,8 @@ GameObject:
   - component: {fileID: 5037910777170280043}
   - component: {fileID: 1286309793619108110}
   m_Layer: 0
-  m_Name: Stairs (2)
-  m_TagString: Untagged
+  m_Name: Door
+  m_TagString: DoorToNewTown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

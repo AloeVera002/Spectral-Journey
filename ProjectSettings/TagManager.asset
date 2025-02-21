@@ -13,6 +13,7 @@ TagManager:
   - GroundPebble
   - FallOffWorld
   - NothingThisWay
+  - DoorToNewTown
   layers:
   - Default
   - TransparentFX
