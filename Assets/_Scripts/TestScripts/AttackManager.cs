@@ -104,9 +104,9 @@ public class AttackManager : MonoBehaviour
 
                             if (this.gameObject != null)
                             {
-                            //    GameObject newGhost = GameObject.Find("HiddenGhost");
-                            //    newGhost.transform.position = this.transform.position;
-                            //    newGhost.SetActive(true);
+                                GameObject newGhost = GameObject.Find("HiddenGhost");
+                                newGhost.transform.position = this.transform.position;
+                                newGhost.SetActive(true);
                             }
                         }
                         else
