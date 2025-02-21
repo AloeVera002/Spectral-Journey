@@ -230,6 +230,8 @@ GameObject:
   - component: {fileID: 8242632250409010662}
   - component: {fileID: 7494172237760732855}
   - component: {fileID: 1901442683706447895}
+  - component: {fileID: 2950038452730983438}
+  - component: {fileID: 332647169722784280}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -364,7 +366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30cccaadadfa53419209140282207e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questToGive: {fileID: 0}
+  questToGive:
+  - {fileID: 0}
   dialogues: []
   isQuestGiver: 0
   npcMark: {fileID: 4774201893800034546}
@@ -373,7 +376,44 @@ MonoBehaviour:
     friendshipValue: 0
     isActive: 0
   dialogueIndex: 0
+  questIndex: 0
   hasQuest: 0
+--- !u!195 &2950038452730983438
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817849245407562025}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.49999997
+  m_Speed: 1.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &332647169722784280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817849245407562025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e56421d23eb0914f9e86435d5066d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wanderRadius: 5
+  wanderTimer: 5
 --- !u!1001 &4424507720561329776
 PrefabInstance:
   m_ObjectHideFlags: 0
