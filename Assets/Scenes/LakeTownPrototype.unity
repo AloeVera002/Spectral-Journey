@@ -9959,6 +9959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: CafeInside
+  spawnPosition: {x: 24.7, y: -26, z: 30.9}
 --- !u!4 &1916850159 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7372225733440399232, guid: d13a8724502af1a4abb0f68ad9f724fa, type: 3}
