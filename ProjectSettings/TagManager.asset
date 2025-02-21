@@ -12,6 +12,7 @@ TagManager:
   - Zombie
   - GroundPebble
   - FallOffWorld
+  - NothingThisWay
   layers:
   - Default
   - TransparentFX
