@@ -106,12 +106,14 @@ public class DialogueManager : MonoBehaviour
             speaker = playerSpeakerBubble.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<TMP_Text>();
             playerSpeakerBubble.SetActive(true);
             npcSpeakerBubble.SetActive(false);
+            speaker.color = Color.blue;
         }
         else
         {
             speaker = npcSpeakerBubble.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<TMP_Text>();
             npcSpeakerBubble.SetActive(true);
             playerSpeakerBubble.SetActive(false);
+            speaker.color = Color.yellow;
         }
 
         speaker.text = newSpeaker;

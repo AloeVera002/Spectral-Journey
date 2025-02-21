@@ -15,6 +15,8 @@ public class pPlayerControlls : MonoBehaviour
 
     private pPlayerComponent playerData;
 
+    [SerializeField] AudioClip fireAudio, chargeAudio;
+
     [SerializeField] float pebbleSpeed = 1800f;
     [SerializeField] GameObject pebblePlaceHolder;
     public float chargeTime;
@@ -79,6 +81,10 @@ public class pPlayerControlls : MonoBehaviour
 
             if (!canFire)
             {
+                if (!playerData.soundAudioSource.isPlaying)
+                {
+                    playerData.soundAudioSource.PlayOneShot(chargeAudio);
+                }
                 if (playerData.pebbleCount > 0)
                 {
                     if (chargeTime >= 1)
@@ -90,6 +96,10 @@ public class pPlayerControlls : MonoBehaviour
 
                         // pebble in slingshot scam
                         pebblePlaceHolder.SetActive(true);
+                        if (!canFire)
+                        {
+                            playerData.soundAudioSource.Stop();
+                        }
                         canFire = true;
                         return;
                     }
@@ -109,6 +119,7 @@ public class pPlayerControlls : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
+            playerData.soundAudioSource.Stop();
             if (canFire)
             {
                 if (playerData.pebbleCount > 0)
@@ -165,10 +176,11 @@ public class pPlayerControlls : MonoBehaviour
         pebblePlaceHolder.SetActive(false);
         GameObject newPebble = Instantiate(playerData.pebblePrefab, playerData.slingshotPivot.position, playerData.slingshotPivot.rotation);
         newPebble.AddComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+        newPebble.tag = "Pebble";
 
         Vector3 aimRot = new Vector3(transform.forward.x, playerData.slingshotPivot.position.y, transform.forward.z);
         newPebble.GetComponent<Rigidbody>().AddForce(aimRot * pebbleSpeed);
-        newPebble.tag = "Pebble";
+        playerData.soundAudioSource.PlayOneShot(fireAudio);
 
         playerData.DecreasePebbleCount(1);
         canShootIndicator.SetActive(false);

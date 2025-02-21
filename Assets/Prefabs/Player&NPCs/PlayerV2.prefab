@@ -1131,6 +1131,8 @@ MonoBehaviour:
   rotationSpeed: 250
   jumpHeight: 5
   canShootIndicator: {fileID: 0}
+  fireAudio: {fileID: 8300000, guid: 659d5dde01999d2428d97c9c3b4d2c9c, type: 3}
+  chargeAudio: {fileID: 8300000, guid: b515783dbb01f8f46b5cf06bf5838b0c, type: 3}
   pebbleSpeed: 1800
   pebblePlaceHolder: {fileID: 2628998031486475400}
   chargeTime: 0
@@ -1173,15 +1175,15 @@ MonoBehaviour:
   questField: {fileID: 0}
   currentQuest:
     questName: 
-    questId: 
     questDetails: 
-    pickupTag: 
-    questObjective: []
+    isTutorialQuest: 0
     QuestType: 0
+    pickupTag: 
+    questObjectives: []
     isCompleted: 0
-    questProgress: 0
-    friendshipIncreaseValue: 0
-    ectoplasmReward: 0
+    questReward:
+      friendReward: 0
+      ectoplasmReward: 0
     CompletedQuestDialogue: {fileID: 0}
   questObjectives: []
   questDetailsText: {fileID: 0}

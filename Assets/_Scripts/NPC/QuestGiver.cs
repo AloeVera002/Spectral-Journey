@@ -56,23 +56,36 @@ public class QuestGiver : MonoBehaviour
                     other.gameObject.GetComponent<pPlayerComponent>().canInteract = true;
                     other.gameObject.GetComponent<pPlayerComponent>().isInteracting = true;
 
+                    int questIndexToCheck;
+
+
                     if (!hasQuest)
                     {
                         diaManager.SetDialogueRef(dialogues[dialogueIndex]);
                     }
                     else
                     {
-                        if (queManager.currentQuest.isCompleted)
-                        {/*
-                            if (queManager.questRef == this.questToGive[questIndex - 1])
+                        if (!(questIndex < 0))
+                        {
+                            questIndexToCheck = questIndex - 1;
+                        }
+                        else
+                        {
+                            questIndexToCheck = 0;
+                        }
+
+                        if (queManager.questRef == this.questToGive[questIndexToCheck])
+                        {
+                            if (queManager.currentQuest.QuestType == QuestTypeEnum.Engage)
                             {
-                                
+                                queManager.CallQuestObjectiveEvent();
                             }
-                            else
-                            {*/
-                                Debug.Log("QuestRef: not the correct quest person? current quest = " + queManager.questRef.quest.questName + " / quest of person talked to: " + this.questToGive[questIndex].quest.questName);
-                                Debug.Log("currentquest: not the correct quest person? current quest = " + queManager.currentQuest.questName + " / quest of person talked to: " + this.questToGive[questIndex].quest.questName);
-                        //    }
+                        }
+
+                        if (queManager.currentQuest.isCompleted)
+                        {
+                            Debug.Log("QuestRef: not the correct quest person? current quest = " + queManager.questRef.quest.questName + " / quest of person talked to: " + this.questToGive[questIndex].quest.questName);
+                            Debug.Log("currentquest: not the correct quest person? current quest = " + queManager.currentQuest.questName + " / quest of person talked to: " + this.questToGive[questIndex].quest.questName);
                         }
                     }
                 }

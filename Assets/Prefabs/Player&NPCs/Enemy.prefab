@@ -215,6 +215,7 @@ MonoBehaviour:
   damage: 0
   tag: Pebble
   isHeadShot: 0
+  hitAudio: {fileID: 8300000, guid: 0e0e464603d131b48b4d0774e42b4782, type: 3}
 --- !u!65 &2512040154603629770
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -306,6 +307,7 @@ MonoBehaviour:
   damage: 0
   tag: Pebble
   isHeadShot: 1
+  hitAudio: {fileID: 0}
 --- !u!1 &7480124733513390159
 GameObject:
   m_ObjectHideFlags: 0

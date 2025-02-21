@@ -10,6 +10,7 @@ public class AttackManager : MonoBehaviour
     int incomingDamage = 20;
 
     [SerializeField] bool isHeadShot = false;
+    [SerializeField] AudioClip hitAudio;
 
     private QuestManager qMan;
 
@@ -44,14 +45,15 @@ public class AttackManager : MonoBehaviour
     {
         CheckIfHeadShot();
         Debug.Log("Hit: " + this.gameObject.tag + "Damage dealt: " + incomingDamage);
+        GameObject.Find("PlayerV2").GetComponent<pPlayerComponent>().soundAudioSource.PlayOneShot(hitAudio);
         hitPoints -= incomingDamage;
         if (hitPoints <= 0)
         {
-            Destroy(gameObject);
+            OnDeath?.Invoke(this.gameObject.tag);
             if (GameObject.Find("PlayerV2").GetComponent<QuestManager>().currentQuest.QuestType == QuestTypeEnum.Kill)
             {
                 Debug.Log(this.gameObject.tag + " ueq" + " current quest is of type: " + GameObject.Find("PlayerV2").GetComponent<QuestManager>().currentQuest.QuestType + " tried to invoke OnDeathEvent");
-                OnDeath?.Invoke(this.gameObject.tag);
+            //    OnDeath?.Invoke(this.gameObject.tag);
             }
             else
             {
@@ -99,6 +101,9 @@ public class AttackManager : MonoBehaviour
                         if (qMan != null)
                         {
                             qMan.CallQuestObjectiveEvent();
+                            GameObject newGhost = GameObject.Find("HiddenGhost");
+                            newGhost.transform.position = this.transform.position;
+                            newGhost.SetActive(true);
                         }
                         else
                         {
@@ -117,6 +122,7 @@ public class AttackManager : MonoBehaviour
             default:
                 break;
         }
+        Destroy(gameObject);
     }
 }
 
