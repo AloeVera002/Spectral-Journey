@@ -138,6 +138,12 @@ public class QuestManager : MonoBehaviour
             currentQuest = new basicQuest();
             ResetQuestObjectives();
         }
+        Invoke("DisapeariousGhostus", 5);
+    }
+
+    void DisapeariousGhostus()
+    {
+        Destroy(GetComponent<DialogueManager>().oppositeTalker);
     }
 
     void UpdateQuestObjective()
