@@ -48,7 +48,6 @@ public class QuestGiver : MonoBehaviour
                 {
                     DialogueManager diaManager = other.gameObject.GetComponent<DialogueManager>();
                     QuestManager queManager = other.gameObject.GetComponent<QuestManager>();
-                    FriendshipManager freManager = other.gameObject.GetComponent<FriendshipManager>();
 
                     diaManager.oppositeTalker = this.gameObject;
                     outlinething.enabled = true;
