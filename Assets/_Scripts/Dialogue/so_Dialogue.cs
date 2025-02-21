@@ -13,8 +13,7 @@ public struct dialogueLine
 
     public bool giveQuest;
 
-    public so_Dialogue AcceptedDialogue;
-    public so_Dialogue RejectedDialogue;
+    public so_Dialogue nextDialogue;
 }
 
 [CreateAssetMenu(fileName = "so_Dialogue", menuName = "Dialogue")]

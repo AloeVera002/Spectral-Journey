@@ -12,48 +12,34 @@ public enum QuestTypeEnum
 }
 
 [System.Serializable]
+public struct questReward
+{
+    public int friendReward;
+
+    public int ectoplasmReward;
+}
+
+[System.Serializable]
 public struct basicQuest
 {
     public string questName;
 
-    public string questId;
-
     public string questDetails;
-
-    public string pickupTag;
-
-    public GameObject[] questObjective;
 
     public QuestTypeEnum QuestType;
 
+    public string pickupTag;
+
+    public GameObject[] questObjectives;
+
     public bool isCompleted;
 
-    public int questProgress;
-
-    public int friendshipIncreaseValue;
-
-    public int ectoplasmReward;
+    public questReward questReward;
 
     public so_Dialogue CompletedQuestDialogue;
 }
 
-[System.Serializable]
-public struct QuestStruct
-{
-    public basicQuest quest;
-
-    public UnityEvent[] reward;
-
-    public void InvokeFunction(int index)
-    {
-        if (index >= 0 && index < reward.Length)
-        {
-            reward[index]?.Invoke();
-        }
-    }
-}
-
-[CreateAssetMenu(fileName = "QuestScriptableObj", menuName = "Quest", order = 1)]
+[CreateAssetMenu(fileName = "so_quest", menuName = "Quest", order = 1)]
 public class QuestScriptableObj : ScriptableObject
 {
     public basicQuest quest;

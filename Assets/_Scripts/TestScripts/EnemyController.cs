@@ -9,12 +9,17 @@ public class EnemyController : MonoBehaviour
     Transform target;
     NavMeshAgent zombie;
 
+    private Outline outline;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         target = TestPlayerManager.instance.player.transform;
         zombie = GetComponent<NavMeshAgent>();
+
+        outline = GetComponent<Outline>();
+        outline.enabled = false;
     }
 
     // Update is called once per frame

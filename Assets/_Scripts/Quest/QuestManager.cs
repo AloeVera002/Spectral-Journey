@@ -33,7 +33,7 @@ public class QuestManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (qObjectiveIndex < currentQuest.questObjective.Length)
+        if (qObjectiveIndex < currentQuest.questObjectives.Length)
         {
             if (other.gameObject.tag == currentQuest.pickupTag)
             {
@@ -128,14 +128,14 @@ public class QuestManager : MonoBehaviour
         Debug.Log("Updated QuestObjective");
         Debug.Log(currentQuest.questName);
 
-        if (qObjectiveIndex < currentQuest.questObjective.Length)
+        if (qObjectiveIndex < currentQuest.questObjectives.Length)
         {
-            Debug.Log("updated Quest tihi " + currentQuest.questObjective.Length + " " + qObjectiveIndex);
+            Debug.Log("updated Quest tihi " + currentQuest.questObjectives.Length + " " + qObjectiveIndex);
             qObjectiveIndex++;
             UpdateQuestDetails();
-            if (qObjectiveIndex == currentQuest.questObjective.Length)
+            if (qObjectiveIndex == currentQuest.questObjectives.Length)
             {
-                Debug.Log("man quest index is finished " + currentQuest.questObjective.Length + " " + qObjectiveIndex);
+                Debug.Log("man quest index is finished " + currentQuest.questObjectives.Length + " " + qObjectiveIndex);
                 Debug.Log("completed quest!");
                 CallQuestOCompleteEvent();
             }
@@ -189,7 +189,7 @@ public class QuestManager : MonoBehaviour
         Debug.Log("Set quest data");
 
         questObjectives = new GameObject[0];
-        questObjectives = currentQuest.questObjective;
+        questObjectives = currentQuest.questObjectives;
         UpdateQuestDetails();
     }
 
@@ -226,7 +226,7 @@ public class QuestManager : MonoBehaviour
         if (friendIndex != -1)
         {
             // Increase the friendship value
-            GetComponent<FriendshipManager>().friendships[friendIndex].IncreaseFriendValue(currentQuest.friendshipIncreaseValue);
+            GetComponent<FriendshipManager>().friendships[friendIndex].IncreaseFriendValue(currentQuest.questReward.friendReward);
 
             // Update the corresponding Friendship meter (slider)
             GetComponent<FriendshipManager>().UpdateFriendMeterExternalCall(friendIndex);

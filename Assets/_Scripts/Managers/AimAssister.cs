@@ -5,12 +5,9 @@ public class AimAssister : MonoBehaviour
 {
     [SerializeField] GameObject target;
     private GameObject assister;
- //   private Outline targetOutline;
 
     void Start()
     {
-     /*   targetOutline = GetComponent<Outline>();
-        targetOutline.enabled = false;*/
 
         assister = transform.parent.gameObject;
     }
@@ -19,12 +16,7 @@ public class AimAssister : MonoBehaviour
     {
         if (target)
         {
-        //    if (Vector3.Distance(assister.transform.position, target.transform.position) < .5)
-        //    {
-        //        Debug.Log(Vector3.Distance(assister.transform.position, target.transform.position));
                 assister.transform.LookAt(target.transform);
-        //        OutlineCheck();
-        //    }
         }
     }
 
@@ -33,40 +25,18 @@ public class AimAssister : MonoBehaviour
         if (other.gameObject.CompareTag("Zombie"))
         {
             target = other.gameObject;
+            target.GetComponent<Outline>().enabled = true;
         }
-    }/*
-
-    private void OnTriggerStay(Collider other)
-    {
-        OutlineCheck();
     }
-
-    void OutlineCheck()
-    {
-        if (!targetOutline.enabled)
-        {
-            targetOutline.enabled = true;
-        }
-        else
-        {
-            targetOutline.enabled = false;
-        }
-    }*/
 
     private void OnTriggerExit(Collider other)
     {
-        target.GetComponent<Outline>().enabled = false;
-    }
-    
-    public void RemoveOutline()
-    {
-    //    target.GetComponent<Outline>().enabled = false;
-    //    Invoke("ResetAimTarget", 0.1f);
-    ResetAimTarget();
+        ResetAimTarget();
     }
 
     public void ResetAimTarget()
     {
+        target.GetComponent<Outline>().enabled = false;
         target = null;
     }
 }

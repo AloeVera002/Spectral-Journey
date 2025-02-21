@@ -193,21 +193,21 @@ public class DialogueManager : MonoBehaviour
     public void AcceptQuestion()
     {
         ShowModal();
-        SetDialogueRef(lineArray[lineIndex].AcceptedDialogue);
+        SetDialogueRef(lineArray[lineIndex].nextDialogue);
         UpdateDialogue();
         oppositeTalker.GetComponent<QuestGiver>().hasQuest = true;
     }
 
     public void RejectQuestion()
     {
-        if (!lineArray[lineArray.Length].RejectedDialogue)
+        if (!lineArray[lineArray.Length].nextDialogue)
         {
             QuitDialogue();
             return;
         }
 
         ShowModal();
-        SetDialogueRef(lineArray[lineIndex].RejectedDialogue);
+        SetDialogueRef(lineArray[lineIndex].nextDialogue);
         UpdateDialogue();
     }
 
@@ -217,10 +217,10 @@ public class DialogueManager : MonoBehaviour
         StartDialogue();
     }
 
-    public void SetDialogueRef(so_Dialogue newQuest)
+    public void SetDialogueRef(so_Dialogue newDialogue)
     {
-        Debug.Log("Set Dialogue ref to " + newQuest);
-        dialogueRef = newQuest;
+        Debug.Log("Set Dialogue ref to " + newDialogue);
+        dialogueRef = newDialogue;
     }
 
     public void UpdateDialogue()

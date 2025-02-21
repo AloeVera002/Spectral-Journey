@@ -14,18 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quest:
     questName: PearlQuest
-    questId: PearlQ01
     questDetails: Collect pearls for Dara {i} / {o}
-    pickupTag: PickUp
-    questObjective:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     QuestType: 0
+    pickupTag: PickUp
+    questObjectives:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     isCompleted: 0
-    questProgress: 0
-    friendshipIncreaseValue: 33
-    ectoplasmReward: 25
+    questReward:
+      friendReward: 25
+      ectoplasmReward: 50
     CompletedQuestDialogue: {fileID: 11400000, guid: 4d256a124065edc42abf80832c7b4361, type: 2}
