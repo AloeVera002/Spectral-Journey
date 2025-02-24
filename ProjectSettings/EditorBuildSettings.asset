@@ -15,14 +15,14 @@ EditorBuildSettings:
     path: Assets/Scenes/ZombieTestScene.unity
     guid: 39fd312d74826415397b768adb82668c
   - enabled: 1
+    path: Assets/Scenes/UI/MainMenu.unity
+    guid: 94f2155cdb7c847b79be43f05b197479
+  - enabled: 1
     path: Assets/Scenes/LakeTownPrototype.unity
     guid: 412230c544e9a8c4bbb4e37fa6caf9cb
   - enabled: 1
     path: Assets/Scenes/Cafe/CafeInside.unity
     guid: 4c57194416a191149b5c2fda1f6f17df
-  - enabled: 0
-    path: Assets/Scenes/UI/MainMenu.unity
-    guid: 94f2155cdb7c847b79be43f05b197479
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
