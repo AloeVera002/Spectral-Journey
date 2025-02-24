@@ -17,21 +17,25 @@ MonoBehaviour:
     text: Hello there traveler. I have a predicament you might be able to help me
       with. Do you think you can handle yourself in a zombie hunting situation?
     isQuestion: 0
-    giveQuest: 0
+    isGiveQuest: 0
+    isReward: 0
     nextDialogue: {fileID: 0}
-  - Name: Player
+  - Name: Charlie
     text: Zombie hunting?
     isQuestion: 0
-    giveQuest: 0
+    isGiveQuest: 0
+    isReward: 0
     nextDialogue: {fileID: 0}
   - Name: Gerald
     text: That's right. There is a zombie here that has been roaming around for ages
       now, and I fear that a lost soul is stuck within it.
     isQuestion: 0
-    giveQuest: 0
+    isGiveQuest: 0
+    isReward: 0
     nextDialogue: {fileID: 0}
-  - Name: Player
+  - Name: Charlie
     text: That sounds horrible. I will help you out!
     isQuestion: 1
-    giveQuest: 0
+    isGiveQuest: 0
+    isReward: 0
     nextDialogue: {fileID: 11400000, guid: 463d28ac21db9481ea1b35a084af4a96, type: 2}
