@@ -30,7 +30,6 @@ public class LevelManager : MonoBehaviour
         {
             targetToTeleport = other.gameObject;
  //           targetToTeleport.transform.position = this.transform.position + location;
-            backgroundAudio.CallSwitchSceneEvent();
             SceneManager.LoadScene((int)sceneToSwitch);
         }
     }
