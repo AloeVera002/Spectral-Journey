@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adda284a81664d94a97b28251ed07856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundMusic: {fileID: 8300000, guid: 1ceafbdbf3aa6804fb25f34dd06ebb36, type: 3}
   cafeSound: {fileID: 8300000, guid: 3557db39af0596b409889e79fac93995, type: 3}
 --- !u!82 &181467274
 AudioSource:
