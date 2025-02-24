@@ -17,11 +17,11 @@ public class LevelManager : MonoBehaviour
     private GameObject targetToTeleport;
     [SerializeField] Vector3 location;
     [SerializeField] SceneEnum sceneToSwitch;
-    MainMAenuAudio backgroundAudio;
+    AudioManager backgroundAudioMaster;
 
     private void Start()
     {
-        backgroundAudio = GameObject.Find("Audio Source").GetComponent<MainMAenuAudio>();
+        backgroundAudioMaster = GameObject.Find("BackgroundAudioMaster").GetComponent<AudioManager>();
     }
 
     private void OnTriggerEnter(Collider other)
