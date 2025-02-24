@@ -1,6 +1,7 @@
 using System.Data;
 using TMPro;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class QuestManager : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class QuestManager : MonoBehaviour
     [SerializeField] TMP_Text questDetailsText;
     [SerializeField] bool hasCompletedObjective;
     [SerializeField] int qObjectiveIndex = 0;
+
+    [SerializeField] Transform[] spawnLocations;
+    [SerializeField] GameObject[] questItemsToSpawn;
+    [SerializeField] List<int> usedLocations = new List<int>();
 
     [SerializeField] GameObject parentPickupStuff;
 
@@ -49,6 +54,44 @@ public class QuestManager : MonoBehaviour
 
     void Update()
     {
+    }
+
+    void InitializeQuestPickups(int questObjectivesAmount)
+    {
+        for (int i = 0; i < questObjectivesAmount; i++)
+        {
+            int randomLocation = GetRandomAvailableLocation();
+            if (randomLocation == -1)
+            {
+                break;
+            }
+
+            GameObject questObjectivePrefab = questItemsToSpawn[Random.Range(0, questItemsToSpawn.Length)];
+            Instantiate(questObjectivePrefab, spawnLocations[randomLocation].position, spawnLocations[randomLocation].rotation);
+
+            usedLocations.Add(randomLocation);
+        }
+    }
+
+    private int GetRandomAvailableLocation()
+    {
+        List<int> availableLocations = new List<int>();
+
+        for (int i = 0; i < spawnLocations.Length; i++)
+        {
+            if (!usedLocations.Contains(i))
+            {
+                availableLocations.Add(i);
+            }
+        }
+
+        if (availableLocations.Count == 0)
+        {
+            return -1;
+        }
+
+        int randomIndex = availableLocations[Random.Range(0, availableLocations.Count)];
+        return randomIndex;
     }
 
     public void ShowQuestHUD()
@@ -191,12 +234,13 @@ public class QuestManager : MonoBehaviour
 
             if (currentQuest.QuestType == QuestTypeEnum.Pickup)
             {
-                parentPickupStuff.SetActive(true);
+                parentPickupStuff.SetActive(true);/*
                 foreach (Transform child in parentPickupStuff.transform)
                 {
                     child.gameObject.SetActive(true);
                     Debug.Log("activated pearl?");
-                }
+                }*/
+                InitializeQuestPickups(currentQuest.questObjectives.Length);
             }
             else
             {

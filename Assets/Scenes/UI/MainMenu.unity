@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 181467275}
   - component: {fileID: 181467274}
   - component: {fileID: 181467276}
+  - component: {fileID: 181467277}
   m_Layer: 0
   m_Name: BackgroundAudioMaster
   m_TagString: Untagged
@@ -312,6 +313,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 8300000, guid: 1ceafbdbf3aa6804fb25f34dd06ebb36, type: 3}
   cafeSound: {fileID: 8300000, guid: 3557db39af0596b409889e79fac93995, type: 3}
+--- !u!114 &181467277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181467272}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b181e571dbc0d284ba5a9718329d1897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &221239399
 GameObject:
   m_ObjectHideFlags: 0
