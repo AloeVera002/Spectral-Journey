@@ -2317,23 +2317,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8409872706168742890, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: Loop
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8409872706168742890, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8409872706168742890, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 1ceafbdbf3aa6804fb25f34dd06ebb36, type: 3}
     - target: {fileID: 8409872706168742890, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 1ceafbdbf3aa6804fb25f34dd06ebb36, type: 3}
     - target: {fileID: 8409872706168742890, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: m_PlayOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8854368891283767757, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: audioPitch
