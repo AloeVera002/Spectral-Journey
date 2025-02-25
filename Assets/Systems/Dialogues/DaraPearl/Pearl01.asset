@@ -78,7 +78,7 @@ MonoBehaviour:
     isReward: 0
     nextDialogue: {fileID: 0}
   - Name: Dara
-    text: They are pink and glowing and can be found by the big lake.
+    text: They are pink and glowing.
     isQuestion: 0
     isGiveQuest: 0
     isReward: 0
