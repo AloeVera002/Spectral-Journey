@@ -4334,6 +4334,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GjertrudGhost
       objectReference: {fileID: 0}
+    - target: {fileID: 7817849245407562025, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8242632250409010662, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -6977,8 +6981,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e56421d23eb0914f9e86435d5066d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
-  wanderTimer: 5
+  wanderRadius: 5
+  wanderTimer: 3
 --- !u!195 &731789784
 NavMeshAgent:
   m_ObjectHideFlags: 0
