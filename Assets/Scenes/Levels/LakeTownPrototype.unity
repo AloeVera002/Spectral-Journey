@@ -6981,7 +6981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e56421d23eb0914f9e86435d5066d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 5
+  wanderRadius: 10
   wanderTimer: 3
 --- !u!195 &731789784
 NavMeshAgent:
@@ -12436,6 +12436,14 @@ PrefabInstance:
     - target: {fileID: 44263451725564824, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 332647169722784280, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
+      propertyPath: wanderTimer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 332647169722784280, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
+      propertyPath: wanderRadius
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1209458479373951742, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
       propertyPath: m_Enabled
