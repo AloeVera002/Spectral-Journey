@@ -12,6 +12,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] TMP_Text questDetailsText;
     [SerializeField] bool hasCompletedObjective;
     [SerializeField] int qObjectiveIndex = 0;
+    [SerializeField] bool ongoingQuest;
 
     [SerializeField] Transform[] spawnLocations;
     [SerializeField] GameObject[] questItemsToSpawn;
@@ -159,7 +160,7 @@ public class QuestManager : MonoBehaviour
         GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex++;
         if (GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questToGive[GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex - 1] == questRef)
         {
-            GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().hasQuest = true;
+            GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().dontGiveNewDialogue = true;
         }
         if (currentQuest.isTutorialQuest)
         {
@@ -215,12 +216,16 @@ public class QuestManager : MonoBehaviour
 
     public bool InitializeQuest()
     {
-        questRef = GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questToGive[GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex];
-        if (questRef == GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questToGive[GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex])
+        if (!ongoingQuest)
         {
-            return true;
+            questRef = GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questToGive[GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex];
+            if (questRef == GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questToGive[GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex])
+            {
+                return true;
+            }
+            else { return false; }
         }
-        else { return false; }
+        return false;
     }
 
     public void StartQuest()
@@ -234,12 +239,7 @@ public class QuestManager : MonoBehaviour
 
             if (currentQuest.QuestType == QuestTypeEnum.Pickup)
             {
-                parentPickupStuff.SetActive(true);/*
-                foreach (Transform child in parentPickupStuff.transform)
-                {
-                    child.gameObject.SetActive(true);
-                    Debug.Log("activated pearl?");
-                }*/
+                parentPickupStuff.SetActive(true);
                 InitializeQuestPickups(currentQuest.questObjectives.Length);
             }
             else

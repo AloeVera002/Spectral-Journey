@@ -7,19 +7,21 @@ public class QuestGiver : MonoBehaviour
     [SerializeField] public QuestScriptableObj[] questToGive;
     [SerializeField] so_Dialogue[] dialogues;
     [SerializeField] bool isQuestGiver;
+    [SerializeField] bool hasDialogue;
     bool hasQuestToGive = false;
-    [SerializeField] GameObject npcMark;
+
+    [SerializeField] GameObject[] npcMarks;
     [SerializeField] public FriendshipData friendshipData;
 
     [SerializeField] public int dialogueIndex;
     [SerializeField] public int questIndex;
-    [SerializeField] public bool hasQuest;
+    [SerializeField] public bool dontGiveNewDialogue;
     private Outline outlinething;
 
     void Start()
     {
-        if (isQuestGiver) { hasQuestToGive = true; ToggleNPCMark(); }
-        else { hasQuestToGive = false; ToggleNPCMark(); }
+        if (isQuestGiver) { hasQuestToGive = true; ToggleNPCMark(0, hasQuestToGive); }
+        else { hasQuestToGive = false; ToggleNPCMark(0, hasQuestToGive); }
 
         outlinething = GetComponent<Outline>();
         outlinething.enabled = false;
@@ -30,66 +32,62 @@ public class QuestGiver : MonoBehaviour
         if (dialogueIndex > dialogues.Length)
         {
             hasQuestToGive = false;
-            ToggleNPCMark();
+            ToggleNPCMark(0, hasQuestToGive);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isQuestGiver)
+        if (other.gameObject.CompareTag("Player"))
         {
+            QuestManager queManager = other.gameObject.GetComponent<QuestManager>();
+            DialogueManager diaManager = other.gameObject.GetComponent<DialogueManager>();
+
+            other.gameObject.GetComponent<pPlayerComponent>().canInteract = true;
+            diaManager.oppositeTalker = this.gameObject;
+            /*
             GetComponent<NavMeshAgent>().isStopped = true;
+            outlinething.enabled = true;
 
-            if (other.gameObject.CompareTag("Player"))
+            float rotationSpeed = 6 * Time.deltaTime;
+            this.gameObject.transform.rotation = Quaternion.Slerp(this.gameObject.transform.rotation, Quaternion.LookRotation(other.transform.position), rotationSpeed);
+            other.gameObject.transform.rotation = Quaternion.Slerp(other.gameObject.transform.rotation, Quaternion.LookRotation(this.transform.position), rotationSpeed);*/ // other.gameObject.transform.LookAt(this.gameObject.transform.position);
+
+            if (hasDialogue)
             {
-                this.gameObject.transform.LookAt(other.transform.position);
-                other.gameObject.transform.LookAt(this.gameObject.transform.position);
-                if (other.gameObject.GetComponent<pPlayerControlls>())
+                Debug.Log("Dont give dialogue bool: before: " + dontGiveNewDialogue);
+                if (!dontGiveNewDialogue)
                 {
-                    DialogueManager diaManager = other.gameObject.GetComponent<DialogueManager>();
-                    QuestManager queManager = other.gameObject.GetComponent<QuestManager>();
-
-                    diaManager.oppositeTalker = this.gameObject;
-                    outlinething.enabled = true;
-                   
-                    Debug.Log(this.gameObject.name + " interacted with player " + queManager.currentQuest.isCompleted);
-                    other.gameObject.GetComponent<pPlayerComponent>().canInteract = true;
-                    other.gameObject.GetComponent<pPlayerComponent>().isInteracting = true;
-
-                    int questIndexToCheck;
-
-
-                    if (!hasQuest)
-                    {
-                        diaManager.SetDialogueRef(dialogues[dialogueIndex]);
-                    }
-                    else
-                    {
-                        if (!(questIndex < 0))
-                        {
-                            questIndexToCheck = questIndex - 1;
-                        }
-                        else
-                        {
-                            questIndexToCheck = 0;
-                        }
-
-                        if (queManager.questRef == this.questToGive[questIndexToCheck])
-                        {
-                            if (queManager.currentQuest.QuestType == QuestTypeEnum.Engage)
-                            {
-                                queManager.CallQuestObjectiveEvent();
-                            }
-                        }
-
-                        if (queManager.currentQuest.isCompleted)
-                        {
-                            Debug.Log("QuestRef: not the correct quest person? current quest = " + queManager.questRef.quest.questName + " / quest of person talked to: " + this.questToGive[questIndex].quest.questName);
-                            Debug.Log("currentquest: not the correct quest person? current quest = " + queManager.currentQuest.questName + " / quest of person talked to: " + this.questToGive[questIndex].quest.questName);
-                        }
-                    }
+                    Debug.Log("!DontGIVE NEW DIALOGUE");
+                    diaManager.SetDialogueRef(dialogues[dialogueIndex]);
                 }
+                else
+                {
+                    Debug.Log("Dont give dialogue bool: " + dontGiveNewDialogue);
+                }
+                Debug.Log("Dont give dialogue bool: after: " + dontGiveNewDialogue);
             }
+            /*
+            if (isQuestGiver)
+            {
+                int questIndexToCheck;
+
+                Debug.Log(this.gameObject.name + " interacted with player " + queManager.currentQuest.isCompleted);
+
+                if (!(questIndex < 0))
+                {
+                    questIndexToCheck = questIndex - 1;
+                }
+                else
+                {
+                    questIndexToCheck = 0;
+                }
+
+                if (queManager.questRef == this.questToGive[questIndexToCheck] && queManager.currentQuest.QuestType == QuestTypeEnum.Engage)
+                {
+                    queManager.CallQuestObjectiveEvent();
+                }
+            }*/
         }
     }
 
@@ -103,8 +101,8 @@ public class QuestGiver : MonoBehaviour
         GetComponent<NavMeshAgent>().isStopped = false;
     }
 
-    public void ToggleNPCMark()
+    public void ToggleNPCMark(int index, bool inBool)
     {
-        npcMark.SetActive(hasQuestToGive);
+        npcMarks[index].SetActive(inBool);
     }
 }

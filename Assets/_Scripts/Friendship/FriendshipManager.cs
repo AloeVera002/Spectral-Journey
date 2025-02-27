@@ -68,7 +68,7 @@ public class FriendshipManager : MonoBehaviour
 
             // Adjust the position of the new UI element
             RectTransform rectTransform = newFriendshipField.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector2(-i * 150, 0);
+            rectTransform.anchoredPosition = new Vector2(-i * 130, 0);
 
             friendshipMeters.Add(friendshipSlider);
             friendshipNames.Add(nameText);

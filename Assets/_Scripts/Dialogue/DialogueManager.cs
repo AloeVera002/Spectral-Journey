@@ -40,10 +40,13 @@ public class DialogueManager : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.E))
         {
-            if (!GetComponent<pPlayerComponent>().canInteract) return;
-            if (GetComponent<pPlayerComponent>().isInConversation) return;
+         //   if (!GetComponent<pPlayerComponent>().canInteract || GetComponent<pPlayerComponent>().isInConversation) return;
 
-            StartNewDialogue();
+            if (GetComponent<pPlayerComponent>().canInteract)
+            {
+                StartNewDialogue();
+            }
+            
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -86,9 +89,9 @@ public class DialogueManager : MonoBehaviour
         lineIndex = 0;
         dialogueField.SetActive(true);
 
-        GetComponent<pPlayerComponent>().ToggleDialogueCamera();
-
         GetComponent<pPlayerComponent>().isInConversation = true;
+
+        GetComponent<pPlayerComponent>().ToggleDialogueCamera();
 
         GetComponent<QuestManager>().HideQuestHUD();
 
@@ -161,7 +164,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            oppositeTalker.GetComponent<QuestGiver>().hasQuest = false;
+            oppositeTalker.GetComponent<QuestGiver>().dontGiveNewDialogue = false;
             QuitDialogue();
         }
         if (lineArray[lineIndex].isReward)
@@ -201,7 +204,7 @@ public class DialogueManager : MonoBehaviour
         ShowModal();
         SetDialogueRef(lineArray[lineIndex].nextDialogue);
         UpdateDialogue();
-        oppositeTalker.GetComponent<QuestGiver>().hasQuest = true;
+        oppositeTalker.GetComponent<QuestGiver>().dontGiveNewDialogue = true;
     }
 
     public void RejectQuestion()
