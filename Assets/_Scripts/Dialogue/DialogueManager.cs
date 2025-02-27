@@ -85,11 +85,12 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue()
     {
+        GetComponent<pPlayerComponent>().isInConversation = true;
+        Debug.Log("Is in convo: " + GetComponent<pPlayerComponent>().isInConversation);
+
         Debug.Log("started dialogue");
         lineIndex = 0;
         dialogueField.SetActive(true);
-
-        GetComponent<pPlayerComponent>().isInConversation = true;
 
         GetComponent<pPlayerComponent>().ToggleDialogueCamera();
 
@@ -177,6 +178,7 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueField.SetActive(false);
 
+        GetComponent<pPlayerComponent>().isInConversation = false;
         GetComponent<pPlayerComponent>().ToggleDialogueCamera();
     }
 

@@ -79,7 +79,7 @@ public class pPlayerComponent : MonoBehaviour
 
     public void ToggleDialogueCamera()
     {
-        if (!isInConversation)
+        if (isInConversation)
         {
             pCamera.GetComponent<CameraController>().offset = dialogueCamera;
             pCamera.GetComponent<CameraController>().target = GetComponent<DialogueManager>().oppositeTalker.gameObject;
@@ -91,7 +91,7 @@ public class pPlayerComponent : MonoBehaviour
             pCamera.GetComponent<CameraController>().target = this.gameObject;
             StartCoroutine(RotateCamera(new Vector3(40, 0, 0)));
         }
-        isInConversation = !isInConversation;
+        //isInConversation = !isInConversation;
     }
 
     private IEnumerator RotateCamera(Vector3 end)

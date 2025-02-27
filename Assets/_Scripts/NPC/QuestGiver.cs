@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -24,6 +25,7 @@ public class QuestGiver : MonoBehaviour
         else { hasQuestToGive = false; ToggleNPCMark(0, hasQuestToGive); }
 
         outlinething = GetComponent<Outline>();
+        Debug.Log(outlinething.name);
         outlinething.enabled = false;
     }
 
@@ -45,29 +47,22 @@ public class QuestGiver : MonoBehaviour
 
             other.gameObject.GetComponent<pPlayerComponent>().canInteract = true;
             diaManager.oppositeTalker = this.gameObject;
-            /*
+            
             GetComponent<NavMeshAgent>().isStopped = true;
             outlinething.enabled = true;
 
-            float rotationSpeed = 6 * Time.deltaTime;
-            this.gameObject.transform.rotation = Quaternion.Slerp(this.gameObject.transform.rotation, Quaternion.LookRotation(other.transform.position), rotationSpeed);
-            other.gameObject.transform.rotation = Quaternion.Slerp(other.gameObject.transform.rotation, Quaternion.LookRotation(this.transform.position), rotationSpeed);*/ // other.gameObject.transform.LookAt(this.gameObject.transform.position);
+            StartCoroutine(FaceSomeone(this.gameObject, other.gameObject));
+            StartCoroutine(FaceSomeone(other.gameObject, this.gameObject));
+            // other.gameObject.transform.LookAt(this.gameObject.transform.position);
 
             if (hasDialogue)
             {
-                Debug.Log("Dont give dialogue bool: before: " + dontGiveNewDialogue);
                 if (!dontGiveNewDialogue)
                 {
-                    Debug.Log("!DontGIVE NEW DIALOGUE");
                     diaManager.SetDialogueRef(dialogues[dialogueIndex]);
                 }
-                else
-                {
-                    Debug.Log("Dont give dialogue bool: " + dontGiveNewDialogue);
-                }
-                Debug.Log("Dont give dialogue bool: after: " + dontGiveNewDialogue);
             }
-            /*
+            
             if (isQuestGiver)
             {
                 int questIndexToCheck;
@@ -87,7 +82,7 @@ public class QuestGiver : MonoBehaviour
                 {
                     queManager.CallQuestObjectiveEvent();
                 }
-            }*/
+            }
         }
     }
 
@@ -104,5 +99,13 @@ public class QuestGiver : MonoBehaviour
     public void ToggleNPCMark(int index, bool inBool)
     {
         npcMarks[index].SetActive(inBool);
+    }
+
+    IEnumerator FaceSomeone(GameObject personToTurn, GameObject personToTurnTo)
+    {
+        float rotationSpeed = 6 * Time.deltaTime;
+        personToTurn.transform.rotation = Quaternion.Slerp(personToTurn.transform.rotation, Quaternion.LookRotation(personToTurnTo.transform.position), rotationSpeed);
+        yield return new WaitForEndOfFrame();
+        //   personToTurnTo.transform.rotation = Quaternion.Slerp(personToTurnTo.transform.rotation, Quaternion.LookRotation(personToTurn.transform.position), rotationSpeed);
     }
 }
