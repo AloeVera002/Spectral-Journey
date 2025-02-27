@@ -370,14 +370,16 @@ MonoBehaviour:
   - {fileID: 0}
   dialogues: []
   isQuestGiver: 0
-  npcMark: {fileID: 4774201893800034546}
+  hasDialogue: 0
+  npcMarks:
+  - {fileID: 4774201893800034546}
   friendshipData:
     friendName: Gerald
     friendshipValue: 0
     isActive: 0
   dialogueIndex: 0
   questIndex: 0
-  hasQuest: 0
+  dontGiveNewDialogue: 0
 --- !u!195 &2950038452730983438
 NavMeshAgent:
   m_ObjectHideFlags: 0
