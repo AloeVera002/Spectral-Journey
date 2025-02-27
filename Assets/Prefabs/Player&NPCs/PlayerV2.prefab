@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 197008479792967582}
   serializedVersion: 2
   m_LocalRotation: {x: -0.28845164, y: 0.34115353, z: -0.1108475, w: 0.88776284}
-  m_LocalPosition: {x: -23.6, y: 3.3, z: 19.8}
+  m_LocalPosition: {x: -30.6, y: 1.6, z: 17.4}
   m_LocalScale: {x: 8.15, y: 16.15, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -818,7 +818,7 @@ Transform:
   m_GameObject: {fileID: 6595745871153080844}
   serializedVersion: 2
   m_LocalRotation: {x: -0.28845164, y: -0.34115338, z: 0.11084745, w: 0.88776284}
-  m_LocalPosition: {x: 17.3, y: 3.6, z: 20.3}
+  m_LocalPosition: {x: 30.1, y: 1.2, z: 17}
   m_LocalScale: {x: 8.15, y: 16.149998, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1189,6 +1189,9 @@ MonoBehaviour:
   questDetailsText: {fileID: 0}
   hasCompletedObjective: 0
   qObjectiveIndex: 0
+  spawnLocations: []
+  questItemsToSpawn: []
+  usedLocations: 
   parentPickupStuff: {fileID: 0}
   pickupSound: {fileID: 8300000, guid: c5bb92b2af2758c4ca0f1d011eb752f2, type: 3}
   completeObjectiveSound: {fileID: 8300000, guid: 95c13a58f6db4cd43b31e649578cb03d, type: 3}

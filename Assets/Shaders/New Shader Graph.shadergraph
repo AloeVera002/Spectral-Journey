@@ -49,10 +49,10 @@
         },
         "m_Blocks": [
             {
-                "m_Id": "6eaf4958b7034c25802463fcfd3b108e"
+                "m_Id": "dedc9dfa08a849f8928cd4ed7fe52363"
             },
             {
-                "m_Id": "dedc9dfa08a849f8928cd4ed7fe52363"
+                "m_Id": "6eaf4958b7034c25802463fcfd3b108e"
             },
             {
                 "m_Id": "3527eabaa36d4b2587ddd7a00a4366f8"
@@ -290,7 +290,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Occlusion",
     "m_StageCapability": 2,
-    "m_Value": 1.0,
+    "m_Value": 5.0,
     "m_DefaultValue": 1.0,
     "m_Labels": []
 }
@@ -374,9 +374,9 @@
     "m_ShaderOutputName": "BaseColor",
     "m_StageCapability": 2,
     "m_Value": {
-        "x": 0.5,
-        "y": 0.5,
-        "z": 0.5
+        "x": 1.0,
+        "y": 0.0,
+        "z": 0.0
     },
     "m_DefaultValue": {
         "x": 0.5,
@@ -430,10 +430,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 0.0,
-            "y": 0.0,
-            "width": 0.0,
-            "height": 0.0
+            "x": -2.4999961853027345,
+            "y": 29.9999942779541,
+            "width": 200.0,
+            "height": 41.00000762939453
         }
     },
     "m_Slots": [
