@@ -1128,7 +1128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  rotationSpeed: 250
+  rotationSpeed: 600
   jumpHeight: 5
   canShootIndicator: {fileID: 0}
   fireAudio: {fileID: 8300000, guid: 659d5dde01999d2428d97c9c3b4d2c9c, type: 3}
@@ -1189,6 +1189,8 @@ MonoBehaviour:
   questDetailsText: {fileID: 0}
   hasCompletedObjective: 0
   qObjectiveIndex: 0
+  ongoingQuest: 0
+  messageHUD: {fileID: 0}
   spawnLocations: []
   questItemsToSpawn: []
   usedLocations: 
