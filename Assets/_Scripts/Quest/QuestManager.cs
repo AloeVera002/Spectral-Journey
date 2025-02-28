@@ -264,13 +264,6 @@ public class QuestManager : MonoBehaviour
         {
             GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().dontGiveNewDialogue = true;
         }
-        if (currentQuest.isTutorialQuest)
-        {
-            GetComponent<pPlayerComponent>().tutorialQuestDone = true;
-            GetComponent<pPlayerComponent>().slingshot.SetActive(true);
-            messageHUD.SetActive(true);
-            GetComponent<pPlayerComponent>().InitPebblesHUD();
-        }
         questDetailsText.text = "Quest completed! Go and collect your reward";
     }
 
@@ -298,6 +291,14 @@ public class QuestManager : MonoBehaviour
             GetComponent<pPlayerComponent>().UpdateText(GetComponent<pPlayerComponent>().ectroplasmText, GetComponent<pPlayerComponent>().ectoplasm.ToString());
 
             targetToDisapear = GetComponent<DialogueManager>().oppositeTalker;
+
+            if (currentQuest.isTutorialQuest)
+            {
+                GetComponent<pPlayerComponent>().tutorialQuestDone = true;
+                GetComponent<pPlayerComponent>().slingshot.SetActive(true);
+                messageHUD.SetActive(true);
+                GetComponent<pPlayerComponent>().InitPebblesHUD();
+            }
 
             UpdateFriendMeter();
 
