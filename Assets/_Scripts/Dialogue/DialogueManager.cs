@@ -118,20 +118,19 @@ public class DialogueManager : MonoBehaviour
             speaker = playerSpeakerBubble.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<TMP_Text>();
             playerSpeakerBubble.SetActive(true);
             npcSpeakerBubble.SetActive(false);
-            speaker.color = Color.blue;
+            speaker.color = Color.yellow;
         }
         else
         {
             speaker = npcSpeakerBubble.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<TMP_Text>();
             npcSpeakerBubble.SetActive(true);
             playerSpeakerBubble.SetActive(false);
-            speaker.color = Color.yellow;
+            speaker.color = Color.blue;
         }
 
         speaker.text = newSpeaker;
         //    string finalOutput = ReplacePlaceholderText(newText, "{i}", lineIndex.ToString());
         line.text = newText; // finalOutput;
-        GetComponent<pPlayerComponent>().UpdateText(GetComponent<pPlayerComponent>().ectroplasmText, GetComponent<pPlayerComponent>().ectoplasm.ToString());
     }
 
     public string ReplacePlaceholderText(string uneditedText, string replaceText, string editedText)

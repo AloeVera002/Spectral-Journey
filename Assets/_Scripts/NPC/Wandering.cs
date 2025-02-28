@@ -49,6 +49,13 @@ public class Wandering : MonoBehaviour
     public float waitTime = 2f; // Time before picking a new destination
     public float minDistance = 0.5f; // Distance considered as "arrived"
 
+    public GameObject cafe;
+
+    Vector3 targetLoc;
+
+    public bool isToFollowPlayer = false;
+    public bool canWalk = false;
+
     private NavMeshAgent agent;
     [SerializeField] private EWanderingState wanderingState = EWanderingState.wandering;
 
@@ -60,12 +67,46 @@ public class Wandering : MonoBehaviour
 
     void Update()
     {
-        if (wanderingState == EWanderingState.wandering && agent.remainingDistance <= minDistance)
+        if (isToFollowPlayer)
         {
-            wanderingState = EWanderingState.waiting;
-            Invoke("ChooseNewTarget", 2f);
+            isToFollowPlayer = false;
+            Invoke("FollowPlayerTo", 10);
+        }
+        else
+        {
+            if (wanderingState == EWanderingState.wandering && agent.remainingDistance <= minDistance)
+            {
+                wanderingState = EWanderingState.waiting;
+                Invoke("ChooseNewTarget", 2f);
+            }
+        }
+
+        if (canWalk)
+        {
+            Vector3 lookDir;
+            if (Vector3.Distance(cafe.transform.position, transform.position) < .2)
+            {
+                canWalk = false;
+            }
+
+            lookDir = cafe.transform.position - transform.position;
+            lookDir.y = 0;
+
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookDir), 10 * Time.deltaTime);
+
+            transform.Translate(0f, 0f, 2.5f * Time.deltaTime, Space.Self);
         }
     }
+
+    void FollowPlayerTo()
+    {
+        Vector3 offset = new Vector3(4, 0, 4);
+        Vector3 targetLocation = cafe.transform.position + offset;
+
+        targetLoc = targetLocation;
+        canWalk = true;
+    }
+
 
     void ChooseNewTarget()
     {
