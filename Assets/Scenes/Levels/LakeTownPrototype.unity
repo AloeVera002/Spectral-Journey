@@ -5803,6 +5803,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 332647169722784280, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
+      propertyPath: centerPoint
+      value: 
+      objectReference: {fileID: 2001844156}
     - target: {fileID: 1209458479373951742, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -7021,8 +7025,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e56421d23eb0914f9e86435d5066d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  centerPoint: {fileID: 0}
   wanderRadius: 10
-  wanderTimer: 3
+  moveSpeed: 2
+  waitTime: 2
 --- !u!195 &731789784
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -14771,6 +14777,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 275633990}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2001844155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001844156}
+  m_Layer: 0
+  m_Name: WanderPointGerald
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001844156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001844155}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.16, y: -1.25, z: -4.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2023080232 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5512129335604196660, guid: 60f0237172ff444439f3dd32f2198426, type: 3}
@@ -15890,4 +15927,8 @@ SceneRoots:
   - {fileID: 7536847913035890675}
   - {fileID: 275633990}
   - {fileID: 1093930131}
+<<<<<<< Updated upstream
   - {fileID: 554711330}
+=======
+  - {fileID: 2001844156}
+>>>>>>> Stashed changes
