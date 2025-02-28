@@ -292,11 +292,6 @@ public class QuestManager : MonoBehaviour
 
             targetToDisapear = GetComponent<DialogueManager>().oppositeTalker;
 
-            UpdateFriendMeter();
-
-            currentQuest = new basicQuest();
-            ResetQuestObjectives();
-
             if (currentQuest.isTutorialQuest)
             {
                 GetComponent<pPlayerComponent>().tutorialQuestDone = true;
@@ -304,6 +299,11 @@ public class QuestManager : MonoBehaviour
                 messageHUD.SetActive(true);
                 GetComponent<pPlayerComponent>().InitPebblesHUD();
             }
+
+            UpdateFriendMeter();
+
+            currentQuest = new basicQuest();
+            ResetQuestObjectives();
         }
         Invoke("DisapeariousGhostus", 5);
     }

@@ -122,6 +122,8 @@ public class pPlayerComponent : MonoBehaviour
         }
         if (other.gameObject.CompareTag("GroundPebble"))
         {
+            if (!tutorialQuestDone) return;
+
             if (pebbleCount < maxPebbles)
             {
                 Destroy(other.gameObject);
