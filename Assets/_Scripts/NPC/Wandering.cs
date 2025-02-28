@@ -50,7 +50,7 @@ public class Wandering : MonoBehaviour
     public float minDistance = 0.5f; // Distance considered as "arrived"
 
     private NavMeshAgent agent;
-    private EWanderingState wanderingState = EWanderingState.wandering;
+    [SerializeField] private EWanderingState wanderingState = EWanderingState.wandering;
 
     void Start()
     {

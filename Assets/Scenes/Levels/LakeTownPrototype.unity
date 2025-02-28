@@ -2814,6 +2814,7 @@ MonoBehaviour:
   dialogues: []
   isQuestGiver: 1
   hasDialogue: 0
+  timeToTurn: 0.5
   npcMarks: []
   friendshipData:
     friendName: 
@@ -7034,6 +7035,7 @@ MonoBehaviour:
   wanderRadius: 5
   waitTime: 0.5
   minDistance: 0.5
+  wanderingState: 1
 --- !u!195 &731789784
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7045,10 +7047,10 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5000003
   m_Speed: 1.5
-  m_Acceleration: 5
+  m_Acceleration: 4
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -12520,6 +12522,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 332647169722784280, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
+      propertyPath: centerPoint
+      value: 
+      objectReference: {fileID: 2122190510}
+    - target: {fileID: 332647169722784280, guid: 067ba7901c91f42e78fb7d86e8b47050, type: 3}
       propertyPath: wanderTimer
       value: 3
       objectReference: {fileID: 0}
@@ -15834,6 +15840,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120730665}
   m_CullTransparentMesh: 1
+--- !u!1 &2122190509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2122190510}
+  m_Layer: 0
+  m_Name: DaraMovingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2122190510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122190509}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.81, y: 2.96, z: 10.07}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7536847913035890675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15934,3 +15971,4 @@ SceneRoots:
   - {fileID: 1093930131}
   - {fileID: 554711330}
   - {fileID: 850252774}
+  - {fileID: 2122190510}
