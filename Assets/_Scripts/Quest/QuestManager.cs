@@ -353,15 +353,15 @@ public class QuestManager : MonoBehaviour
                 return true;
             }
             else { return false; }
-        return false;
+    //    return false;
     }
 
     public void StartQuest()
-    {
+    {/*
         if (!ongoingQuest)
         {
             ongoingQuest = true;
-        }
+        }*/
         if (InitializeQuest())
         {
             currentQuest = questRef.quest;
