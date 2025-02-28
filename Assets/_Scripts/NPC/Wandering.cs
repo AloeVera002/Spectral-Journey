@@ -2,6 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
+[System.Serializable]
+public enum EWanderingState
+{
+    waiting,
+    wandering
+}
+
 public class Wandering : MonoBehaviour
 {
   /* public float wanderRadius = 10f; // The range within which the character will wander
@@ -43,7 +50,7 @@ public class Wandering : MonoBehaviour
     public float minDistance = 0.5f; // Distance considered as "arrived"
 
     private NavMeshAgent agent;
-    private bool isWaiting = false;
+    private EWanderingState wanderingState = EWanderingState.wandering;
 
     void Start()
     {
@@ -53,14 +60,17 @@ public class Wandering : MonoBehaviour
 
     void Update()
     {
-        if (!isWaiting && agent.remainingDistance <= minDistance)
+        if (wanderingState == EWanderingState.wandering && agent.remainingDistance <= minDistance)
         {
-            StartCoroutine(WaitBeforeNextMove());
+            wanderingState = EWanderingState.waiting;
+            Invoke("ChooseNewTarget", 2f);
         }
     }
 
     void ChooseNewTarget()
     {
+        wanderingState = EWanderingState.wandering;
+
         Vector2 randomPoint = Random.insideUnitCircle * wanderRadius;
         Vector3 targetPosition = centerPoint.position + new Vector3(randomPoint.x, 0, randomPoint.y);
 
@@ -75,13 +85,5 @@ public class Wandering : MonoBehaviour
         }
     }
 
-    IEnumerator WaitBeforeNextMove()
-    {
-        isWaiting = true;
-        yield return new WaitForSeconds(waitTime);
-        isWaiting = false;
-        ChooseNewTarget();
-    }
-
-    //this code is made with the help of chatGPT - Veronika
+    //this code is made with the help of chatGPT and Benjamin doing damage control - Veronika
 }
