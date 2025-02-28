@@ -2,6 +2,7 @@ using System.Data;
 using TMPro;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class QuestManager : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class QuestManager : MonoBehaviour
     [SerializeField] public bool canInteractWith;
 
     [SerializeField] GameObject messageHUD;
+    [SerializeField] Sprite[] messageHUDSprites;
+    int spriteIndex = 0;
     float timerMessageHud = 0f;
 
     [SerializeField] Transform[] spawnLocations;
@@ -65,7 +68,7 @@ public class QuestManager : MonoBehaviour
                 InteractWithObjectiveByGameObject(objtar);
             }
         }
-
+        /*
         if (messageHUD.activeInHierarchy)
         {
             if (timerMessageHud >= 10f)
@@ -74,7 +77,7 @@ public class QuestManager : MonoBehaviour
                 Destroy(messageHUD);
             }
             timerMessageHud += Time.deltaTime;
-        }
+        }*/
     }
 
     public void SetObjectiveToInteractWith(GameObject gameobject)
@@ -269,6 +272,21 @@ public class QuestManager : MonoBehaviour
             GetComponent<pPlayerComponent>().InitPebblesHUD();
         }
         questDetailsText.text = "Quest completed! Go and collect your reward";
+    }
+
+    public void NextPageTutorialHUD()
+    {
+        Time.timeScale = 0;
+        if (spriteIndex < messageHUDSprites.Length)
+        {
+            spriteIndex++;
+        }
+        else
+        {
+            messageHUD.SetActive(false);
+            Time.timeScale = 1;
+        }
+        messageHUD.GetComponent<Image>().sprite = messageHUDSprites[spriteIndex];
     }
 
     public void GiveQuestReward()
