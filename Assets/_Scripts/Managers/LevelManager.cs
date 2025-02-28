@@ -3,6 +3,7 @@ using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[System.Serializable]
 public enum SceneEnum
 {
     MainMenu = 0,

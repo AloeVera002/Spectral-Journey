@@ -9,6 +9,7 @@ public class QuestGiver : MonoBehaviour
     [SerializeField] so_Dialogue[] dialogues;
     [SerializeField] bool isQuestGiver;
     [SerializeField] bool hasDialogue;
+    [SerializeField] float timeToTurn = .5f;
     bool hasQuestToGive = false;
 
     [SerializeField] GameObject[] npcMarks;
@@ -51,8 +52,8 @@ public class QuestGiver : MonoBehaviour
             GetComponent<NavMeshAgent>().isStopped = true;
             outlinething.enabled = true;
 
-            StartCoroutine(FaceSomeone(this.gameObject, other.gameObject));
-            StartCoroutine(FaceSomeone(other.gameObject, this.gameObject));
+            StartCoroutine(FaceSomeone(this.gameObject, other.gameObject, timeToTurn));
+            StartCoroutine(FaceSomeone(other.gameObject, this.gameObject, timeToTurn));
             // other.gameObject.transform.LookAt(this.gameObject.transform.position);
 
             if (hasDialogue)
@@ -101,11 +102,20 @@ public class QuestGiver : MonoBehaviour
         npcMarks[index].SetActive(inBool);
     }
 
-    IEnumerator FaceSomeone(GameObject personToTurn, GameObject personToTurnTo)
+    IEnumerator FaceSomeone(GameObject personToTurn, GameObject personToTurnTo, float timeToRotate)
     {
-        float rotationSpeed = 6 * Time.deltaTime;
-        personToTurn.transform.rotation = Quaternion.Slerp(personToTurn.transform.rotation, Quaternion.LookRotation(personToTurnTo.transform.position), rotationSpeed);
-        yield return new WaitForEndOfFrame();
-        //   personToTurnTo.transform.rotation = Quaternion.Slerp(personToTurnTo.transform.rotation, Quaternion.LookRotation(personToTurn.transform.position), rotationSpeed);
+        Quaternion startRotation = personToTurn.transform.rotation;
+        Vector3 direction = personToTurnTo.transform.position - personToTurn.transform.position;
+        direction.y = 0;
+        Quaternion endRotation = Quaternion.LookRotation(direction, Vector3.up);
+
+        float elapsedTime = 0;
+        while (elapsedTime < timeToRotate)
+        {
+            personToTurn.transform.rotation = Quaternion.Lerp(startRotation, endRotation, elapsedTime);
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForSeconds(timeToRotate);
+        }
+    //    personToTurn.transform.rotation = endRotation;
     }
 }

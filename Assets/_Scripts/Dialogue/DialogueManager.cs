@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] public GameObject oppositeTalker;
 
     QuestManager questMan;
-    
+
     [SerializeField] bool isQuestioned;
     bool isCameraswitched;
 
@@ -40,15 +40,15 @@ public class DialogueManager : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.E))
         {
-         //   if (!GetComponent<pPlayerComponent>().canInteract || GetComponent<pPlayerComponent>().isInConversation) return;
+            //   if (!GetComponent<pPlayerComponent>().canInteract || GetComponent<pPlayerComponent>().isInConversation) return;
 
             if (GetComponent<pPlayerComponent>().canInteract)
             {
                 StartNewDialogue();
             }
-            
+
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.E))
         {
             if (!GetComponent<pPlayerComponent>().isInConversation) return;
 
@@ -85,16 +85,16 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue()
     {
-        GetComponent<pPlayerComponent>().isInConversation = true;
-        Debug.Log("Is in convo: " + GetComponent<pPlayerComponent>().isInConversation);
-
         Debug.Log("started dialogue");
+
         lineIndex = 0;
         dialogueField.SetActive(true);
 
-        GetComponent<pPlayerComponent>().ToggleDialogueCamera();
+        GetComponent<pPlayerComponent>().isInConversation = true;
+        Debug.Log("Is in convo: " + GetComponent<pPlayerComponent>().isInConversation);
 
         GetComponent<QuestManager>().HideQuestHUD();
+        GetComponent<pPlayerComponent>().ToggleDialogueCamera();
 
         UpdateTextInput(lineArray[lineIndex].Name, lineArray[lineIndex].text);
 
@@ -105,7 +105,7 @@ public class DialogueManager : MonoBehaviour
 
     private void UpdateTextInput(string newSpeaker, string newText)
     {
-        if (newSpeaker == "Player")
+        if (newSpeaker == "{p}" || newSpeaker == "???")
         {
             speaker = playerSpeakerBubble.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<TMP_Text>();
             playerSpeakerBubble.SetActive(true);

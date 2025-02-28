@@ -91,7 +91,6 @@ public class pPlayerComponent : MonoBehaviour
             pCamera.GetComponent<CameraController>().target = this.gameObject;
             StartCoroutine(RotateCamera(new Vector3(40, 0, 0)));
         }
-        //isInConversation = !isInConversation;
     }
 
     private IEnumerator RotateCamera(Vector3 end)

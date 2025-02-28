@@ -14,6 +14,9 @@ public class QuestManager : MonoBehaviour
     [SerializeField] int qObjectiveIndex = 0;
     [SerializeField] bool ongoingQuest;
 
+    [SerializeField] GameObject messageHUD;
+    float timerMessageHud = 0f;
+
     [SerializeField] Transform[] spawnLocations;
     [SerializeField] GameObject[] questItemsToSpawn;
     [SerializeField] List<int> usedLocations = new List<int>();
@@ -30,6 +33,8 @@ public class QuestManager : MonoBehaviour
 
     public delegate void CompleteQuestEvent();
     public event CompleteQuestEvent OnQuestComplete;
+
+    private GameObject targetToDisapear;
 
     void Start()
     {
@@ -55,6 +60,15 @@ public class QuestManager : MonoBehaviour
 
     void Update()
     {
+        if (messageHUD.activeInHierarchy)
+        {
+            if (timerMessageHud >= 10f)
+            {
+                timerMessageHud = 0f;
+                Destroy(messageHUD);
+            }
+            timerMessageHud += Time.deltaTime;
+        }
     }
 
     void InitializeQuestPickups(int questObjectivesAmount)
@@ -166,6 +180,7 @@ public class QuestManager : MonoBehaviour
         {
             GetComponent<pPlayerComponent>().tutorialQuestDone = true;
             GetComponent<pPlayerComponent>().slingshot.SetActive(true);
+            messageHUD.SetActive(true);
         }
         questDetailsText.text = "Quest completed! Go and collect your reward";
     }
@@ -177,6 +192,8 @@ public class QuestManager : MonoBehaviour
             GetComponent<pPlayerComponent>().ectoplasm += GetComponent<QuestManager>().currentQuest.questReward.ectoplasmReward;
             GetComponent<pPlayerComponent>().UpdateText(GetComponent<pPlayerComponent>().ectroplasmText, GetComponent<pPlayerComponent>().ectoplasm.ToString());
 
+            targetToDisapear = GetComponent<DialogueManager>().oppositeTalker;
+
             UpdateFriendMeter();
 
             currentQuest = new basicQuest();
@@ -187,7 +204,8 @@ public class QuestManager : MonoBehaviour
 
     void DisapeariousGhostus()
     {
-        Destroy(GetComponent<DialogueManager>().oppositeTalker);
+        Destroy(targetToDisapear.gameObject);
+        targetToDisapear = null;
     }
 
     void UpdateQuestObjective()
