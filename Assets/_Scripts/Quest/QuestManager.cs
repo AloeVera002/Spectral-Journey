@@ -14,6 +14,8 @@ public class QuestManager : MonoBehaviour
     [SerializeField] int qObjectiveIndex = 0;
     [SerializeField] public bool ongoingQuest;
 
+    [SerializeField] AudioClip questRewardSound;
+
     [SerializeField] public bool isTouch;
     [SerializeField] public bool canInteractWith;
 
@@ -267,6 +269,7 @@ public class QuestManager : MonoBehaviour
 
     public void GiveQuestReward()
     {
+        GetComponent<pPlayerComponent>().soundAudioSource.PlayOneShot(questRewardSound);
         if (questRef == GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questToGive[(GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex - 1)])
         {
             GetComponent<pPlayerComponent>().ectoplasm += GetComponent<QuestManager>().currentQuest.questReward.ectoplasmReward;
