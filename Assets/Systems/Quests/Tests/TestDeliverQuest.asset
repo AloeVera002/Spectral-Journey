@@ -17,8 +17,10 @@ MonoBehaviour:
     questDetails: 
     isTutorialQuest: 0
     QuestType: 0
-    pickupTag: 
-    questObjectives: []
+    pickupTag: obj2
+    questObjectives:
+    - {fileID: 0}
+    - {fileID: 0}
     isCompleted: 0
     questReward:
       friendReward: 0

@@ -17,7 +17,7 @@ MonoBehaviour:
     questDetails: Collect pearls for Dara {i} / {o}
     isTutorialQuest: 1
     QuestType: 0
-    pickupTag: PickUp
+    pickupTag: Pearl
     questObjectives:
     - {fileID: 0}
     - {fileID: 0}

@@ -20,7 +20,7 @@ MonoBehaviour:
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}
-  - Name: Charlie
+  - Name: '{p}'
     text: Zombie hunting?
     isQuestion: 0
     isGiveQuest: 0
@@ -33,7 +33,7 @@ MonoBehaviour:
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}
-  - Name: Charlie
+  - Name: '{p}'
     text: That sounds horrible. I will help you out!
     isQuestion: 1
     isGiveQuest: 0

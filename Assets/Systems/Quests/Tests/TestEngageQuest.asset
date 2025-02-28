@@ -16,7 +16,7 @@ MonoBehaviour:
     questName: 
     questDetails: 
     isTutorialQuest: 0
-    QuestType: 0
+    QuestType: 3
     pickupTag: 
     questObjectives: []
     isCompleted: 0

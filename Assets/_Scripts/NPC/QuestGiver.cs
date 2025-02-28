@@ -48,7 +48,7 @@ public class QuestGiver : MonoBehaviour
 
             other.gameObject.GetComponent<pPlayerComponent>().canInteract = true;
             diaManager.oppositeTalker = this.gameObject;
-            
+
             GetComponent<NavMeshAgent>().isStopped = true;
             outlinething.enabled = true;
 
@@ -63,7 +63,7 @@ public class QuestGiver : MonoBehaviour
                     diaManager.SetDialogueRef(dialogues[dialogueIndex]);
                 }
             }
-            
+
             if (isQuestGiver)
             {
                 int questIndexToCheck;
@@ -78,10 +78,15 @@ public class QuestGiver : MonoBehaviour
                 {
                     questIndexToCheck = 0;
                 }
+                Debug.Log("Quest index to check: " + questIndexToCheck + " = " + questToGive[questIndexToCheck].name);
 
                 if (queManager.questRef == this.questToGive[questIndexToCheck] && queManager.currentQuest.QuestType == QuestTypeEnum.Engage)
                 {
                     queManager.CallQuestObjectiveEvent();
+                }
+                if (queManager.currentQuest.isCompleted && queManager.currentQuest.QuestType == QuestTypeEnum.Deliver)
+                {
+                    queManager.CallQuestOCompleteEvent();
                 }
             }
         }
@@ -116,6 +121,6 @@ public class QuestGiver : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return new WaitForSeconds(timeToRotate);
         }
-    //    personToTurn.transform.rotation = endRotation;
+        personToTurn.transform.rotation = endRotation;
     }
 }

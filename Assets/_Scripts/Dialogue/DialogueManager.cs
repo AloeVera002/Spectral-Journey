@@ -84,29 +84,37 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void StartDialogue()
-    {
-        Debug.Log("started dialogue");
+    {/*
+        if (GetComponent<QuestManager>().questRef != oppositeTalker.GetComponent<QuestGiver>().questToGive[oppositeTalker.GetComponent<QuestGiver>().questIndex]) //GetComponent<QuestManager>().ongoingQuest && 
+        {
 
-        lineIndex = 0;
-        dialogueField.SetActive(true);
+        }
+        else
+        {*/
+            Debug.Log("started dialogue");
 
-        GetComponent<pPlayerComponent>().isInConversation = true;
-        Debug.Log("Is in convo: " + GetComponent<pPlayerComponent>().isInConversation);
+            lineIndex = 0;
+            dialogueField.SetActive(true);
 
-        GetComponent<QuestManager>().HideQuestHUD();
-        GetComponent<pPlayerComponent>().ToggleDialogueCamera();
+            GetComponent<pPlayerComponent>().isInConversation = true;
+            Debug.Log("Is in convo: " + GetComponent<pPlayerComponent>().isInConversation);
 
-        UpdateTextInput(lineArray[lineIndex].Name, lineArray[lineIndex].text);
+            GetComponent<QuestManager>().HideQuestHUD();
+            GetComponent<pPlayerComponent>().ToggleDialogueCamera();
 
-        /*
-        StartCoroutine(TypeLine());
-        UpdateTextInput(textArray[speechIndex].Name, textArray[speechIndex].text);*/
+            UpdateTextInput(lineArray[lineIndex].Name, lineArray[lineIndex].text);
+
+            /*
+            StartCoroutine(TypeLine());
+            UpdateTextInput(textArray[speechIndex].Name, textArray[speechIndex].text);*/
+    //    }
     }
 
     private void UpdateTextInput(string newSpeaker, string newText)
     {
-        if (newSpeaker == "{p}" || newSpeaker == "???")
+        if (newSpeaker == "{p}")
         {
+            newSpeaker = newSpeaker.Replace("{p}", GetComponent<pPlayerComponent>().GetPlayerName());
             speaker = playerSpeakerBubble.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<TMP_Text>();
             playerSpeakerBubble.SetActive(true);
             npcSpeakerBubble.SetActive(false);
@@ -198,7 +206,14 @@ public class DialogueManager : MonoBehaviour
     public void AcceptQuest()
     {
         QuitDialogue();
-        GetComponent<QuestManager>().StartQuest();
+        if (!GetComponent<QuestManager>().ongoingQuest)
+        {
+            GetComponent<QuestManager>().StartQuest();
+        }
+        else
+        {
+            Debug.Log("already has quest");
+        }
     }
 
     public void AcceptQuestion()

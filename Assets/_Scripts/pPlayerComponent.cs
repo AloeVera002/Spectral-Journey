@@ -14,6 +14,7 @@ public class pPlayerComponent : MonoBehaviour
     [SerializeField] public bool canInteract = false;
     [SerializeField] public bool isInConversation = false;
     [SerializeField] private Transform checkPoint;
+    [SerializeField] string playerName = "Charlie";
 
     Animator animator;
 
@@ -75,6 +76,11 @@ public class pPlayerComponent : MonoBehaviour
             tutorialQuestDone = true;
             GetComponent<pPlayerControlls>().movementSpeed = 25;
         }
+    }
+
+    public string GetPlayerName()
+    {
+        return playerName;
     }
 
     public void ToggleDialogueCamera()

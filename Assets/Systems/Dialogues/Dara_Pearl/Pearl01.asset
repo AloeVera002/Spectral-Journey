@@ -20,7 +20,7 @@ MonoBehaviour:
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}
-  - Name: Charlie
+  - Name: '{p}'
     text: I'm doing alright! How about you?
     isQuestion: 0
     isGiveQuest: 0
@@ -32,7 +32,7 @@ MonoBehaviour:
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}
-  - Name: Charlie
+  - Name: '{p}'
     text: What's wrong?
     isQuestion: 0
     isGiveQuest: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}
-  - Name: Charlie
+  - Name: '{p}'
     text: It's alright, we all have our good and bad days.
     isQuestion: 0
     isGiveQuest: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}
-  - Name: Charlie
+  - Name: '{p}'
     text: Of course, what do you need?
     isQuestion: 0
     isGiveQuest: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}
-  - Name: Charlie
+  - Name: '{p}'
     text: I'll go get them for you!
     isQuestion: 1
     isGiveQuest: 0

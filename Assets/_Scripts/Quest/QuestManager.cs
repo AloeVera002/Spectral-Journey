@@ -12,7 +12,10 @@ public class QuestManager : MonoBehaviour
     [SerializeField] TMP_Text questDetailsText;
     [SerializeField] bool hasCompletedObjective;
     [SerializeField] int qObjectiveIndex = 0;
-    [SerializeField] bool ongoingQuest;
+    [SerializeField] public bool ongoingQuest;
+
+    [SerializeField] public bool isTouch;
+    [SerializeField] public bool canInteractWith;
 
     [SerializeField] GameObject messageHUD;
     float timerMessageHud = 0f;
@@ -34,7 +37,7 @@ public class QuestManager : MonoBehaviour
     public delegate void CompleteQuestEvent();
     public event CompleteQuestEvent OnQuestComplete;
 
-    private GameObject targetToDisapear;
+    private GameObject targetToDisapear, objtar;
 
     void Start()
     {
@@ -44,9 +47,75 @@ public class QuestManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //    HandleObjectiveInteraction(other);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))// && !isTouch)
+        {
+            if (canInteractWith)
+            {
+                Debug.Log("called stuff with e");
+                InteractWithObjectiveByGameObject(objtar);
+            }
+        }
+
+        if (messageHUD.activeInHierarchy)
+        {
+            if (timerMessageHud >= 10f)
+            {
+                timerMessageHud = 0f;
+                Destroy(messageHUD);
+            }
+            timerMessageHud += Time.deltaTime;
+        }
+    }
+
+    public void SetObjectiveToInteractWith(GameObject gameobject)
+    {
+        objtar = gameobject;
+        Debug.Log("set orb to: " + objtar);
+    }
+
+    public void HandleObjectiveInteraction(Collider other)
+    {
+        if (isTouch)
+        {
+            InteractWithObjective(other);
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                InteractWithObjective(other);
+            }
+        }
+    }
+
+    public void HandleObjectiveInteractionByGameObject(GameObject other)
+    {
+        Debug.Log("called handle interact by gameobj");
+        if (isTouch)
+        {
+            Debug.Log("was touch");
+            InteractWithObjectiveByGameObject(other);
+        }/*
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                InteractWithObjectiveByGameObject(other);
+            }
+        }*/
+    }
+
+    void InteractWithObjective(Collider other)
+    {
+        Debug.Log("called Interact");
         if (qObjectiveIndex < currentQuest.questObjectives.Length)
         {
-            if (other.gameObject.tag == currentQuest.pickupTag)
+            if (other.gameObject.GetComponent<QuestObjective>().objectName == currentQuest.pickupTag)
             {
                 Debug.Log("Picked up a QuestObjective");
                 other.gameObject.SetActive(false);
@@ -58,16 +127,26 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    void Update()
+    void InteractWithObjectiveByGameObject(GameObject other)
     {
-        if (messageHUD.activeInHierarchy)
+        Debug.Log("called Interact");
+        if (qObjectiveIndex < currentQuest.questObjectives.Length)
         {
-            if (timerMessageHud >= 10f)
+            if (other.GetComponent<QuestObjective>().objectName == currentQuest.pickupTag)
             {
-                timerMessageHud = 0f;
-                Destroy(messageHUD);
+                if (currentQuest.QuestType == QuestTypeEnum.Deliver)
+                {
+                    if (qObjectiveIndex == currentQuest.questObjectives.Length)
+                    { currentQuest.isCompleted = true; }
+                }
+                Debug.Log("Picked up a QuestObjective");
+                other.SetActive(false);
+
+                CallQuestObjectiveEvent();
+
+                GetComponent<pPlayerComponent>().soundAudioSource.PlayOneShot(pickupSound);
+
             }
-            timerMessageHud += Time.deltaTime;
         }
     }
 
@@ -81,8 +160,9 @@ public class QuestManager : MonoBehaviour
                 break;
             }
 
-            GameObject questObjectivePrefab = questItemsToSpawn[Random.Range(0, questItemsToSpawn.Length)];
-            Instantiate(questObjectivePrefab, spawnLocations[randomLocation].position, spawnLocations[randomLocation].rotation);
+            GameObject questObjectivePrefab =// questItemsToSpawn[Random.Range(0, questItemsToSpawn.Length)];
+            Instantiate(questItemsToSpawn[0], spawnLocations[randomLocation].position, spawnLocations[randomLocation].rotation);
+            questObjectivePrefab.transform.parent = parentPickupStuff.transform;
 
             usedLocations.Add(randomLocation);
         }
@@ -166,7 +246,7 @@ public class QuestManager : MonoBehaviour
 
     public void CompleteQuest()
     {
-        Debug.Log(currentQuest.questName);
+        Debug.Log("Completed quest: " + currentQuest.questName);
         currentQuest.isCompleted = true;
         GetComponent<pPlayerComponent>().soundAudioSource.PlayOneShot(completeObjectiveSound);
         GetComponent<DialogueManager>().SetDialogueRef(currentQuest.CompletedQuestDialogue);
@@ -220,9 +300,16 @@ public class QuestManager : MonoBehaviour
             UpdateQuestDetails();
             if (qObjectiveIndex == currentQuest.questObjectives.Length)
             {
-                Debug.Log("man quest index is finished " + currentQuest.questObjectives.Length + " " + qObjectiveIndex);
-                Debug.Log("completed quest!");
-                CallQuestOCompleteEvent();
+                if (!(currentQuest.QuestType == QuestTypeEnum.Deliver))
+                {
+                    Debug.Log("man quest index is finished " + currentQuest.questObjectives.Length + " " + qObjectiveIndex);
+                    Debug.Log("completed quest!");
+                    CallQuestOCompleteEvent();
+                }
+                else
+                {
+                    questDetailsText.text = "Go back to talk to quest giver to finish";
+                }
             }
         }
         else
@@ -234,20 +321,21 @@ public class QuestManager : MonoBehaviour
 
     public bool InitializeQuest()
     {
-        if (!ongoingQuest)
-        {
             questRef = GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questToGive[GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex];
             if (questRef == GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questToGive[GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex])
             {
                 return true;
             }
             else { return false; }
-        }
         return false;
     }
 
     public void StartQuest()
     {
+        if (!ongoingQuest)
+        {
+            ongoingQuest = true;
+        }
         if (InitializeQuest())
         {
             currentQuest = questRef.quest;

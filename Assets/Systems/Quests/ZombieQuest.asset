@@ -17,7 +17,7 @@ MonoBehaviour:
     questDetails: Kill the zombie {i} / {o}
     isTutorialQuest: 0
     QuestType: 2
-    pickupTag: 
+    pickupTag: Zombie
     questObjectives:
     - {fileID: 0}
     isCompleted: 0

@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quest:
     questName: RottQuest
-    questId: RottQ01
     questDetails: Slay the zombie and save Moldy
-    pickupTag: 
-    questObjective: []
+    isTutorialQuest: 0
+    QuestType: 0
+    pickupTag: Rot
+    questObjectives: []
     isCompleted: 0
-    questProgress: 0
-    ectoplasmReward: 0
+    questReward:
+      friendReward: 0
+      ectoplasmReward: 0
     CompletedQuestDialogue: {fileID: 0}
