@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d84b4961e7e16a14483bd4b0cd7769fa, type: 3}
-  m_Name: RottReject
+  m_Name: CafeAccept
   m_EditorClassIdentifier: 
   dialogue:
-  - Name: Rott
-    text: "That\u2019s okay, I guess\u2026"
+  - Name: Sammy
+    text: "Amazing! Let's head over to the caf\xE9."
     isQuestion: 0
-    AcceptedDialogue: {fileID: 0}
-    RejectedDialogue: {fileID: 0}
+    isGiveQuest: 1
+    isReward: 0
+    nextDialogue: {fileID: 0}

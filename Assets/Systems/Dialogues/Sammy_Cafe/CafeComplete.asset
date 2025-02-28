@@ -10,79 +10,64 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d84b4961e7e16a14483bd4b0cd7769fa, type: 3}
-  m_Name: Rott01
+  m_Name: CafeComplete
   m_EditorClassIdentifier: 
   dialogue:
-  - Name: ???
-    text: Sigh...
+  - Name: Sammy
+    text: Thank you so much. I haven't had the chance to talk with anyone since I
+      passed away.
+    isQuestion: 0
+    isGiveQuest: 0
+    isReward: 0
+    nextDialogue: {fileID: 0}
+  - Name: Sammy
+    text: I had forgotten the importance of having someone to talk to.
+    isQuestion: 0
+    isGiveQuest: 0
+    isReward: 0
+    nextDialogue: {fileID: 0}
+  - Name: Sammy
+    text: I hope you will have a good talk with whoever you are gathering ectoplasm
+      for.
     isQuestion: 0
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}
   - Name: '{p}'
-    text: Hey, what's wrong?
+    text: How did you know about that?
     isQuestion: 0
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}
-  - Name: ???
-    text: My love... my heart and soul... she is inside a-a a zombie...
+  - Name: Sammy
+    text: I also used to be a paranormal scientist! I even had my own lab.
+    isQuestion: 0
+    isGiveQuest: 0
+    isReward: 0
+    nextDialogue: {fileID: 0}
+  - Name: Sammy
+    text: But it burned down one day, so I had to find something else to do.
     isQuestion: 0
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}
   - Name: '{p}'
-    text: I can help you!
+    text: I'm sorry to hear that.
     isQuestion: 0
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}
-  - Name: ???
-    text: Well... Do you know how to maybe... slay zombies?
+  - Name: Sammy
+    text: No need to be sorry, I enjoyed life until I got attacked by a zombie and
+      turned into one myself.
     isQuestion: 0
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}
-  - Name: Player
-    text: I can use my slingshot!
+  - Name: Sammy
+    text: I won't hold you here anymore. Thank you for your company, and I hope you
+      have a successful journey.
     isQuestion: 0
-    isGiveQuest: 0
-    isReward: 0
-    nextDialogue: {fileID: 0}
-  - Name: ???
-    text: Really... a slingshot?
-    isQuestion: 0
-    isGiveQuest: 0
-    isReward: 0
-    nextDialogue: {fileID: 0}
-  - Name: Player
-    text: It's a... really special slingshot?
-    isQuestion: 0
-    isGiveQuest: 0
-    isReward: 0
-    nextDialogue: {fileID: 0}
-  - Name: ???
-    text: I just... I can't... I don't know how to move on without her.
-    isQuestion: 0
-    isGiveQuest: 0
-    isReward: 0
-    nextDialogue: {fileID: 0}
-  - Name: Player
-    text: Let me help you! I'll free your friend.
-    isQuestion: 0
-    isGiveQuest: 0
-    isReward: 0
-    nextDialogue: {fileID: 0}
-  - Name: Rott
-    text: That would be really nice actually. My name is Rott by the way and my love's
-      name is Moldy.
-    isQuestion: 0
-    isGiveQuest: 0
-    isReward: 0
-    nextDialogue: {fileID: 0}
-  - Name: Rott
-    text: So... are you going to help my Moldy be freed from the zombie?
-    isQuestion: 1
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}

@@ -10,48 +10,50 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d84b4961e7e16a14483bd4b0cd7769fa, type: 3}
-  m_Name: Water01
+  m_Name: WaterComplete
   m_EditorClassIdentifier: 
   dialogue:
   - Name: Gjertrud
-    text: If frogs were human-sized, how would they survive? I wonder...
+    text: Oh, thank you! Now I can have one refreshing sip of water before moving
+      on.
     isQuestion: 0
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}
   - Name: Gjertrud
-    text: Oh, hello there, didn't see you. What brings you here?
-    isQuestion: 0
-    isGiveQuest: 0
-    isReward: 0
-    nextDialogue: {fileID: 0}
-  - Name: '{p}'
-    text: I am here to help the ghosts in need to move to the afterlife.
+    text: ...
     isQuestion: 0
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}
   - Name: Gjertrud
-    text: Aah, so you are the paranormal scientist. I am in fact in need of help.
+    text: The water... it's going through me...
     isQuestion: 0
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}
   - Name: '{p}'
-    text: Well, here I am! What do you need help with?
+    text: Isn't that because you are a ghost? You are intangible.
     isQuestion: 0
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}
   - Name: Gjertrud
-    text: I long for a fresh sip of water. I haven't had water in ages.
+    text: Hmm, yeah, that makes sense. Sorry for the trouble.
     isQuestion: 0
     isGiveQuest: 0
     isReward: 0
     nextDialogue: {fileID: 0}
   - Name: '{p}'
-    text: That should be no problem.
-    isQuestion: 1
+    text: Don't be sorry! I like helping out, even if the results aren't what you
+      expected.
+    isQuestion: 0
     isGiveQuest: 0
     isReward: 0
-    nextDialogue: {fileID: 11400000, guid: 7440b6ffb0e9c844eaf67a3b3624bbfb, type: 2}
+    nextDialogue: {fileID: 0}
+  - Name: Gjertrud
+    text: You are very sweet. Thank you for the help, and good luck traveling.
+    isQuestion: 0
+    isGiveQuest: 0
+    isReward: 0
+    nextDialogue: {fileID: 0}

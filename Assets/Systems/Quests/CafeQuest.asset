@@ -10,22 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82c9e343c28ffce48a05bad82cd5456e, type: 3}
-  m_Name: PearlQuest
+  m_Name: CafeQuest
   m_EditorClassIdentifier: 
   quest:
-    questName: PearlQuest
-    questDetails: Collect pearls for Dara {i} / {o}
-    isTutorialQuest: 1
+    questName: CafeQuest
+    questDetails: Bring Sammy a cup of coffee
+    isTutorialQuest: 0
     QuestType: 0
-    pickupTag: Pearl
+    pickupTag: Coffee
     questObjectives:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     - {fileID: 0}
     isCompleted: 0
     questReward:
       friendReward: 100
-      ectoplasmReward: 30
-    CompletedQuestDialogue: {fileID: 11400000, guid: 4d256a124065edc42abf80832c7b4361, type: 2}
+      ectoplasmReward: 40
+    CompletedQuestDialogue: {fileID: 11400000, guid: 24ece162e767c0740bc93583e6d9540e, type: 2}

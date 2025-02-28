@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d84b4961e7e16a14483bd4b0cd7769fa, type: 3}
-  m_Name: RottAccept
+  m_Name: WaterAccept
   m_EditorClassIdentifier: 
   dialogue:
-  - Name: Rott
-    text: "That\u2019s really nice of you\u2026You should be able to find it by the
-      smell of it, kinda rotten\u2026in a way\u2026"
+  - Name: Gjertrud
+    text: Excellent! You can get some water by the lake down the hill.
     isQuestion: 0
-    giveQuest: 1
-    AcceptedDialogue: {fileID: 0}
-    RejectedDialogue: {fileID: 0}
+    isGiveQuest: 1
+    isReward: 0
+    nextDialogue: {fileID: 0}
