@@ -21,7 +21,7 @@ public class DialogueManager : MonoBehaviour
     bool isCameraswitched;
 
     private dialogueLine[] lineArray;
-    int lineIndex = 0;
+    public int lineIndex = 0;
     bool inProgress = false;
 
     public delegate void DialogueStarted();
