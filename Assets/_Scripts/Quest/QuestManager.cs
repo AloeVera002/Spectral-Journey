@@ -264,13 +264,6 @@ public class QuestManager : MonoBehaviour
         {
             GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().dontGiveNewDialogue = true;
         }
-        if (currentQuest.isTutorialQuest)
-        {
-            GetComponent<pPlayerComponent>().tutorialQuestDone = true;
-            GetComponent<pPlayerComponent>().slingshot.SetActive(true);
-            messageHUD.SetActive(true);
-            GetComponent<pPlayerComponent>().InitPebblesHUD();
-        }
         questDetailsText.text = "Quest completed! Go and collect your reward";
     }
 
@@ -303,6 +296,14 @@ public class QuestManager : MonoBehaviour
 
             currentQuest = new basicQuest();
             ResetQuestObjectives();
+
+            if (currentQuest.isTutorialQuest)
+            {
+                GetComponent<pPlayerComponent>().tutorialQuestDone = true;
+                GetComponent<pPlayerComponent>().slingshot.SetActive(true);
+                messageHUD.SetActive(true);
+                GetComponent<pPlayerComponent>().InitPebblesHUD();
+            }
         }
         Invoke("DisapeariousGhostus", 5);
     }
