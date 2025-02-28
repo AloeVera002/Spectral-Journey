@@ -57,7 +57,10 @@ public class pPlayerComponent : MonoBehaviour
         DontDestroyOnLoad(this);
         animator = GetComponent<Animator>();
         UpdateText(ectroplasmText, ectoplasm.ToString());
+    }
 
+    public void InitPebblesHUD()
+    {
         InitializePebblesHUD(maxPebbles);
         IncreasePebbleHUD();
     }

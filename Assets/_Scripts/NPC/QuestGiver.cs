@@ -52,9 +52,9 @@ public class QuestGiver : MonoBehaviour
             GetComponent<NavMeshAgent>().isStopped = true;
             outlinething.enabled = true;
 
-            StartCoroutine(FaceSomeone(this.gameObject, other.gameObject, timeToTurn));
-            StartCoroutine(FaceSomeone(other.gameObject, this.gameObject, timeToTurn));
-            // other.gameObject.transform.LookAt(this.gameObject.transform.position);
+        //    StartCoroutine(FaceSomeone(this.gameObject, other.gameObject, timeToTurn));
+            other.gameObject.transform.LookAt(this.gameObject.transform.position);
+            this.gameObject.transform.LookAt(other.gameObject.transform.position);
 
             if (hasDialogue)
             {

@@ -45,6 +45,9 @@ public class QuestManager : MonoBehaviour
     {
         OnQuestObjective += UpdateQuestObjective;
         OnQuestComplete += CompleteQuest;
+
+        // remember to remove
+        GameObject.Find("Enemy").SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -263,6 +266,7 @@ public class QuestManager : MonoBehaviour
             GetComponent<pPlayerComponent>().tutorialQuestDone = true;
             GetComponent<pPlayerComponent>().slingshot.SetActive(true);
             messageHUD.SetActive(true);
+            GetComponent<pPlayerComponent>().InitPebblesHUD();
         }
         questDetailsText.text = "Quest completed! Go and collect your reward";
     }
@@ -354,6 +358,10 @@ public class QuestManager : MonoBehaviour
             else
             {
                 parentPickupStuff.SetActive(false);
+            }
+            if (currentQuest.QuestType == QuestTypeEnum.Pickup)
+            {
+                GameObject.Find("Enemy").SetActive(true);
             }
         }
         Debug.Log(InitializeQuest());
