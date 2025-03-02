@@ -106,9 +106,9 @@ public class AttackManager : MonoBehaviour
                             {
                                 GameObject newGhost = GameObject.Find("HiddenGhost");
                                 newGhost.transform.position = this.transform.position;
-                                newGhost.SetActive(true);
-                                newGhost.GetComponent<Wandering>().isToFollowPlayer = true;
                                 GameObject.Find("PlayerV2").GetComponent<QuestManager>().GiveQuestReward();
+                                newGhost.GetComponent<Wandering>().isToFollowPlayer = true;
+                            //    Invoke("SetHiddenGhost", 10);
                             }
                         }
                         else
@@ -129,6 +129,11 @@ public class AttackManager : MonoBehaviour
                 break;
         }
         Destroy(gameObject);
+    }
+
+    void SetHiddenGhost()
+    {
+        
     }
 }
 

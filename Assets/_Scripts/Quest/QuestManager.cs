@@ -279,6 +279,14 @@ public class QuestManager : MonoBehaviour
         {
             spriteIndex++;
             messageHUD.GetComponent<Image>().sprite = messageHUDSprites[spriteIndex];
+            if (spriteIndex == messageHUDSprites.Length - 1)
+            {
+                messageHUD.transform.GetChild(0).transform.GetChild(0).GetComponent<TMP_Text>().text = "Close";
+            }
+            else
+            {
+                messageHUD.transform.GetChild(0).transform.GetChild(0).GetComponent<TMP_Text>().text = "Next";
+            }
         }
         else
         {

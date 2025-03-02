@@ -203,6 +203,7 @@ public class DialogueManager : MonoBehaviour
         if (questManDia.previousQuest.isTutorialQuest)
         {
             questManDia.TutorialScreenPopUp();
+            questManDia.previousQuest = new basicQuest();
         }
         dialogueField.SetActive(false);
 
