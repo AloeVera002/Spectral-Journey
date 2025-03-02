@@ -77,6 +77,10 @@ public class DialogueManager : MonoBehaviour
                 Debug.Log("isGiveQuest should be: " + lineArray[lineIndex].isGiveQuest);
                 AcceptQuest();
             }
+            else if (lineArray[lineIndex].isReward)
+            {
+                questManDia.GiveQuestReward();
+            }
             else
             {
                 Debug.Log("isQuestion and isGiveQuest should be (false): " + "d: " + lineArray[lineIndex].isQuestion + "q: " + lineArray[lineIndex].isGiveQuest);
@@ -191,10 +195,6 @@ public class DialogueManager : MonoBehaviour
         {
             QuitDialogue();
         }*/
-        if (lineArray[lineIndex].isReward)
-        {
-            questManDia.GiveQuestReward();
-        }
     }
 
     public void QuitDialogue()

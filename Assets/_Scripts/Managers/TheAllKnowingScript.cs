@@ -31,6 +31,7 @@ public class TheAllKnowingScript : MonoBehaviour
         quester.hasDialogue = true;
         quester.isQuestGiver = true;
         quester.ToggleNPCMark(0);
+        Debug.Log("quest giver: " + quester.gameObject.name);
     }
 
     void ResetQuestGiver()
