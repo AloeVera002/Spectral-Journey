@@ -199,12 +199,14 @@ public class DialogueManager : MonoBehaviour
 
     public void QuitDialogue()
     {
+        if (questManDia.currentQuest.isTutorialQuest)
+        {
+            questManDia.TutorialScreenPopUp();
+        }
         dialogueField.SetActive(false);
 
         playerCompDia.isInConversation = false;
         playerCompDia.ToggleDialogueCamera();
-
-        questManDia.TutorialScreenPopUp();
     }
 
     void ShowModal()
