@@ -202,7 +202,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.4
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1305,6 +1305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screen: {fileID: 1826603347}
+  howTo: {fileID: 0}
 --- !u!1001 &1809623206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1501,6 +1502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screen: {fileID: 1826603347}
+  howTo: {fileID: 0}
 --- !u!1 &1826603347
 GameObject:
   m_ObjectHideFlags: 0

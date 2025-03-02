@@ -2241,7 +2241,7 @@ PrefabInstance:
     - target: {fileID: 21481960602476517, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: dialogueRef
       value: 
-      objectReference: {fileID: 11400000, guid: 10138085a74cddf409a14157a84481dc, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 21481960602476517, guid: 2e2b6fe130fa45443bca651e2c3bd65f, type: 3}
       propertyPath: modalButtons
       value: 
@@ -15190,8 +15190,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1811596707}
   - component: {fileID: 1811596706}
-  - component: {fileID: 1811596705}
-  - component: {fileID: 1811596709}
   - component: {fileID: 1811596708}
   m_Layer: 0
   m_Name: StartingTalk
@@ -15199,35 +15197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1811596705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811596704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c30cccaadadfa53419209140282207e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questToGive: []
-  dialogues:
-  - {fileID: 11400000, guid: 10138085a74cddf409a14157a84481dc, type: 2}
-  isQuestGiver: 0
-  hasDialogue: 1
-  timeToTurn: 0.5
-  hasQuestToGive: 0
-  npcMarks:
-  - {fileID: 2012114530}
-  friendshipData:
-    friendName: 
-    friendshipValue: 0
-    isActive: 0
-  dialogueIndex: 0
-  questIndex: 0
-  dontGiveNewDialogue: 0
+  m_IsActive: 1
 --- !u!65 &1811596706
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15275,37 +15245,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1811596704}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Script: {fileID: 11500000, guid: f5af76664e4be694cab3e9fe9d107828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 0}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
---- !u!195 &1811596709
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811596704}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.00001
-  m_Speed: 1
-  m_Acceleration: 0.1
-  avoidancePriority: 50
-  m_AngularSpeed: 1
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0.1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  startDialogue: {fileID: 11400000, guid: 10138085a74cddf409a14157a84481dc, type: 2}
 --- !u!1 &1818260012
 GameObject:
   m_ObjectHideFlags: 0
