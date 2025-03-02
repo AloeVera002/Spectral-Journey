@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             targetToTeleport = other.gameObject;
- //           targetToTeleport.transform.position = this.transform.position + location;
+            targetToTeleport.transform.position = this.transform.position + location;
             SceneManager.LoadScene((int)sceneToSwitch);
         }
     }
