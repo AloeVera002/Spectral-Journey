@@ -179,18 +179,18 @@ public class DialogueManager : MonoBehaviour
             UpdateTextInput(lineArray[lineIndex].Name, lineArray[lineIndex].text);
         }
         else
-        {
+        {/*
             if (oppositeTalker.GetComponent<QuestGiver>())
             {
                 oppositeTalker.GetComponent<QuestGiver>().dontGiveNewDialogue = false;
-            }
+            }*/
             
             QuitDialogue();
-        }
+        }/*
         if (lineIndex > lineArray.Length - 1 && lineArray[lineIndex].nextDialogue == null)
         {
             QuitDialogue();
-        }
+        }*/
         if (lineArray[lineIndex].isReward)
         {
             questManDia.GiveQuestReward();

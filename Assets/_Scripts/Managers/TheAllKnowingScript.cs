@@ -18,6 +18,7 @@ public class TheAllKnowingScript : MonoBehaviour
 
     public void UpdateQuestGiver()
     {
+        Debug.Log("Called UpdateQuest");
         ResetQuestGiver();
         questIndex += 1;
         ActivateQuestGiver();
