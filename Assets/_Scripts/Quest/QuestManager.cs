@@ -53,7 +53,6 @@ public class QuestManager : MonoBehaviour
         OnQuestComplete += CompleteQuest;
 
         // remember to remove
-        GameObject.Find("Enemy").SetActive(false);
         playerCompQue = GetComponent<pPlayerComponent>();
         dialogueManQue = GetComponent<DialogueManager>();
     }

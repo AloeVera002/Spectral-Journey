@@ -39,6 +39,8 @@ public class DialogueManager : MonoBehaviour
 
         questManDia = GetComponent<QuestManager>();
         playerCompDia = GetComponent<pPlayerComponent>();
+
+        StartDialogue();
     }
 
     void Update()
