@@ -44,6 +44,9 @@ public class QuestManager : MonoBehaviour
 
     private GameObject targetToDisapear, objtar;
 
+    private pPlayerComponent playerCompQue;
+    private DialogueManager dialogueManQue;
+
     void Start()
     {
         OnQuestObjective += UpdateQuestObjective;
@@ -51,6 +54,8 @@ public class QuestManager : MonoBehaviour
 
         // remember to remove
         GameObject.Find("Enemy").SetActive(false);
+        playerCompQue = GetComponent<pPlayerComponent>();
+        dialogueManQue = GetComponent<DialogueManager>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -130,7 +135,7 @@ public class QuestManager : MonoBehaviour
 
                 CallQuestObjectiveEvent();
 
-                GetComponent<pPlayerComponent>().soundAudioSource.PlayOneShot(pickupSound);
+                playerCompQue.soundAudioSource.PlayOneShot(pickupSound);
             }
         }
     }
@@ -152,7 +157,7 @@ public class QuestManager : MonoBehaviour
 
                 CallQuestObjectiveEvent();
 
-                GetComponent<pPlayerComponent>().soundAudioSource.PlayOneShot(pickupSound);
+                playerCompQue.soundAudioSource.PlayOneShot(pickupSound);
 
             }
         }
@@ -256,13 +261,13 @@ public class QuestManager : MonoBehaviour
     {
         Debug.Log("Completed quest: " + currentQuest.questName);
         currentQuest.isCompleted = true;
-        GetComponent<pPlayerComponent>().soundAudioSource.PlayOneShot(completeObjectiveSound);
-        GetComponent<DialogueManager>().SetDialogueRef(currentQuest.CompletedQuestDialogue);
-        GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().dialogueIndex++;
-        GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex++;
-        if (GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questToGive[GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex - 1] == questRef)
+        playerCompQue.soundAudioSource.PlayOneShot(completeObjectiveSound);
+        dialogueManQue.SetDialogueRef(currentQuest.CompletedQuestDialogue);
+        dialogueManQue.oppositeTalker.GetComponent<QuestGiver>().dialogueIndex++;
+        dialogueManQue.oppositeTalker.GetComponent<QuestGiver>().questIndex++;
+        if (dialogueManQue.oppositeTalker.GetComponent<QuestGiver>().questToGive[dialogueManQue.oppositeTalker.GetComponent<QuestGiver>().questIndex - 1] == questRef)
         {
-            GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().dontGiveNewDialogue = true;
+            dialogueManQue.oppositeTalker.GetComponent<QuestGiver>().dontGiveNewDialogue = true;
         }
         questDetailsText.text = "Quest completed! Go and collect your reward";
     }
@@ -285,13 +290,13 @@ public class QuestManager : MonoBehaviour
 
     public void GiveQuestReward()
     {
-        GetComponent<pPlayerComponent>().soundAudioSource.PlayOneShot(questRewardSound);
-        if (questRef == GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questToGive[(GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex - 1)])
+        playerCompQue.soundAudioSource.PlayOneShot(questRewardSound);
+        if (questRef == dialogueManQue.oppositeTalker.GetComponent<QuestGiver>().questToGive[(dialogueManQue.oppositeTalker.GetComponent<QuestGiver>().questIndex - 1)])
         {
-            GetComponent<pPlayerComponent>().ectoplasm += GetComponent<QuestManager>().currentQuest.questReward.ectoplasmReward;
-            GetComponent<pPlayerComponent>().UpdateText(GetComponent<pPlayerComponent>().ectroplasmText, GetComponent<pPlayerComponent>().ectoplasm.ToString());
+            playerCompQue.ectoplasm += currentQuest.questReward.ectoplasmReward;
+            playerCompQue.UpdateText(playerCompQue.ectroplasmText, playerCompQue.ectoplasm.ToString());
 
-            targetToDisapear = GetComponent<DialogueManager>().oppositeTalker;
+            targetToDisapear = dialogueManQue.oppositeTalker;
 
             UpdateFriendMeter();
 
@@ -306,10 +311,10 @@ public class QuestManager : MonoBehaviour
     {
         if (currentQuest.isTutorialQuest)
         {
-            GetComponent<pPlayerComponent>().tutorialQuestDone = true;
-            GetComponent<pPlayerComponent>().slingshot.SetActive(true);
+            playerCompQue.tutorialQuestDone = true;
+            playerCompQue.slingshot.SetActive(true);
             messageHUD.SetActive(true);
-            GetComponent<pPlayerComponent>().InitPebblesHUD();
+            playerCompQue.InitPebblesHUD();
         }
     }
 
@@ -352,8 +357,8 @@ public class QuestManager : MonoBehaviour
 
     public bool InitializeQuest()
     {
-            questRef = GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questToGive[GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex];
-            if (questRef == GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questToGive[GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().questIndex])
+            questRef = dialogueManQue.oppositeTalker.GetComponent<QuestGiver>().questToGive[dialogueManQue.oppositeTalker.GetComponent<QuestGiver>().questIndex];
+            if (questRef == dialogueManQue.oppositeTalker.GetComponent<QuestGiver>().questToGive[dialogueManQue.oppositeTalker.GetComponent<QuestGiver>().questIndex])
             {
                 return true;
             }
@@ -382,7 +387,7 @@ public class QuestManager : MonoBehaviour
                     InitializeQuestPickups(currentQuest.questObjectives.Length);
                     break;
                 case QuestTypeEnum.Kill:
-                    GameObject.Find("Enemy").SetActive(true);
+                    GameObject.Find("Narrater").GetComponent<TheAllKnowingScript>().MakeZombieVisible();
                     break;
                 case QuestTypeEnum.Engage:
                     break;
@@ -410,15 +415,15 @@ public class QuestManager : MonoBehaviour
     void UpdateQuestDetails()
     {
         string finalOutput = currentQuest.questDetails;
-        finalOutput = GetComponent<DialogueManager>().ReplacePlaceholderText(finalOutput, "{i}", qObjectiveIndex.ToString());
-        finalOutput = GetComponent<DialogueManager>().ReplacePlaceholderText(finalOutput, "{o}", (questObjectives.Length).ToString());
+        finalOutput = dialogueManQue.ReplacePlaceholderText(finalOutput, "{i}", qObjectiveIndex.ToString());
+        finalOutput = dialogueManQue.ReplacePlaceholderText(finalOutput, "{o}", (questObjectives.Length).ToString());
 
         questDetailsText.text = finalOutput;
     }
 
     public void UpdateFriendMeter()
     {
-        FriendshipData targetFriendshipData = GetComponent<DialogueManager>().oppositeTalker.GetComponent<QuestGiver>().friendshipData;
+        FriendshipData targetFriendshipData = dialogueManQue.oppositeTalker.GetComponent<QuestGiver>().friendshipData;
 
         // Find the index of the targetFriendshipData in the friendships array
         int friendIndex = -1;

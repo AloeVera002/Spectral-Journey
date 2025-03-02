@@ -42,4 +42,9 @@ public class TheAllKnowingScript : MonoBehaviour
             quester.ToggleNPCMark(0);
         }
     }
+
+    public void MakeZombieVisible()
+    {
+        enemy.SetActive(true);
+    }
 }
