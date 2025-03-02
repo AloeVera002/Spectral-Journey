@@ -5,6 +5,7 @@ public class HowToPlayButton : MonoBehaviour
 {
 
     public GameObject screen;
+    public GameObject howTo;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,5 +29,10 @@ public class HowToPlayButton : MonoBehaviour
     public void CloseWindow()
     {
         screen.SetActive(false);
+    }
+
+    public void CloseHowTo()
+    {
+        howTo.SetActive(false);
     }
 }
