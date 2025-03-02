@@ -7,10 +7,10 @@ public class QuestGiver : MonoBehaviour
 {
     [SerializeField] public QuestScriptableObj[] questToGive;
     [SerializeField] so_Dialogue[] dialogues;
-    [SerializeField] bool isQuestGiver;
-    [SerializeField] bool hasDialogue;
+    [SerializeField] public bool isQuestGiver;
+    [SerializeField] public bool hasDialogue;
     [SerializeField] float timeToTurn = .5f;
-    bool hasQuestToGive = false;
+    public bool hasQuestToGive = false;
 
     [SerializeField] GameObject[] npcMarks;
     [SerializeField] public FriendshipData friendshipData;
@@ -22,8 +22,8 @@ public class QuestGiver : MonoBehaviour
 
     void Start()
     {
-        if (isQuestGiver) { hasQuestToGive = true; ToggleNPCMark(0, hasQuestToGive); }
-        else { hasQuestToGive = false; ToggleNPCMark(0, hasQuestToGive); }
+        if (isQuestGiver) { hasQuestToGive = true; ToggleNPCMark(0); }
+        else { hasQuestToGive = false; ToggleNPCMark(0); }
 
         outlinething = GetComponent<Outline>();
         Debug.Log(outlinething.name);
@@ -35,7 +35,7 @@ public class QuestGiver : MonoBehaviour
         if (dialogueIndex > dialogues.Length)
         {
             hasQuestToGive = false;
-            ToggleNPCMark(0, hasQuestToGive);
+            ToggleNPCMark(0);
         }
     }
 
@@ -102,9 +102,9 @@ public class QuestGiver : MonoBehaviour
         GetComponent<NavMeshAgent>().isStopped = false;
     }
 
-    public void ToggleNPCMark(int index, bool inBool)
+    public void ToggleNPCMark(int index)//, bool inBool)
     {
-        npcMarks[index].SetActive(inBool);
+        npcMarks[index].SetActive(hasQuestToGive);
     }
 
     IEnumerator FaceSomeone(GameObject personToTurn, GameObject personToTurnTo, float timeToRotate)

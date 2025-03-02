@@ -15,7 +15,7 @@ public class SceneController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("wmfweo");
-            SceneManager.LoadScene("LakeTownPrototype");
+            SceneManager.LoadScene((int)ESceneEnum.LakeTown);
         }
        //LoadNewScene();
     }

@@ -15,7 +15,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] float textSpeed;
     [SerializeField] public GameObject oppositeTalker;
 
-    QuestManager questMan;
+    QuestManager questManDia;
+    pPlayerComponent playerCompDia;
+
 
     [SerializeField] bool isQuestioned;
     bool isCameraswitched;
@@ -33,16 +35,19 @@ public class DialogueManager : MonoBehaviour
         playerSpeakerBubble = dialogueField.transform.GetChild(2).gameObject;
         Debug.Log("NPC speaker: " + dialogueField.transform.GetChild(1).gameObject.name +
             " PlayerSpeaker: " + dialogueField.transform.GetChild(2).gameObject.name);
-        GetInfo();
+    //    GetInfo();
+
+        questManDia = GetComponent<QuestManager>();
+        playerCompDia = GetComponent<pPlayerComponent>();
     }
 
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.E))
         {
-            if (!GetComponent<pPlayerComponent>().canInteract || GetComponent<pPlayerComponent>().isInConversation) return;
+            if (!playerCompDia.canInteract || playerCompDia.isInConversation) return;
 
-            if (GetComponent<pPlayerComponent>().canInteract)
+            if (playerCompDia.canInteract)
             {
                 StartNewDialogue();
             }
@@ -50,7 +55,7 @@ public class DialogueManager : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            if (!GetComponent<pPlayerComponent>().isInConversation) return;
+            if (!playerCompDia.isInConversation) return;
 
             if (lineArray[lineIndex].isQuestion)
             {/*
@@ -96,11 +101,11 @@ public class DialogueManager : MonoBehaviour
             lineIndex = 0;
             dialogueField.SetActive(true);
 
-            GetComponent<pPlayerComponent>().isInConversation = true;
-            Debug.Log("Is in convo: " + GetComponent<pPlayerComponent>().isInConversation);
+            playerCompDia.isInConversation = true;
+            Debug.Log("Is in convo: " + playerCompDia.isInConversation);
 
-            GetComponent<QuestManager>().HideQuestHUD();
-            GetComponent<pPlayerComponent>().ToggleDialogueCamera();
+            questManDia.HideQuestHUD();
+            playerCompDia.ToggleDialogueCamera();
 
             UpdateTextInput(lineArray[lineIndex].Name, lineArray[lineIndex].text);
 
@@ -177,7 +182,7 @@ public class DialogueManager : MonoBehaviour
         }
         if (lineArray[lineIndex].isReward)
         {
-            GetComponent<QuestManager>().GiveQuestReward();
+            questManDia.GiveQuestReward();
         }
     }
 
@@ -185,8 +190,10 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueField.SetActive(false);
 
-        GetComponent<pPlayerComponent>().isInConversation = false;
-        GetComponent<pPlayerComponent>().ToggleDialogueCamera();
+        playerCompDia.isInConversation = false;
+        playerCompDia.ToggleDialogueCamera();
+
+        questManDia.TutorialScreenPopUp();
     }
 
     void ShowModal()
@@ -205,9 +212,9 @@ public class DialogueManager : MonoBehaviour
     public void AcceptQuest()
     {
         QuitDialogue();
-        if (!GetComponent<QuestManager>().ongoingQuest)
+        if (!questManDia.ongoingQuest)
         {
-            GetComponent<QuestManager>().StartQuest();
+            questManDia.StartQuest();
         }
         else
         {

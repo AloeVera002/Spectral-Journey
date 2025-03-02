@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
-public enum SceneEnum
+public enum ESceneEnum
 {
     MainMenu = 0,
     LakeTown = 1,
@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
 {
     private GameObject targetToTeleport;
     [SerializeField] Vector3 location;
-    [SerializeField] SceneEnum sceneToSwitch;
+    [SerializeField] ESceneEnum sceneToSwitch;
     AudioManager backgroundAudioMaster;
 
     private void Start()

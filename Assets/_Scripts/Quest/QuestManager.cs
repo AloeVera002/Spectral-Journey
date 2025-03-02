@@ -293,20 +293,24 @@ public class QuestManager : MonoBehaviour
 
             targetToDisapear = GetComponent<DialogueManager>().oppositeTalker;
 
-            if (currentQuest.isTutorialQuest)
-            {
-                GetComponent<pPlayerComponent>().tutorialQuestDone = true;
-                GetComponent<pPlayerComponent>().slingshot.SetActive(true);
-                messageHUD.SetActive(true);
-                GetComponent<pPlayerComponent>().InitPebblesHUD();
-            }
-
             UpdateFriendMeter();
 
             currentQuest = new basicQuest();
             ResetQuestObjectives();
         }
+        GameObject.Find("Narrater").GetComponent<TheAllKnowingScript>().UpdateQuestGiver();
         Invoke("DisapeariousGhostus", 5);
+    }
+
+    public void TutorialScreenPopUp()
+    {
+        if (currentQuest.isTutorialQuest)
+        {
+            GetComponent<pPlayerComponent>().tutorialQuestDone = true;
+            GetComponent<pPlayerComponent>().slingshot.SetActive(true);
+            messageHUD.SetActive(true);
+            GetComponent<pPlayerComponent>().InitPebblesHUD();
+        }
     }
 
     void DisapeariousGhostus()
@@ -370,18 +374,20 @@ public class QuestManager : MonoBehaviour
             SetQuestData();
             ShowQuestHUD();
 
-            if (currentQuest.QuestType == QuestTypeEnum.Pickup)
+            parentPickupStuff.SetActive(false);
+            switch (currentQuest.QuestType)
             {
-                parentPickupStuff.SetActive(true);
-                InitializeQuestPickups(currentQuest.questObjectives.Length);
-            }
-            else
-            {
-                parentPickupStuff.SetActive(false);
-            }
-            if (currentQuest.QuestType == QuestTypeEnum.Pickup)
-            {
-                GameObject.Find("Enemy").SetActive(true);
+                case QuestTypeEnum.Pickup:
+                    parentPickupStuff.SetActive(true);
+                    InitializeQuestPickups(currentQuest.questObjectives.Length);
+                    break;
+                case QuestTypeEnum.Kill:
+                    GameObject.Find("Enemy").SetActive(true);
+                    break;
+                case QuestTypeEnum.Engage:
+                    break;
+                    default:
+                    break;
             }
         }
         Debug.Log(InitializeQuest());
