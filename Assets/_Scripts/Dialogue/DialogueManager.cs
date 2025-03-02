@@ -80,6 +80,7 @@ public class DialogueManager : MonoBehaviour
             else if (lineArray[lineIndex].isReward)
             {
                 questManDia.GiveQuestReward();
+                NextLine();
             }
             else
             {
