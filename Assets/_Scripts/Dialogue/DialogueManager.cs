@@ -40,7 +40,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.E))
         {
-            //   if (!GetComponent<pPlayerComponent>().canInteract || GetComponent<pPlayerComponent>().isInConversation) return;
+            if (!GetComponent<pPlayerComponent>().canInteract || GetComponent<pPlayerComponent>().isInConversation) return;
 
             if (GetComponent<pPlayerComponent>().canInteract)
             {
@@ -48,7 +48,7 @@ public class DialogueManager : MonoBehaviour
             }
 
         }
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             if (!GetComponent<pPlayerComponent>().isInConversation) return;
 

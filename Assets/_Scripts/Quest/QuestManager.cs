@@ -270,10 +270,11 @@ public class QuestManager : MonoBehaviour
     public void NextPageTutorialHUD()
     {
         Time.timeScale = 0;
-        messageHUD.GetComponent<Image>().sprite = messageHUDSprites[spriteIndex];
+        
         if (spriteIndex < messageHUDSprites.Length - 1)
         {
             spriteIndex++;
+            messageHUD.GetComponent<Image>().sprite = messageHUDSprites[spriteIndex];
         }
         else
         {
