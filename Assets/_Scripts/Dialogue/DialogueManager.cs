@@ -180,7 +180,11 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            oppositeTalker.GetComponent<QuestGiver>().dontGiveNewDialogue = false;
+            if (oppositeTalker.GetComponent<QuestGiver>())
+            {
+                oppositeTalker.GetComponent<QuestGiver>().dontGiveNewDialogue = false;
+            }
+            
             QuitDialogue();
         }
         if (lineIndex > lineArray.Length - 1 && lineArray[lineIndex].nextDialogue == null)
