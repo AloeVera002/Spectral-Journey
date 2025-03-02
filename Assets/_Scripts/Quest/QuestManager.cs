@@ -8,7 +8,7 @@ public class QuestManager : MonoBehaviour
 {
     public QuestScriptableObj questRef;
     [SerializeField] GameObject questField;
-    public basicQuest currentQuest;
+    public basicQuest currentQuest, previousQuest;
     [SerializeField] GameObject[] questObjectives;
     [SerializeField] TMP_Text questDetailsText;
     [SerializeField] bool hasCompletedObjective;
@@ -298,6 +298,7 @@ public class QuestManager : MonoBehaviour
             targetToDisapear = dialogueManQue.oppositeTalker;
 
             UpdateFriendMeter();
+            previousQuest = currentQuest;
 
             currentQuest = new basicQuest();
             ResetQuestObjectives();
@@ -308,13 +309,10 @@ public class QuestManager : MonoBehaviour
 
     public void TutorialScreenPopUp()
     {
-        if (currentQuest.isTutorialQuest)
-        {
             playerCompQue.tutorialQuestDone = true;
             playerCompQue.slingshot.SetActive(true);
             messageHUD.SetActive(true);
             playerCompQue.InitPebblesHUD();
-        }
     }
 
     void DisapeariousGhostus()

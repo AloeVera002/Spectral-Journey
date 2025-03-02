@@ -199,7 +199,7 @@ public class DialogueManager : MonoBehaviour
 
     public void QuitDialogue()
     {
-        if (questManDia.currentQuest.isTutorialQuest)
+        if (questManDia.previousQuest.isTutorialQuest)
         {
             questManDia.TutorialScreenPopUp();
         }
