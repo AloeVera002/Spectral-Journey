@@ -303,7 +303,7 @@ public class QuestManager : MonoBehaviour
             currentQuest = new basicQuest();
             ResetQuestObjectives();
         }
-        GameObject.Find("Narrater").GetComponent<TheAllKnowingScript>().UpdateQuestGiver();
+        GameObject.Find("Narrator").GetComponent<TheAllKnowingScript>().UpdateQuestGiver();
         Invoke("DisapeariousGhostus", 5);
     }
 
@@ -387,7 +387,7 @@ public class QuestManager : MonoBehaviour
                     InitializeQuestPickups(currentQuest.questObjectives.Length);
                     break;
                 case QuestTypeEnum.Kill:
-                    GameObject.Find("Narrater").GetComponent<TheAllKnowingScript>().MakeZombieVisible();
+                    GameObject.Find("Narrator").GetComponent<TheAllKnowingScript>().MakeZombieVisible();
                     break;
                 case QuestTypeEnum.Engage:
                     break;
