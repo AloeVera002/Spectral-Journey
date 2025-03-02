@@ -15,15 +15,16 @@ public class SceneController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("wmfweo");
+
             SceneManager.LoadScene((int)ESceneEnum.LakeTown);
+
+            SceneManager.LoadScene("LakeTownLevel");
+
         }
        //LoadNewScene();
     }
 
 
-    void LoadNewScene()
-    {
-
-    }
+   
 
 }
