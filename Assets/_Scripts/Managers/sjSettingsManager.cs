@@ -36,7 +36,7 @@ public class sjSettingsManager : MonoBehaviour
     {
         HandleVolumeChange();
         settingsMenu = GameObject.Find("SettingsMenu");
-        audioVolumeSlider = settingsMenu.transform.GetChild(6).GetComponent<Slider>();
+        audioVolumeSlider = settingsMenu.transform.GetChild(5).gameObject.GetComponent<Slider>();
         settingsMenu.SetActive(false);
     }
 
