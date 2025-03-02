@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - Name: Gerald
-    text: Great! I think I saw it last time somewhere further down this part to your
-      left. Be careful.
+    text: "Great! I remember seeing it wandering close to the caf\xE9. Be careful."
     isQuestion: 0
     isGiveQuest: 1
     isReward: 0
