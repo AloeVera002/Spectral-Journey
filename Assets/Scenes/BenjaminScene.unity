@@ -5803,21 +5803,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998684266}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1998684271
-Transform:
+--- !u!224 &1998684271
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998684266}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.39, y: 0.03, z: 1.36}
+  m_LocalPosition: {x: 0, y: 0, z: 1.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -10.39, y: 0.03}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2002268405
 GameObject:
   m_ObjectHideFlags: 0
@@ -6796,6 +6800,6 @@ SceneRoots:
   - {fileID: 2031092037}
   - {fileID: 1834243077}
   - {fileID: 1489485627}
-  - {fileID: 1998684271}
   - {fileID: 2101460300}
   - {fileID: 1493800656}
+  - {fileID: 1998684271}

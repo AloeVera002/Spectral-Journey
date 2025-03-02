@@ -224,7 +224,7 @@ public class DialogueManager : MonoBehaviour
 
     public void AcceptQuestion()
     {
-        ShowModal();
+    //    ShowModal();
         SetDialogueRef(lineArray[lineIndex].nextDialogue);
         UpdateDialogue();
         oppositeTalker.GetComponent<QuestGiver>().dontGiveNewDialogue = true;
@@ -238,7 +238,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        ShowModal();
+    //    ShowModal();
         SetDialogueRef(lineArray[lineIndex].nextDialogue);
         UpdateDialogue();
     }
