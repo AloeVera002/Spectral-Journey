@@ -106,7 +106,9 @@ public class AttackManager : MonoBehaviour
                             {
                                 GameObject newGhost = GameObject.Find("HiddenGhost");
                                 newGhost.transform.position = this.transform.position;
-                                GameObject.Find("PlayerV2").GetComponent<QuestManager>().GiveQuestReward();
+                                qMan.GiveQuestReward();
+                                qMan.questDetailsText.text = "Completed Quest";
+                                Invoke("DestroyQuestText", 3);
                                 newGhost.GetComponent<Wandering>().isToFollowPlayer = true;
                             //    Invoke("SetHiddenGhost", 10);
                             }
@@ -134,6 +136,11 @@ public class AttackManager : MonoBehaviour
     void SetHiddenGhost()
     {
         
+    }
+
+    void DestroyQuestText()
+    {
+        qMan.HideQuestHUD();
     }
 }
 

@@ -1,5 +1,7 @@
+#if UNITY_EDITOR
 using System.Collections;
 using UnityEditor.SearchService;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
