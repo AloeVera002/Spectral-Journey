@@ -42,7 +42,6 @@ public class DialogueManager : MonoBehaviour
 
         GetInfo();
         StartDialogue();
-        playerCompDia.ToggleDialogueCamera();
     }
 
     void Update()
@@ -182,6 +181,10 @@ public class DialogueManager : MonoBehaviour
         else
         {
             oppositeTalker.GetComponent<QuestGiver>().dontGiveNewDialogue = false;
+            QuitDialogue();
+        }
+        if (lineIndex > lineArray.Length - 1 && lineArray[lineIndex].nextDialogue == null)
+        {
             QuitDialogue();
         }
         if (lineArray[lineIndex].isReward)
