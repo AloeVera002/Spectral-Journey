@@ -29,7 +29,7 @@ public class sjSettingsManager : MonoBehaviour
         }
         settingsMenuSource = GetComponent<AudioSource>();
 
-//        SceneManager.sceneLoaded += HandleVolumeChange;
+        //        SceneManager.sceneLoaded += HandleVolumeChange;
     }
 
     private void Start()
@@ -85,7 +85,10 @@ public class sjSettingsManager : MonoBehaviour
         foreach (AudioSource source in audioSources)
         {
             if (source != settingsMenuSource)
-            source.volume = newValue;// audioVolumeSlider.value;
+            {
+                settingsMenuSource.volume = source.volume;
+                source.volume = newValue;// audioVolumeSlider.value;
+            }
         }
     }
 }
